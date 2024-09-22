@@ -1,0 +1,214 @@
+# schema.graphql
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+
+input TargetConfigInput {
+  min: Float!
+  max: Float!
+}
+
+input SyntheticSamplePropsInput {
+  std: Float!
+  mean: Float!
+  min: Float!
+  max: Float!
+  size: Int!
+  config: TargetConfigInput!
+}
+
+enum SessionMode {
+  SUM
+  SET
+}
+
+enum BowType {
+  RECURVE
+  COMPOUND
+  BAREBOW
+}
+
+enum TimerMode {
+  LOOP
+  TOTAL
+}
+
+union Archer = User | Enemy
+
+type Authenticates @relationshipProperties {
+  id: String!
+}
+
+type AtTarget @relationshipProperties {
+  distance: Int!
+}
+
+type GenerationProperties @relationshipProperties {
+  mean: Float!
+  max: Float!
+  min: Float!
+  std: Float!
+}
+
+type User {
+  id: ID! @id
+  authId: String! @unique # This will store the Auth0 user ID
+  authenticator: Authenticator!
+    @relationship(
+      type: "AUTHENTICATES"
+      properties: "Authenticates"
+      direction: IN
+    )
+  sessions: [Session!]! @relationship(type: "PARTICIPATES_IN", direction: OUT)
+  bows: [Bow!]! @relationship(type: "OWNS", direction: OUT)
+  arrows: [Arrow!]! @relationship(type: "SHOOTS", direction: OUT)
+  sets: [Set!]! @relationship(type: "SHOOTS", direction: OUT)
+}
+
+type Authenticator {
+  id: ID! @id
+  name: String! @unique # This will store the Auth0 authenticator name
+  users: [User!]!
+    @relationship(
+      type: "AUTHENTICATES"
+      properties: "Authenticates"
+      direction: OUT
+    )
+}
+
+type SyntheticSampleResponse {
+  message: String!
+  sample: [Float!]!
+  std: Float!
+  mean: Float!
+  min: Float!
+  max: Float!
+}
+
+type Bow {
+  id: ID! @id
+  type: BowType!
+  model: String!
+  brand: String!
+  owner: User! @relationship(type: "OWNS", direction: IN)
+  notes: [Note!]! @relationship(type: "ON", direction: IN)
+  comments: [Comment!]! @relationship(type: "ON", direction: IN)
+}
+
+type Target {
+  id: ID! @id
+  type: String!
+  rings: Int!
+  radius: Int!
+  max: Int!
+  min: Int!
+  xRing: Boolean! @default(value: true)
+  arrows: [Arrow!]!
+    @relationship(type: "AT", direction: IN, properties: "AtTarget")
+  sets: [Set!]! @relationship(type: "AT", direction: IN, properties: "AtTarget")
+}
+
+type Set {
+  id: ID! @id
+  number: Int!
+  shootoff: Boolean! @default(value: false)
+  arrowsInOrder: Boolean! @default(value: false)
+  arrows: [Arrow!]! @relationship(type: "DURING", direction: IN)
+  session: Session! @relationship(type: "DURING", direction: OUT)
+  archer: Archer! @relationship(type: "SHOOTS", direction: IN)
+  target: Target!
+    @relationship(type: "AT", direction: OUT, properties: "AtTarget")
+  notes: [Note!]! @relationship(type: "ON", direction: IN)
+  comments: [Comment!]! @relationship(type: "ON", direction: IN)
+}
+
+type Arrow {
+  id: ID! @id
+  number: Int!
+  angle: Float
+  offset: Float
+  coordinate: CartesianPoint
+  value: Int
+  set: Set! @relationship(type: "DURING", direction: OUT)
+  archer: Archer! @relationship(type: "SHOOTS", direction: IN)
+  notes: [Note!]! @relationship(type: "ON", direction: IN)
+  comments: [Comment!]! @relationship(type: "ON", direction: IN)
+}
+
+type Location {
+  id: ID! @id
+  name: String!
+  coordinate: Point!
+  notes: [Note!]! @relationship(type: "ON", direction: IN)
+  comments: [Comment!]! @relationship(type: "ON", direction: IN)
+  sessions: [Session!]! @relationship(type: "AT", direction: IN)
+}
+
+type Ruleset {
+  id: ID! @id
+  arrowsPerSet: Int!
+  timePerArrow: Int!
+  timer: TimerMode! @default(value: TOTAL)
+  mode: SessionMode! @default(value: SUM)
+  discipline: BowType! @default(value: RECURVE)
+}
+
+type Session {
+  id: ID! @id
+  name: String!
+  date: Int!
+  enemies: [Enemy!]! @relationship(type: "PARTICIPATES_IN", direction: IN)
+  users: [User!]! @relationship(type: "PARTICIPATES_IN", direction: IN)
+  sets: [Set!]! @relationship(type: "DURING", direction: IN)
+  ruleset: Ruleset @relationship(type: "USES", direction: OUT)
+  notes: [Note!]! @relationship(type: "ON", direction: IN)
+  comments: [Comment!]! @relationship(type: "ON", direction: IN)
+  location: Location @relationship(type: "AT", direction: OUT)
+  active: Boolean! @default(value: false)
+}
+
+type Note {
+  id: ID! @id
+  title: String!
+  content: String
+  date: Int!
+  session: Session @relationship(type: "ON", direction: OUT)
+  comments: [Comment!]! @relationship(type: "ON", direction: IN)
+  set: Set @relationship(type: "ON", direction: OUT)
+  arrow: Arrow @relationship(type: "ON", direction: OUT)
+  bow: Bow @relationship(type: "ON", direction: OUT)
+}
+
+type Comment {
+  id: ID! @id
+  title: String!
+  content: String
+  date: Int!
+  session: Session @relationship(type: "ON", direction: OUT)
+  set: Set @relationship(type: "ON", direction: OUT)
+  arrow: Arrow @relationship(type: "ON", direction: OUT)
+  note: Note @relationship(type: "ON", direction: OUT)
+  bow: Bow @relationship(type: "ON", direction: OUT)
+}
+
+type Enemy {
+  id: ID! @id
+  name: String!
+  mod: Float! @default(value: 1.0)
+  adaptive: Boolean! @default(value: false)
+  std: Float!
+  mean: Float!
+  min: Float!
+  max: Float!
+  arrows: [Arrow!]!
+    @relationship(
+      type: "SHOOTS"
+      direction: OUT
+      properties: "GenerationProperties"
+    )
+  sessions: [Session!]! @relationship(type: "PARTICIPATES_IN", direction: OUT)
+  sets: [Set!]! @relationship(type: "SHOOTS", direction: OUT)
+}
+
+type Mutation {
+  synthesize(payload: SyntheticSamplePropsInput!): SyntheticSampleResponse!
+}
