@@ -6,15 +6,18 @@ import fs from "fs";
 import path from "path";
 
 // Read schema from file
-const schemaPath = path.join(process.cwd(), "src/app/api/graphql/schema.graphql");
+const schemaPath = path.join(
+  process.cwd(),
+  "src/app/api/graphql/schema.graphql"
+);
 const typeDefs = fs.readFileSync(schemaPath, "utf-8");
 
 // Create Neo4j driver instance
 const driver = neo4j.driver(
-  process.env.NEO4J_URI || "bolt://localhost:7687",
+  process.env.NEOURI || "bolt://localhost:7687",
   neo4j.auth.basic(
-    process.env.NEO4J_USER || "neo4j",
-    process.env.NEO4J_PASSWORD || "password"
+    process.env.NEOUSER || "neo4j",
+    process.env.NEOPASS || "password"
   )
 );
 
