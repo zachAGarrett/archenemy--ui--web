@@ -1,3 +1,5 @@
+import ArcheryTarget from "@/components/ArcheryTarget";
+
 export default function Home() {
-  return <>Hi there</>;
+  return <ArcheryTarget radius={250} ringCount={10} />;
 }
