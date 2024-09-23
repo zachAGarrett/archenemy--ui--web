@@ -26,7 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/api/graphql/schemaLoader.js"
+    "src/app/api/graphql/schemaLoader.ts"
   ],
   "exclude": ["node_modules"]
 }

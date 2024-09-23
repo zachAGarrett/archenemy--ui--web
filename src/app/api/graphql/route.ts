@@ -4,6 +4,7 @@ import { Neo4jGraphQL } from "@neo4j/graphql";
 import neo4j from "neo4j-driver";
 import fs from "fs";
 import path from "path";
+import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 
 // Read schema from file
 const schemaPath = path.join(
@@ -33,7 +34,8 @@ async function getServer() {
     apolloServer = new ApolloServer({
       schema,
       context: ({ req }) => ({ req }),
-      introspection: true, // Explicitly enable introspection
+      introspection: process.env.DEV === "TRUE" ? true : false, // Explicitly enable introspection
+      plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
     });
     await apolloServer.start();
   }
