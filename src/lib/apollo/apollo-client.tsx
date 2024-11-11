@@ -1,4 +1,3 @@
-// src/lib/apollo-wrapper.tsx
 "use client";
 
 import { ApolloLink, HttpLink } from "@apollo/client";

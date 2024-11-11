@@ -52,27 +52,10 @@ type GenerationProperties @relationshipProperties {
 type User {
   id: ID! @id
   authId: String! @unique # This will store the Auth0 user ID
-  authenticator: Authenticator!
-    @relationship(
-      type: "AUTHENTICATES"
-      properties: "Authenticates"
-      direction: IN
-    )
   sessions: [Session!]! @relationship(type: "PARTICIPATES_IN", direction: OUT)
   bows: [Bow!]! @relationship(type: "OWNS", direction: OUT)
   arrows: [Arrow!]! @relationship(type: "SHOOTS", direction: OUT)
   sets: [Set!]! @relationship(type: "SHOOTS", direction: OUT)
-}
-
-type Authenticator {
-  id: ID! @id
-  name: String! @unique # This will store the Auth0 authenticator name
-  users: [User!]!
-    @relationship(
-      type: "AUTHENTICATES"
-      properties: "Authenticates"
-      direction: OUT
-    )
 }
 
 type SyntheticSampleResponse {
