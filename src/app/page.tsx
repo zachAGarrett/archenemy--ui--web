@@ -1,12 +1,5 @@
-import { Button, Flex } from "antd";
+import ArcheryTarget from "@/components/ArcheryTarget";
 
 export default function Home() {
-  return (
-    <Flex vertical gap={10}>
-      <Button size="large" type="primary">
-        Start a new session
-      </Button>
-      <Button size="large">Continue a previous session</Button>
-    </Flex>
-  );
+  return <ArcheryTarget radius={250} ringCount={10} />;
 }

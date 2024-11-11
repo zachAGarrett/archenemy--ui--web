@@ -4,17 +4,21 @@ import { Neo4jGraphQL } from "@neo4j/graphql";
 import neo4j from "neo4j-driver";
 import fs from "fs";
 import path from "path";
+import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 
 // Read schema from file
-const schemaPath = path.join(process.cwd(), "src/app/api/graphql/schema.graphql");
+const schemaPath = path.join(
+  process.cwd(),
+  "src/app/api/graphql/schema.graphql"
+);
 const typeDefs = fs.readFileSync(schemaPath, "utf-8");
 
 // Create Neo4j driver instance
 const driver = neo4j.driver(
-  process.env.NEO4J_URI || "bolt://localhost:7687",
+  process.env.NEOURI || "bolt://localhost:7687",
   neo4j.auth.basic(
-    process.env.NEO4J_USER || "neo4j",
-    process.env.NEO4J_PASSWORD || "password"
+    process.env.NEOUSER || "neo4j",
+    process.env.NEOPASS || "password"
   )
 );
 
@@ -30,7 +34,8 @@ async function getServer() {
     apolloServer = new ApolloServer({
       schema,
       context: ({ req }) => ({ req }),
-      introspection: true, // Explicitly enable introspection
+      introspection: process.env.DEV === "TRUE" ? true : false, // Explicitly enable introspection
+      plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
     });
     await apolloServer.start();
   }

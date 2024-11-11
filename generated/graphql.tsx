@@ -1,23 +1,34 @@
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import { gql } from "@apollo/client";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
-const defaultOptions = {} as const;
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never;
+    };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  _Any: { input: any; output: any; }
-  federation__FieldSet: { input: any; output: any; }
-  link__Import: { input: any; output: any; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  _Any: { input: any; output: any };
+  federation__FieldSet: { input: any; output: any };
+  link__Import: { input: any; output: any };
 };
 
 export type Archer = Enemy | User;
@@ -28,104 +39,94 @@ export type ArcherWhere = {
 };
 
 export type Arrow = {
-  __typename?: 'Arrow';
-  angle?: Maybe<Scalars['Float']['output']>;
+  __typename?: "Arrow";
+  angle?: Maybe<Scalars["Float"]["output"]>;
   archer: Archer;
   archerConnection: ArrowArcherConnection;
   comments: Array<Comment>;
   commentsAggregate?: Maybe<ArrowCommentCommentsAggregationSelection>;
   commentsConnection: ArrowCommentsConnection;
   coordinate?: Maybe<CartesianPoint>;
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   notes: Array<Note>;
   notesAggregate?: Maybe<ArrowNoteNotesAggregationSelection>;
   notesConnection: ArrowNotesConnection;
-  number: Scalars['Int']['output'];
-  offset?: Maybe<Scalars['Float']['output']>;
+  number: Scalars["Int"]["output"];
+  offset?: Maybe<Scalars["Float"]["output"]>;
   set: Set;
   setAggregate?: Maybe<ArrowSetSetAggregationSelection>;
   setConnection: ArrowSetConnection;
-  value?: Maybe<Scalars['Int']['output']>;
+  value?: Maybe<Scalars["Int"]["output"]>;
 };
 
-
 export type ArrowArcherArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<QueryOptions>;
   where?: InputMaybe<ArcherWhere>;
 };
 
-
 export type ArrowArcherConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   where?: InputMaybe<ArrowArcherConnectionWhere>;
 };
 
-
 export type ArrowCommentsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<CommentOptions>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type ArrowCommentsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type ArrowCommentsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<ArrowCommentsConnectionSort>>;
   where?: InputMaybe<ArrowCommentsConnectionWhere>;
 };
 
-
 export type ArrowNotesArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<NoteOptions>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type ArrowNotesAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type ArrowNotesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<ArrowNotesConnectionSort>>;
   where?: InputMaybe<ArrowNotesConnectionWhere>;
 };
 
-
 export type ArrowSetAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type ArrowSetConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<ArrowSetConnectionSort>>;
   where?: InputMaybe<ArrowSetConnectionWhere>;
 };
 
 export type ArrowAggregateSelection = {
-  __typename?: 'ArrowAggregateSelection';
+  __typename?: "ArrowAggregateSelection";
   angle: FloatAggregateSelection;
-  count: Scalars['Int']['output'];
+  count: Scalars["Int"]["output"];
   id: IdAggregateSelection;
   number: IntAggregateSelection;
   offset: FloatAggregateSelection;
@@ -142,10 +143,10 @@ export type ArrowArcherConnectOrCreateInput = {
 };
 
 export type ArrowArcherConnection = {
-  __typename?: 'ArrowArcherConnection';
+  __typename?: "ArrowArcherConnection";
   edges: Array<ArrowArcherRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type ArrowArcherConnectionWhere = {
@@ -218,8 +219,8 @@ export type ArrowArcherEnemyUpdateFieldInput = {
 };
 
 export type ArrowArcherRelationship = {
-  __typename?: 'ArrowArcherRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "ArrowArcherRelationship";
+  cursor: Scalars["String"]["output"];
   node: Archer;
 };
 
@@ -284,13 +285,13 @@ export type ArrowArcherUserUpdateFieldInput = {
 };
 
 export type ArrowCommentCommentsAggregationSelection = {
-  __typename?: 'ArrowCommentCommentsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "ArrowCommentCommentsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<ArrowCommentCommentsNodeAggregateSelection>;
 };
 
 export type ArrowCommentCommentsNodeAggregateSelection = {
-  __typename?: 'ArrowCommentCommentsNodeAggregateSelection';
+  __typename?: "ArrowCommentCommentsNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -301,26 +302,26 @@ export type ArrowCommentsAggregateInput = {
   AND?: InputMaybe<Array<ArrowCommentsAggregateInput>>;
   NOT?: InputMaybe<ArrowCommentsAggregateInput>;
   OR?: InputMaybe<Array<ArrowCommentsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<ArrowCommentsNodeAggregationWhereInput>;
 };
 
 export type ArrowCommentsConnectFieldInput = {
   connect?: InputMaybe<Array<CommentConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<CommentConnectWhere>;
 };
 
 export type ArrowCommentsConnection = {
-  __typename?: 'ArrowCommentsConnection';
+  __typename?: "ArrowCommentsConnection";
   edges: Array<ArrowCommentsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type ArrowCommentsConnectionSort = {
@@ -357,61 +358,61 @@ export type ArrowCommentsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<ArrowCommentsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<ArrowCommentsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<ArrowCommentsNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type ArrowCommentsRelationship = {
-  __typename?: 'ArrowCommentsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "ArrowCommentsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Comment;
 };
 
@@ -444,15 +445,15 @@ export type ArrowConnectWhere = {
 };
 
 export type ArrowCreateInput = {
-  angle?: InputMaybe<Scalars['Float']['input']>;
+  angle?: InputMaybe<Scalars["Float"]["input"]>;
   archer?: InputMaybe<ArrowArcherCreateInput>;
   comments?: InputMaybe<ArrowCommentsFieldInput>;
   coordinate?: InputMaybe<CartesianPointInput>;
   notes?: InputMaybe<ArrowNotesFieldInput>;
-  number: Scalars['Int']['input'];
-  offset?: InputMaybe<Scalars['Float']['input']>;
+  number: Scalars["Int"]["input"];
+  offset?: InputMaybe<Scalars["Float"]["input"]>;
   set?: InputMaybe<ArrowSetFieldInput>;
-  value?: InputMaybe<Scalars['Int']['input']>;
+  value?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type ArrowDeleteInput = {
@@ -470,19 +471,19 @@ export type ArrowDisconnectInput = {
 };
 
 export type ArrowEdge = {
-  __typename?: 'ArrowEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "ArrowEdge";
+  cursor: Scalars["String"]["output"];
   node: Arrow;
 };
 
 export type ArrowNoteNotesAggregationSelection = {
-  __typename?: 'ArrowNoteNotesAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "ArrowNoteNotesAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<ArrowNoteNotesNodeAggregateSelection>;
 };
 
 export type ArrowNoteNotesNodeAggregateSelection = {
-  __typename?: 'ArrowNoteNotesNodeAggregateSelection';
+  __typename?: "ArrowNoteNotesNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -493,26 +494,26 @@ export type ArrowNotesAggregateInput = {
   AND?: InputMaybe<Array<ArrowNotesAggregateInput>>;
   NOT?: InputMaybe<ArrowNotesAggregateInput>;
   OR?: InputMaybe<Array<ArrowNotesAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<ArrowNotesNodeAggregationWhereInput>;
 };
 
 export type ArrowNotesConnectFieldInput = {
   connect?: InputMaybe<Array<NoteConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<NoteConnectWhere>;
 };
 
 export type ArrowNotesConnection = {
-  __typename?: 'ArrowNotesConnection';
+  __typename?: "ArrowNotesConnection";
   edges: Array<ArrowNotesRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type ArrowNotesConnectionSort = {
@@ -549,61 +550,61 @@ export type ArrowNotesNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<ArrowNotesNodeAggregationWhereInput>>;
   NOT?: InputMaybe<ArrowNotesNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<ArrowNotesNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type ArrowNotesRelationship = {
-  __typename?: 'ArrowNotesRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "ArrowNotesRelationship";
+  cursor: Scalars["String"]["output"];
   node: Note;
 };
 
@@ -621,8 +622,8 @@ export type ArrowNotesUpdateFieldInput = {
 };
 
 export type ArrowOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more ArrowSort objects to sort Arrows by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<ArrowSort>>;
 };
@@ -638,26 +639,26 @@ export type ArrowSetAggregateInput = {
   AND?: InputMaybe<Array<ArrowSetAggregateInput>>;
   NOT?: InputMaybe<ArrowSetAggregateInput>;
   OR?: InputMaybe<Array<ArrowSetAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<ArrowSetNodeAggregationWhereInput>;
 };
 
 export type ArrowSetConnectFieldInput = {
   connect?: InputMaybe<SetConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SetConnectWhere>;
 };
 
 export type ArrowSetConnection = {
-  __typename?: 'ArrowSetConnection';
+  __typename?: "ArrowSetConnection";
   edges: Array<ArrowSetRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type ArrowSetConnectionSort = {
@@ -694,42 +695,42 @@ export type ArrowSetNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<ArrowSetNodeAggregationWhereInput>>;
   NOT?: InputMaybe<ArrowSetNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<ArrowSetNodeAggregationWhereInput>>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type ArrowSetRelationship = {
-  __typename?: 'ArrowSetRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "ArrowSetRelationship";
+  cursor: Scalars["String"]["output"];
   node: Set;
 };
 
 export type ArrowSetSetAggregationSelection = {
-  __typename?: 'ArrowSetSetAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "ArrowSetSetAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<ArrowSetSetNodeAggregateSelection>;
 };
 
 export type ArrowSetSetNodeAggregateSelection = {
-  __typename?: 'ArrowSetSetNodeAggregateSelection';
+  __typename?: "ArrowSetSetNodeAggregateSelection";
   id: IdAggregateSelection;
   number: IntAggregateSelection;
 };
@@ -758,39 +759,39 @@ export type ArrowSort = {
 };
 
 export type ArrowUpdateInput = {
-  angle?: InputMaybe<Scalars['Float']['input']>;
-  angle_ADD?: InputMaybe<Scalars['Float']['input']>;
-  angle_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
+  angle?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
   archer?: InputMaybe<ArrowArcherUpdateInput>;
   comments?: InputMaybe<Array<ArrowCommentsUpdateFieldInput>>;
   coordinate?: InputMaybe<CartesianPointInput>;
   notes?: InputMaybe<Array<ArrowNotesUpdateFieldInput>>;
-  number?: InputMaybe<Scalars['Int']['input']>;
-  number_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  number_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Float']['input']>;
-  offset_ADD?: InputMaybe<Scalars['Float']['input']>;
-  offset_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
+  number?: InputMaybe<Scalars["Int"]["input"]>;
+  number_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
   set?: InputMaybe<ArrowSetUpdateFieldInput>;
-  value?: InputMaybe<Scalars['Int']['input']>;
-  value_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  value_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
+  value?: InputMaybe<Scalars["Int"]["input"]>;
+  value_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type ArrowWhere = {
   AND?: InputMaybe<Array<ArrowWhere>>;
   NOT?: InputMaybe<ArrowWhere>;
   OR?: InputMaybe<Array<ArrowWhere>>;
-  angle?: InputMaybe<Scalars['Float']['input']>;
-  angle_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_IN?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
-  angle_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_LTE?: InputMaybe<Scalars['Float']['input']>;
+  angle?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_IN?: InputMaybe<Array<InputMaybe<Scalars["Float"]["input"]>>>;
+  angle_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_LTE?: InputMaybe<Scalars["Float"]["input"]>;
   archer?: InputMaybe<ArcherWhere>;
   archerConnection?: InputMaybe<ArrowArcherConnectionWhere>;
   archerConnection_NOT?: InputMaybe<ArrowArcherConnectionWhere>;
@@ -819,11 +820,11 @@ export type ArrowWhere = {
   coordinate_IN?: InputMaybe<Array<InputMaybe<CartesianPointInput>>>;
   coordinate_LT?: InputMaybe<CartesianPointDistance>;
   coordinate_LTE?: InputMaybe<CartesianPointDistance>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
   notesAggregate?: InputMaybe<ArrowNotesAggregateInput>;
   /** Return Arrows where all of the related ArrowNotesConnections match this filter */
   notesConnection_ALL?: InputMaybe<ArrowNotesConnectionWhere>;
@@ -841,36 +842,36 @@ export type ArrowWhere = {
   notes_SINGLE?: InputMaybe<NoteWhere>;
   /** Return Arrows where some of the related Notes match this filter */
   notes_SOME?: InputMaybe<NoteWhere>;
-  number?: InputMaybe<Scalars['Int']['input']>;
-  number_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  number_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_LTE?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Float']['input']>;
-  offset_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_IN?: InputMaybe<Array<InputMaybe<Scalars['Float']['input']>>>;
-  offset_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_LTE?: InputMaybe<Scalars['Float']['input']>;
+  number?: InputMaybe<Scalars["Int"]["input"]>;
+  number_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  number_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_IN?: InputMaybe<Array<InputMaybe<Scalars["Float"]["input"]>>>;
+  offset_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_LTE?: InputMaybe<Scalars["Float"]["input"]>;
   set?: InputMaybe<SetWhere>;
   setAggregate?: InputMaybe<ArrowSetAggregateInput>;
   setConnection?: InputMaybe<ArrowSetConnectionWhere>;
   setConnection_NOT?: InputMaybe<ArrowSetConnectionWhere>;
   set_NOT?: InputMaybe<SetWhere>;
-  value?: InputMaybe<Scalars['Int']['input']>;
-  value_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_IN?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
-  value_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_LTE?: InputMaybe<Scalars['Int']['input']>;
+  value?: InputMaybe<Scalars["Int"]["input"]>;
+  value_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_IN?: InputMaybe<Array<InputMaybe<Scalars["Int"]["input"]>>>;
+  value_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type ArrowsConnection = {
-  __typename?: 'ArrowsConnection';
+  __typename?: "ArrowsConnection";
   edges: Array<ArrowEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /**
@@ -880,38 +881,38 @@ export type ArrowsConnection = {
  * * Set.target
  */
 export type AtTarget = {
-  __typename?: 'AtTarget';
-  distance: Scalars['Int']['output'];
+  __typename?: "AtTarget";
+  distance: Scalars["Int"]["output"];
 };
 
 export type AtTargetAggregationWhereInput = {
   AND?: InputMaybe<Array<AtTargetAggregationWhereInput>>;
   NOT?: InputMaybe<AtTargetAggregationWhereInput>;
   OR?: InputMaybe<Array<AtTargetAggregationWhereInput>>;
-  distance_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  distance_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  distance_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  distance_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  distance_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  distance_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  distance_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  distance_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  distance_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  distance_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  distance_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  distance_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  distance_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  distance_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  distance_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  distance_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  distance_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  distance_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  distance_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  distance_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  distance_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  distance_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  distance_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  distance_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  distance_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  distance_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type AtTargetCreateInput = {
-  distance: Scalars['Int']['input'];
+  distance: Scalars["Int"]["input"];
 };
 
 export type AtTargetSort = {
@@ -919,21 +920,21 @@ export type AtTargetSort = {
 };
 
 export type AtTargetUpdateInput = {
-  distance?: InputMaybe<Scalars['Int']['input']>;
-  distance_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  distance_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
+  distance?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type AtTargetWhere = {
   AND?: InputMaybe<Array<AtTargetWhere>>;
   NOT?: InputMaybe<AtTargetWhere>;
   OR?: InputMaybe<Array<AtTargetWhere>>;
-  distance?: InputMaybe<Scalars['Int']['input']>;
-  distance_GT?: InputMaybe<Scalars['Int']['input']>;
-  distance_GTE?: InputMaybe<Scalars['Int']['input']>;
-  distance_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  distance_LT?: InputMaybe<Scalars['Int']['input']>;
-  distance_LTE?: InputMaybe<Scalars['Int']['input']>;
+  distance?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  distance_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  distance_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 /**
@@ -942,33 +943,33 @@ export type AtTargetWhere = {
  * * Authenticator.users
  */
 export type Authenticates = {
-  __typename?: 'Authenticates';
-  id: Scalars['String']['output'];
+  __typename?: "Authenticates";
+  id: Scalars["String"]["output"];
 };
 
 export type AuthenticatesAggregationWhereInput = {
   AND?: InputMaybe<Array<AuthenticatesAggregationWhereInput>>;
   NOT?: InputMaybe<AuthenticatesAggregationWhereInput>;
   OR?: InputMaybe<Array<AuthenticatesAggregationWhereInput>>;
-  id_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  id_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  id_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  id_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  id_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  id_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  id_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  id_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  id_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  id_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  id_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  id_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  id_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  id_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  id_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  id_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  id_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  id_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  id_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  id_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  id_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  id_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  id_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  id_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  id_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  id_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  id_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  id_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  id_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  id_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type AuthenticatesCreateInput = {
-  id: Scalars['String']['input'];
+  id: Scalars["String"]["input"];
 };
 
 export type AuthenticatesSort = {
@@ -976,54 +977,51 @@ export type AuthenticatesSort = {
 };
 
 export type AuthenticatesUpdateInput = {
-  id?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type AuthenticatesWhere = {
   AND?: InputMaybe<Array<AuthenticatesWhere>>;
   NOT?: InputMaybe<AuthenticatesWhere>;
   OR?: InputMaybe<Array<AuthenticatesWhere>>;
-  id?: InputMaybe<Scalars['String']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars["String"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type Authenticator = {
-  __typename?: 'Authenticator';
-  id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
+  __typename?: "Authenticator";
+  id: Scalars["ID"]["output"];
+  name: Scalars["String"]["output"];
   users: Array<User>;
   usersAggregate?: Maybe<AuthenticatorUserUsersAggregationSelection>;
   usersConnection: AuthenticatorUsersConnection;
 };
 
-
 export type AuthenticatorUsersArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<UserOptions>;
   where?: InputMaybe<UserWhere>;
 };
 
-
 export type AuthenticatorUsersAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<UserWhere>;
 };
 
-
 export type AuthenticatorUsersConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<AuthenticatorUsersConnectionSort>>;
   where?: InputMaybe<AuthenticatorUsersConnectionWhere>;
 };
 
 export type AuthenticatorAggregateSelection = {
-  __typename?: 'AuthenticatorAggregateSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "AuthenticatorAggregateSelection";
+  count: Scalars["Int"]["output"];
   id: IdAggregateSelection;
   name: StringAggregateSelection;
 };
@@ -1045,7 +1043,7 @@ export type AuthenticatorConnectWhere = {
 };
 
 export type AuthenticatorCreateInput = {
-  name: Scalars['String']['input'];
+  name: Scalars["String"]["input"];
   users?: InputMaybe<AuthenticatorUsersFieldInput>;
 };
 
@@ -1058,18 +1056,18 @@ export type AuthenticatorDisconnectInput = {
 };
 
 export type AuthenticatorEdge = {
-  __typename?: 'AuthenticatorEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "AuthenticatorEdge";
+  cursor: Scalars["String"]["output"];
   node: Authenticator;
 };
 
 export type AuthenticatorOnCreateInput = {
-  name: Scalars['String']['input'];
+  name: Scalars["String"]["input"];
 };
 
 export type AuthenticatorOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more AuthenticatorSort objects to sort Authenticators by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<AuthenticatorSort>>;
 };
@@ -1085,28 +1083,28 @@ export type AuthenticatorSort = {
 };
 
 export type AuthenticatorUniqueWhere = {
-  name?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type AuthenticatorUpdateInput = {
-  name?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   users?: InputMaybe<Array<AuthenticatorUsersUpdateFieldInput>>;
 };
 
 export type AuthenticatorUserUsersAggregationSelection = {
-  __typename?: 'AuthenticatorUserUsersAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "AuthenticatorUserUsersAggregationSelection";
+  count: Scalars["Int"]["output"];
   edge?: Maybe<AuthenticatorUserUsersEdgeAggregateSelection>;
   node?: Maybe<AuthenticatorUserUsersNodeAggregateSelection>;
 };
 
 export type AuthenticatorUserUsersEdgeAggregateSelection = {
-  __typename?: 'AuthenticatorUserUsersEdgeAggregateSelection';
+  __typename?: "AuthenticatorUserUsersEdgeAggregateSelection";
   id: StringAggregateSelection;
 };
 
 export type AuthenticatorUserUsersNodeAggregateSelection = {
-  __typename?: 'AuthenticatorUserUsersNodeAggregateSelection';
+  __typename?: "AuthenticatorUserUsersNodeAggregateSelection";
   authId: StringAggregateSelection;
   id: IdAggregateSelection;
 };
@@ -1115,11 +1113,11 @@ export type AuthenticatorUsersAggregateInput = {
   AND?: InputMaybe<Array<AuthenticatorUsersAggregateInput>>;
   NOT?: InputMaybe<AuthenticatorUsersAggregateInput>;
   OR?: InputMaybe<Array<AuthenticatorUsersAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   edge?: InputMaybe<AuthenticatesAggregationWhereInput>;
   node?: InputMaybe<AuthenticatorUsersNodeAggregationWhereInput>;
 };
@@ -1128,7 +1126,7 @@ export type AuthenticatorUsersConnectFieldInput = {
   connect?: InputMaybe<Array<UserConnectInput>>;
   edge: AuthenticatesCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<UserConnectWhere>;
 };
 
@@ -1143,10 +1141,10 @@ export type AuthenticatorUsersConnectOrCreateFieldInputOnCreate = {
 };
 
 export type AuthenticatorUsersConnection = {
-  __typename?: 'AuthenticatorUsersConnection';
+  __typename?: "AuthenticatorUsersConnection";
   edges: Array<AuthenticatorUsersRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type AuthenticatorUsersConnectionSort = {
@@ -1179,7 +1177,9 @@ export type AuthenticatorUsersDisconnectFieldInput = {
 
 export type AuthenticatorUsersFieldInput = {
   connect?: InputMaybe<Array<AuthenticatorUsersConnectFieldInput>>;
-  connectOrCreate?: InputMaybe<Array<AuthenticatorUsersConnectOrCreateFieldInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<AuthenticatorUsersConnectOrCreateFieldInput>
+  >;
   create?: InputMaybe<Array<AuthenticatorUsersCreateFieldInput>>;
 };
 
@@ -1187,26 +1187,26 @@ export type AuthenticatorUsersNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<AuthenticatorUsersNodeAggregationWhereInput>>;
   NOT?: InputMaybe<AuthenticatorUsersNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<AuthenticatorUsersNodeAggregationWhereInput>>;
-  authId_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  authId_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  authId_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type AuthenticatorUsersRelationship = {
-  __typename?: 'AuthenticatorUsersRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "AuthenticatorUsersRelationship";
+  cursor: Scalars["String"]["output"];
   node: User;
   properties: Authenticates;
 };
@@ -1218,7 +1218,9 @@ export type AuthenticatorUsersUpdateConnectionInput = {
 
 export type AuthenticatorUsersUpdateFieldInput = {
   connect?: InputMaybe<Array<AuthenticatorUsersConnectFieldInput>>;
-  connectOrCreate?: InputMaybe<Array<AuthenticatorUsersConnectOrCreateFieldInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<AuthenticatorUsersConnectOrCreateFieldInput>
+  >;
   create?: InputMaybe<Array<AuthenticatorUsersCreateFieldInput>>;
   delete?: InputMaybe<Array<AuthenticatorUsersDeleteFieldInput>>;
   disconnect?: InputMaybe<Array<AuthenticatorUsersDisconnectFieldInput>>;
@@ -1230,16 +1232,16 @@ export type AuthenticatorWhere = {
   AND?: InputMaybe<Array<AuthenticatorWhere>>;
   NOT?: InputMaybe<AuthenticatorWhere>;
   OR?: InputMaybe<Array<AuthenticatorWhere>>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  name_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  name_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  name_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  name_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  name_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  name_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  name_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  name_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
   usersAggregate?: InputMaybe<AuthenticatorUsersAggregateInput>;
   /** Return Authenticators where all of the related AuthenticatorUsersConnections match this filter */
   usersConnection_ALL?: InputMaybe<AuthenticatorUsersConnectionWhere>;
@@ -1260,20 +1262,20 @@ export type AuthenticatorWhere = {
 };
 
 export type AuthenticatorsConnection = {
-  __typename?: 'AuthenticatorsConnection';
+  __typename?: "AuthenticatorsConnection";
   edges: Array<AuthenticatorEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type Bow = {
-  __typename?: 'Bow';
-  brand: Scalars['String']['output'];
+  __typename?: "Bow";
+  brand: Scalars["String"]["output"];
   comments: Array<Comment>;
   commentsAggregate?: Maybe<BowCommentCommentsAggregationSelection>;
   commentsConnection: BowCommentsConnection;
-  id: Scalars['ID']['output'];
-  model: Scalars['String']['output'];
+  id: Scalars["ID"]["output"];
+  model: Scalars["String"]["output"];
   notes: Array<Note>;
   notesAggregate?: Maybe<BowNoteNotesAggregationSelection>;
   notesConnection: BowNotesConnection;
@@ -1283,81 +1285,73 @@ export type Bow = {
   type: BowType;
 };
 
-
 export type BowCommentsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<CommentOptions>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type BowCommentsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type BowCommentsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<BowCommentsConnectionSort>>;
   where?: InputMaybe<BowCommentsConnectionWhere>;
 };
 
-
 export type BowNotesArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<NoteOptions>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type BowNotesAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type BowNotesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<BowNotesConnectionSort>>;
   where?: InputMaybe<BowNotesConnectionWhere>;
 };
 
-
 export type BowOwnerAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<UserWhere>;
 };
 
-
 export type BowOwnerConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<BowOwnerConnectionSort>>;
   where?: InputMaybe<BowOwnerConnectionWhere>;
 };
 
 export type BowAggregateSelection = {
-  __typename?: 'BowAggregateSelection';
+  __typename?: "BowAggregateSelection";
   brand: StringAggregateSelection;
-  count: Scalars['Int']['output'];
+  count: Scalars["Int"]["output"];
   id: IdAggregateSelection;
   model: StringAggregateSelection;
 };
 
 export type BowCommentCommentsAggregationSelection = {
-  __typename?: 'BowCommentCommentsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "BowCommentCommentsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<BowCommentCommentsNodeAggregateSelection>;
 };
 
 export type BowCommentCommentsNodeAggregateSelection = {
-  __typename?: 'BowCommentCommentsNodeAggregateSelection';
+  __typename?: "BowCommentCommentsNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -1368,26 +1362,26 @@ export type BowCommentsAggregateInput = {
   AND?: InputMaybe<Array<BowCommentsAggregateInput>>;
   NOT?: InputMaybe<BowCommentsAggregateInput>;
   OR?: InputMaybe<Array<BowCommentsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<BowCommentsNodeAggregationWhereInput>;
 };
 
 export type BowCommentsConnectFieldInput = {
   connect?: InputMaybe<Array<CommentConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<CommentConnectWhere>;
 };
 
 export type BowCommentsConnection = {
-  __typename?: 'BowCommentsConnection';
+  __typename?: "BowCommentsConnection";
   edges: Array<BowCommentsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type BowCommentsConnectionSort = {
@@ -1424,61 +1418,61 @@ export type BowCommentsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<BowCommentsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<BowCommentsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<BowCommentsNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type BowCommentsRelationship = {
-  __typename?: 'BowCommentsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "BowCommentsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Comment;
 };
 
@@ -1510,9 +1504,9 @@ export type BowConnectWhere = {
 };
 
 export type BowCreateInput = {
-  brand: Scalars['String']['input'];
+  brand: Scalars["String"]["input"];
   comments?: InputMaybe<BowCommentsFieldInput>;
-  model: Scalars['String']['input'];
+  model: Scalars["String"]["input"];
   notes?: InputMaybe<BowNotesFieldInput>;
   owner?: InputMaybe<BowOwnerFieldInput>;
   type: BowType;
@@ -1531,19 +1525,19 @@ export type BowDisconnectInput = {
 };
 
 export type BowEdge = {
-  __typename?: 'BowEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "BowEdge";
+  cursor: Scalars["String"]["output"];
   node: Bow;
 };
 
 export type BowNoteNotesAggregationSelection = {
-  __typename?: 'BowNoteNotesAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "BowNoteNotesAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<BowNoteNotesNodeAggregateSelection>;
 };
 
 export type BowNoteNotesNodeAggregateSelection = {
-  __typename?: 'BowNoteNotesNodeAggregateSelection';
+  __typename?: "BowNoteNotesNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -1554,26 +1548,26 @@ export type BowNotesAggregateInput = {
   AND?: InputMaybe<Array<BowNotesAggregateInput>>;
   NOT?: InputMaybe<BowNotesAggregateInput>;
   OR?: InputMaybe<Array<BowNotesAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<BowNotesNodeAggregationWhereInput>;
 };
 
 export type BowNotesConnectFieldInput = {
   connect?: InputMaybe<Array<NoteConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<NoteConnectWhere>;
 };
 
 export type BowNotesConnection = {
-  __typename?: 'BowNotesConnection';
+  __typename?: "BowNotesConnection";
   edges: Array<BowNotesRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type BowNotesConnectionSort = {
@@ -1610,61 +1604,61 @@ export type BowNotesNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<BowNotesNodeAggregationWhereInput>>;
   NOT?: InputMaybe<BowNotesNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<BowNotesNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type BowNotesRelationship = {
-  __typename?: 'BowNotesRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "BowNotesRelationship";
+  cursor: Scalars["String"]["output"];
   node: Note;
 };
 
@@ -1682,8 +1676,8 @@ export type BowNotesUpdateFieldInput = {
 };
 
 export type BowOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more BowSort objects to sort Bows by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<BowSort>>;
 };
@@ -1692,18 +1686,18 @@ export type BowOwnerAggregateInput = {
   AND?: InputMaybe<Array<BowOwnerAggregateInput>>;
   NOT?: InputMaybe<BowOwnerAggregateInput>;
   OR?: InputMaybe<Array<BowOwnerAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<BowOwnerNodeAggregationWhereInput>;
 };
 
 export type BowOwnerConnectFieldInput = {
   connect?: InputMaybe<UserConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<UserConnectWhere>;
 };
 
@@ -1717,10 +1711,10 @@ export type BowOwnerConnectOrCreateFieldInputOnCreate = {
 };
 
 export type BowOwnerConnection = {
-  __typename?: 'BowOwnerConnection';
+  __typename?: "BowOwnerConnection";
   edges: Array<BowOwnerRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type BowOwnerConnectionSort = {
@@ -1758,26 +1752,26 @@ export type BowOwnerNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<BowOwnerNodeAggregationWhereInput>>;
   NOT?: InputMaybe<BowOwnerNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<BowOwnerNodeAggregationWhereInput>>;
-  authId_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  authId_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  authId_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type BowOwnerRelationship = {
-  __typename?: 'BowOwnerRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "BowOwnerRelationship";
+  cursor: Scalars["String"]["output"];
   node: User;
 };
 
@@ -1810,28 +1804,28 @@ export type BowSort = {
 };
 
 export enum BowType {
-  Barebow = 'BAREBOW',
-  Compound = 'COMPOUND',
-  Recurve = 'RECURVE'
+  Barebow = "BAREBOW",
+  Compound = "COMPOUND",
+  Recurve = "RECURVE",
 }
 
 export type BowUpdateInput = {
-  brand?: InputMaybe<Scalars['String']['input']>;
+  brand?: InputMaybe<Scalars["String"]["input"]>;
   comments?: InputMaybe<Array<BowCommentsUpdateFieldInput>>;
-  model?: InputMaybe<Scalars['String']['input']>;
+  model?: InputMaybe<Scalars["String"]["input"]>;
   notes?: InputMaybe<Array<BowNotesUpdateFieldInput>>;
   owner?: InputMaybe<BowOwnerUpdateFieldInput>;
   type?: InputMaybe<BowType>;
 };
 
 export type BowUserOwnerAggregationSelection = {
-  __typename?: 'BowUserOwnerAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "BowUserOwnerAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<BowUserOwnerNodeAggregateSelection>;
 };
 
 export type BowUserOwnerNodeAggregateSelection = {
-  __typename?: 'BowUserOwnerNodeAggregateSelection';
+  __typename?: "BowUserOwnerNodeAggregateSelection";
   authId: StringAggregateSelection;
   id: IdAggregateSelection;
 };
@@ -1840,11 +1834,11 @@ export type BowWhere = {
   AND?: InputMaybe<Array<BowWhere>>;
   NOT?: InputMaybe<BowWhere>;
   OR?: InputMaybe<Array<BowWhere>>;
-  brand?: InputMaybe<Scalars['String']['input']>;
-  brand_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  brand_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  brand_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  brand_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  brand?: InputMaybe<Scalars["String"]["input"]>;
+  brand_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  brand_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  brand_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  brand_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
   commentsAggregate?: InputMaybe<BowCommentsAggregateInput>;
   /** Return Bows where all of the related BowCommentsConnections match this filter */
   commentsConnection_ALL?: InputMaybe<BowCommentsConnectionWhere>;
@@ -1862,16 +1856,16 @@ export type BowWhere = {
   comments_SINGLE?: InputMaybe<CommentWhere>;
   /** Return Bows where some of the related Comments match this filter */
   comments_SOME?: InputMaybe<CommentWhere>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  model?: InputMaybe<Scalars['String']['input']>;
-  model_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  model_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  model_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  model_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  model?: InputMaybe<Scalars["String"]["input"]>;
+  model_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  model_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  model_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  model_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
   notesAggregate?: InputMaybe<BowNotesAggregateInput>;
   /** Return Bows where all of the related BowNotesConnections match this filter */
   notesConnection_ALL?: InputMaybe<BowNotesConnectionWhere>;
@@ -1899,46 +1893,46 @@ export type BowWhere = {
 };
 
 export type BowsConnection = {
-  __typename?: 'BowsConnection';
+  __typename?: "BowsConnection";
   edges: Array<BowEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** A point in a two- or three-dimensional Cartesian coordinate system or in a three-dimensional cylindrical coordinate system. For more information, see https://neo4j.com/docs/graphql/4/type-definitions/types/spatial/#cartesian-point */
 export type CartesianPoint = {
-  __typename?: 'CartesianPoint';
-  crs: Scalars['String']['output'];
-  srid: Scalars['Int']['output'];
-  x: Scalars['Float']['output'];
-  y: Scalars['Float']['output'];
-  z?: Maybe<Scalars['Float']['output']>;
+  __typename?: "CartesianPoint";
+  crs: Scalars["String"]["output"];
+  srid: Scalars["Int"]["output"];
+  x: Scalars["Float"]["output"];
+  y: Scalars["Float"]["output"];
+  z?: Maybe<Scalars["Float"]["output"]>;
 };
 
 /** Input type for a cartesian point with a distance */
 export type CartesianPointDistance = {
-  distance: Scalars['Float']['input'];
+  distance: Scalars["Float"]["input"];
   point: CartesianPointInput;
 };
 
 /** Input type for a cartesian point */
 export type CartesianPointInput = {
-  x: Scalars['Float']['input'];
-  y: Scalars['Float']['input'];
-  z?: InputMaybe<Scalars['Float']['input']>;
+  x: Scalars["Float"]["input"];
+  y: Scalars["Float"]["input"];
+  z?: InputMaybe<Scalars["Float"]["input"]>;
 };
 
 export type Comment = {
-  __typename?: 'Comment';
+  __typename?: "Comment";
   arrow?: Maybe<Arrow>;
   arrowAggregate?: Maybe<CommentArrowArrowAggregationSelection>;
   arrowConnection: CommentArrowConnection;
   bow?: Maybe<Bow>;
   bowAggregate?: Maybe<CommentBowBowAggregationSelection>;
   bowConnection: CommentBowConnection;
-  content?: Maybe<Scalars['String']['output']>;
-  date: Scalars['Int']['output'];
-  id: Scalars['ID']['output'];
+  content?: Maybe<Scalars["String"]["output"]>;
+  date: Scalars["Int"]["output"];
+  id: Scalars["ID"]["output"];
   note?: Maybe<Note>;
   noteAggregate?: Maybe<CommentNoteNoteAggregationSelection>;
   noteConnection: CommentNoteConnection;
@@ -1948,88 +1942,78 @@ export type Comment = {
   set?: Maybe<Set>;
   setAggregate?: Maybe<CommentSetSetAggregationSelection>;
   setConnection: CommentSetConnection;
-  title: Scalars['String']['output'];
+  title: Scalars["String"]["output"];
 };
 
-
 export type CommentArrowAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type CommentArrowConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<CommentArrowConnectionSort>>;
   where?: InputMaybe<CommentArrowConnectionWhere>;
 };
 
-
 export type CommentBowAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<BowWhere>;
 };
 
-
 export type CommentBowConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<CommentBowConnectionSort>>;
   where?: InputMaybe<CommentBowConnectionWhere>;
 };
 
-
 export type CommentNoteAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type CommentNoteConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<CommentNoteConnectionSort>>;
   where?: InputMaybe<CommentNoteConnectionWhere>;
 };
 
-
 export type CommentSessionAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type CommentSessionConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<CommentSessionConnectionSort>>;
   where?: InputMaybe<CommentSessionConnectionWhere>;
 };
 
-
 export type CommentSetAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type CommentSetConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<CommentSetConnectionSort>>;
   where?: InputMaybe<CommentSetConnectionWhere>;
 };
 
 export type CommentAggregateSelection = {
-  __typename?: 'CommentAggregateSelection';
+  __typename?: "CommentAggregateSelection";
   content: StringAggregateSelection;
-  count: Scalars['Int']['output'];
+  count: Scalars["Int"]["output"];
   date: IntAggregateSelection;
   id: IdAggregateSelection;
   title: StringAggregateSelection;
@@ -2039,22 +2023,22 @@ export type CommentArrowAggregateInput = {
   AND?: InputMaybe<Array<CommentArrowAggregateInput>>;
   NOT?: InputMaybe<CommentArrowAggregateInput>;
   OR?: InputMaybe<Array<CommentArrowAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<CommentArrowNodeAggregationWhereInput>;
 };
 
 export type CommentArrowArrowAggregationSelection = {
-  __typename?: 'CommentArrowArrowAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "CommentArrowArrowAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<CommentArrowArrowNodeAggregateSelection>;
 };
 
 export type CommentArrowArrowNodeAggregateSelection = {
-  __typename?: 'CommentArrowArrowNodeAggregateSelection';
+  __typename?: "CommentArrowArrowNodeAggregateSelection";
   angle: FloatAggregateSelection;
   id: IdAggregateSelection;
   number: IntAggregateSelection;
@@ -2065,15 +2049,15 @@ export type CommentArrowArrowNodeAggregateSelection = {
 export type CommentArrowConnectFieldInput = {
   connect?: InputMaybe<ArrowConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<ArrowConnectWhere>;
 };
 
 export type CommentArrowConnection = {
-  __typename?: 'CommentArrowConnection';
+  __typename?: "CommentArrowConnection";
   edges: Array<CommentArrowRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type CommentArrowConnectionSort = {
@@ -2110,91 +2094,91 @@ export type CommentArrowNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<CommentArrowNodeAggregationWhereInput>>;
   NOT?: InputMaybe<CommentArrowNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<CommentArrowNodeAggregationWhereInput>>;
-  angle_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  offset_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  angle_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  offset_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type CommentArrowRelationship = {
-  __typename?: 'CommentArrowRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "CommentArrowRelationship";
+  cursor: Scalars["String"]["output"];
   node: Arrow;
 };
 
@@ -2215,22 +2199,22 @@ export type CommentBowAggregateInput = {
   AND?: InputMaybe<Array<CommentBowAggregateInput>>;
   NOT?: InputMaybe<CommentBowAggregateInput>;
   OR?: InputMaybe<Array<CommentBowAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<CommentBowNodeAggregationWhereInput>;
 };
 
 export type CommentBowBowAggregationSelection = {
-  __typename?: 'CommentBowBowAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "CommentBowBowAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<CommentBowBowNodeAggregateSelection>;
 };
 
 export type CommentBowBowNodeAggregateSelection = {
-  __typename?: 'CommentBowBowNodeAggregateSelection';
+  __typename?: "CommentBowBowNodeAggregateSelection";
   brand: StringAggregateSelection;
   id: IdAggregateSelection;
   model: StringAggregateSelection;
@@ -2239,15 +2223,15 @@ export type CommentBowBowNodeAggregateSelection = {
 export type CommentBowConnectFieldInput = {
   connect?: InputMaybe<BowConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<BowConnectWhere>;
 };
 
 export type CommentBowConnection = {
-  __typename?: 'CommentBowConnection';
+  __typename?: "CommentBowConnection";
   edges: Array<CommentBowRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type CommentBowConnectionSort = {
@@ -2284,41 +2268,41 @@ export type CommentBowNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<CommentBowNodeAggregationWhereInput>>;
   NOT?: InputMaybe<CommentBowNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<CommentBowNodeAggregationWhereInput>>;
-  brand_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  brand_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  model_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  model_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  brand_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  model_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type CommentBowRelationship = {
-  __typename?: 'CommentBowRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "CommentBowRelationship";
+  cursor: Scalars["String"]["output"];
   node: Bow;
 };
 
@@ -2350,12 +2334,12 @@ export type CommentConnectWhere = {
 export type CommentCreateInput = {
   arrow?: InputMaybe<CommentArrowFieldInput>;
   bow?: InputMaybe<CommentBowFieldInput>;
-  content?: InputMaybe<Scalars['String']['input']>;
-  date: Scalars['Int']['input'];
+  content?: InputMaybe<Scalars["String"]["input"]>;
+  date: Scalars["Int"]["input"];
   note?: InputMaybe<CommentNoteFieldInput>;
   session?: InputMaybe<CommentSessionFieldInput>;
   set?: InputMaybe<CommentSetFieldInput>;
-  title: Scalars['String']['input'];
+  title: Scalars["String"]["input"];
 };
 
 export type CommentDeleteInput = {
@@ -2375,8 +2359,8 @@ export type CommentDisconnectInput = {
 };
 
 export type CommentEdge = {
-  __typename?: 'CommentEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "CommentEdge";
+  cursor: Scalars["String"]["output"];
   node: Comment;
 };
 
@@ -2384,26 +2368,26 @@ export type CommentNoteAggregateInput = {
   AND?: InputMaybe<Array<CommentNoteAggregateInput>>;
   NOT?: InputMaybe<CommentNoteAggregateInput>;
   OR?: InputMaybe<Array<CommentNoteAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<CommentNoteNodeAggregationWhereInput>;
 };
 
 export type CommentNoteConnectFieldInput = {
   connect?: InputMaybe<NoteConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<NoteConnectWhere>;
 };
 
 export type CommentNoteConnection = {
-  __typename?: 'CommentNoteConnection';
+  __typename?: "CommentNoteConnection";
   edges: Array<CommentNoteRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type CommentNoteConnectionSort = {
@@ -2440,66 +2424,66 @@ export type CommentNoteNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<CommentNoteNodeAggregationWhereInput>>;
   NOT?: InputMaybe<CommentNoteNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<CommentNoteNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type CommentNoteNoteAggregationSelection = {
-  __typename?: 'CommentNoteNoteAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "CommentNoteNoteAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<CommentNoteNoteNodeAggregateSelection>;
 };
 
 export type CommentNoteNoteNodeAggregateSelection = {
-  __typename?: 'CommentNoteNoteNodeAggregateSelection';
+  __typename?: "CommentNoteNoteNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -2507,8 +2491,8 @@ export type CommentNoteNoteNodeAggregateSelection = {
 };
 
 export type CommentNoteRelationship = {
-  __typename?: 'CommentNoteRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "CommentNoteRelationship";
+  cursor: Scalars["String"]["output"];
   node: Note;
 };
 
@@ -2526,8 +2510,8 @@ export type CommentNoteUpdateFieldInput = {
 };
 
 export type CommentOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more CommentSort objects to sort Comments by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<CommentSort>>;
 };
@@ -2544,26 +2528,26 @@ export type CommentSessionAggregateInput = {
   AND?: InputMaybe<Array<CommentSessionAggregateInput>>;
   NOT?: InputMaybe<CommentSessionAggregateInput>;
   OR?: InputMaybe<Array<CommentSessionAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<CommentSessionNodeAggregationWhereInput>;
 };
 
 export type CommentSessionConnectFieldInput = {
   connect?: InputMaybe<SessionConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SessionConnectWhere>;
 };
 
 export type CommentSessionConnection = {
-  __typename?: 'CommentSessionConnection';
+  __typename?: "CommentSessionConnection";
   edges: Array<CommentSessionRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type CommentSessionConnectionSort = {
@@ -2600,57 +2584,57 @@ export type CommentSessionNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<CommentSessionNodeAggregationWhereInput>>;
   NOT?: InputMaybe<CommentSessionNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<CommentSessionNodeAggregationWhereInput>>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type CommentSessionRelationship = {
-  __typename?: 'CommentSessionRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "CommentSessionRelationship";
+  cursor: Scalars["String"]["output"];
   node: Session;
 };
 
 export type CommentSessionSessionAggregationSelection = {
-  __typename?: 'CommentSessionSessionAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "CommentSessionSessionAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<CommentSessionSessionNodeAggregateSelection>;
 };
 
 export type CommentSessionSessionNodeAggregateSelection = {
-  __typename?: 'CommentSessionSessionNodeAggregateSelection';
+  __typename?: "CommentSessionSessionNodeAggregateSelection";
   date: IntAggregateSelection;
   id: IdAggregateSelection;
   name: StringAggregateSelection;
@@ -2673,26 +2657,26 @@ export type CommentSetAggregateInput = {
   AND?: InputMaybe<Array<CommentSetAggregateInput>>;
   NOT?: InputMaybe<CommentSetAggregateInput>;
   OR?: InputMaybe<Array<CommentSetAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<CommentSetNodeAggregationWhereInput>;
 };
 
 export type CommentSetConnectFieldInput = {
   connect?: InputMaybe<SetConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SetConnectWhere>;
 };
 
 export type CommentSetConnection = {
-  __typename?: 'CommentSetConnection';
+  __typename?: "CommentSetConnection";
   edges: Array<CommentSetRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type CommentSetConnectionSort = {
@@ -2729,42 +2713,42 @@ export type CommentSetNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<CommentSetNodeAggregationWhereInput>>;
   NOT?: InputMaybe<CommentSetNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<CommentSetNodeAggregationWhereInput>>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type CommentSetRelationship = {
-  __typename?: 'CommentSetRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "CommentSetRelationship";
+  cursor: Scalars["String"]["output"];
   node: Set;
 };
 
 export type CommentSetSetAggregationSelection = {
-  __typename?: 'CommentSetSetAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "CommentSetSetAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<CommentSetSetNodeAggregateSelection>;
 };
 
 export type CommentSetSetNodeAggregateSelection = {
-  __typename?: 'CommentSetSetNodeAggregateSelection';
+  __typename?: "CommentSetSetNodeAggregateSelection";
   id: IdAggregateSelection;
   number: IntAggregateSelection;
 };
@@ -2793,14 +2777,14 @@ export type CommentSort = {
 export type CommentUpdateInput = {
   arrow?: InputMaybe<CommentArrowUpdateFieldInput>;
   bow?: InputMaybe<CommentBowUpdateFieldInput>;
-  content?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['Int']['input']>;
-  date_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  date_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
+  date?: InputMaybe<Scalars["Int"]["input"]>;
+  date_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
   note?: InputMaybe<CommentNoteUpdateFieldInput>;
   session?: InputMaybe<CommentSessionUpdateFieldInput>;
   set?: InputMaybe<CommentSetUpdateFieldInput>;
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type CommentWhere = {
@@ -2817,22 +2801,22 @@ export type CommentWhere = {
   bowConnection?: InputMaybe<CommentBowConnectionWhere>;
   bowConnection_NOT?: InputMaybe<CommentBowConnectionWhere>;
   bow_NOT?: InputMaybe<BowWhere>;
-  content?: InputMaybe<Scalars['String']['input']>;
-  content_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  content_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  content_IN?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  content_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['Int']['input']>;
-  date_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  date_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_LTE?: InputMaybe<Scalars['Int']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
+  content_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  content_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  content_IN?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  content_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  date?: InputMaybe<Scalars["Int"]["input"]>;
+  date_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  date_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
   note?: InputMaybe<NoteWhere>;
   noteAggregate?: InputMaybe<CommentNoteAggregateInput>;
   noteConnection?: InputMaybe<CommentNoteConnectionWhere>;
@@ -2848,213 +2832,204 @@ export type CommentWhere = {
   setConnection?: InputMaybe<CommentSetConnectionWhere>;
   setConnection_NOT?: InputMaybe<CommentSetConnectionWhere>;
   set_NOT?: InputMaybe<SetWhere>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  title_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  title_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  title_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  title_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
+  title_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  title_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  title_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  title_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type CommentsConnection = {
-  __typename?: 'CommentsConnection';
+  __typename?: "CommentsConnection";
   edges: Array<CommentEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type CreateArrowsMutationResponse = {
-  __typename?: 'CreateArrowsMutationResponse';
+  __typename?: "CreateArrowsMutationResponse";
   arrows: Array<Arrow>;
   info: CreateInfo;
 };
 
 export type CreateAuthenticatorsMutationResponse = {
-  __typename?: 'CreateAuthenticatorsMutationResponse';
+  __typename?: "CreateAuthenticatorsMutationResponse";
   authenticators: Array<Authenticator>;
   info: CreateInfo;
 };
 
 export type CreateBowsMutationResponse = {
-  __typename?: 'CreateBowsMutationResponse';
+  __typename?: "CreateBowsMutationResponse";
   bows: Array<Bow>;
   info: CreateInfo;
 };
 
 export type CreateCommentsMutationResponse = {
-  __typename?: 'CreateCommentsMutationResponse';
+  __typename?: "CreateCommentsMutationResponse";
   comments: Array<Comment>;
   info: CreateInfo;
 };
 
 export type CreateEnemiesMutationResponse = {
-  __typename?: 'CreateEnemiesMutationResponse';
+  __typename?: "CreateEnemiesMutationResponse";
   enemies: Array<Enemy>;
   info: CreateInfo;
 };
 
 /** Information about the number of nodes and relationships created during a create mutation */
 export type CreateInfo = {
-  __typename?: 'CreateInfo';
+  __typename?: "CreateInfo";
   /** @deprecated This field has been deprecated because bookmarks are now handled by the driver. */
-  bookmark?: Maybe<Scalars['String']['output']>;
-  nodesCreated: Scalars['Int']['output'];
-  relationshipsCreated: Scalars['Int']['output'];
+  bookmark?: Maybe<Scalars["String"]["output"]>;
+  nodesCreated: Scalars["Int"]["output"];
+  relationshipsCreated: Scalars["Int"]["output"];
 };
 
 export type CreateLocationsMutationResponse = {
-  __typename?: 'CreateLocationsMutationResponse';
+  __typename?: "CreateLocationsMutationResponse";
   info: CreateInfo;
   locations: Array<Location>;
 };
 
 export type CreateNotesMutationResponse = {
-  __typename?: 'CreateNotesMutationResponse';
+  __typename?: "CreateNotesMutationResponse";
   info: CreateInfo;
   notes: Array<Note>;
 };
 
 export type CreateRulesetsMutationResponse = {
-  __typename?: 'CreateRulesetsMutationResponse';
+  __typename?: "CreateRulesetsMutationResponse";
   info: CreateInfo;
   rulesets: Array<Ruleset>;
 };
 
 export type CreateSessionsMutationResponse = {
-  __typename?: 'CreateSessionsMutationResponse';
+  __typename?: "CreateSessionsMutationResponse";
   info: CreateInfo;
   sessions: Array<Session>;
 };
 
 export type CreateSetsMutationResponse = {
-  __typename?: 'CreateSetsMutationResponse';
+  __typename?: "CreateSetsMutationResponse";
   info: CreateInfo;
   sets: Array<Set>;
 };
 
 export type CreateSyntheticSampleResponsesMutationResponse = {
-  __typename?: 'CreateSyntheticSampleResponsesMutationResponse';
+  __typename?: "CreateSyntheticSampleResponsesMutationResponse";
   info: CreateInfo;
   syntheticSampleResponses: Array<SyntheticSampleResponse>;
 };
 
 export type CreateTargetsMutationResponse = {
-  __typename?: 'CreateTargetsMutationResponse';
+  __typename?: "CreateTargetsMutationResponse";
   info: CreateInfo;
   targets: Array<Target>;
 };
 
 export type CreateUsersMutationResponse = {
-  __typename?: 'CreateUsersMutationResponse';
+  __typename?: "CreateUsersMutationResponse";
   info: CreateInfo;
   users: Array<User>;
 };
 
 /** Information about the number of nodes and relationships deleted during a delete mutation */
 export type DeleteInfo = {
-  __typename?: 'DeleteInfo';
+  __typename?: "DeleteInfo";
   /** @deprecated This field has been deprecated because bookmarks are now handled by the driver. */
-  bookmark?: Maybe<Scalars['String']['output']>;
-  nodesDeleted: Scalars['Int']['output'];
-  relationshipsDeleted: Scalars['Int']['output'];
+  bookmark?: Maybe<Scalars["String"]["output"]>;
+  nodesDeleted: Scalars["Int"]["output"];
+  relationshipsDeleted: Scalars["Int"]["output"];
 };
 
 export type EnemiesConnection = {
-  __typename?: 'EnemiesConnection';
+  __typename?: "EnemiesConnection";
   edges: Array<EnemyEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type Enemy = {
-  __typename?: 'Enemy';
-  adaptive: Scalars['Boolean']['output'];
+  __typename?: "Enemy";
+  adaptive: Scalars["Boolean"]["output"];
   arrows: Array<Arrow>;
   arrowsAggregate?: Maybe<EnemyArrowArrowsAggregationSelection>;
   arrowsConnection: EnemyArrowsConnection;
-  id: Scalars['ID']['output'];
-  max: Scalars['Float']['output'];
-  mean: Scalars['Float']['output'];
-  min: Scalars['Float']['output'];
-  mod: Scalars['Float']['output'];
-  name: Scalars['String']['output'];
+  id: Scalars["ID"]["output"];
+  max: Scalars["Float"]["output"];
+  mean: Scalars["Float"]["output"];
+  min: Scalars["Float"]["output"];
+  mod: Scalars["Float"]["output"];
+  name: Scalars["String"]["output"];
   sessions: Array<Session>;
   sessionsAggregate?: Maybe<EnemySessionSessionsAggregationSelection>;
   sessionsConnection: EnemySessionsConnection;
   sets: Array<Set>;
   setsAggregate?: Maybe<EnemySetSetsAggregationSelection>;
   setsConnection: EnemySetsConnection;
-  std: Scalars['Float']['output'];
+  std: Scalars["Float"]["output"];
 };
 
-
 export type EnemyArrowsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<ArrowOptions>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type EnemyArrowsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type EnemyArrowsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<EnemyArrowsConnectionSort>>;
   where?: InputMaybe<EnemyArrowsConnectionWhere>;
 };
 
-
 export type EnemySessionsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<SessionOptions>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type EnemySessionsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type EnemySessionsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<EnemySessionsConnectionSort>>;
   where?: InputMaybe<EnemySessionsConnectionWhere>;
 };
 
-
 export type EnemySetsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<SetOptions>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type EnemySetsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type EnemySetsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<EnemySetsConnectionSort>>;
   where?: InputMaybe<EnemySetsConnectionWhere>;
 };
 
 export type EnemyAggregateSelection = {
-  __typename?: 'EnemyAggregateSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "EnemyAggregateSelection";
+  count: Scalars["Int"]["output"];
   id: IdAggregateSelection;
   max: FloatAggregateSelection;
   mean: FloatAggregateSelection;
@@ -3065,14 +3040,14 @@ export type EnemyAggregateSelection = {
 };
 
 export type EnemyArrowArrowsAggregationSelection = {
-  __typename?: 'EnemyArrowArrowsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "EnemyArrowArrowsAggregationSelection";
+  count: Scalars["Int"]["output"];
   edge?: Maybe<EnemyArrowArrowsEdgeAggregateSelection>;
   node?: Maybe<EnemyArrowArrowsNodeAggregateSelection>;
 };
 
 export type EnemyArrowArrowsEdgeAggregateSelection = {
-  __typename?: 'EnemyArrowArrowsEdgeAggregateSelection';
+  __typename?: "EnemyArrowArrowsEdgeAggregateSelection";
   max: FloatAggregateSelection;
   mean: FloatAggregateSelection;
   min: FloatAggregateSelection;
@@ -3080,7 +3055,7 @@ export type EnemyArrowArrowsEdgeAggregateSelection = {
 };
 
 export type EnemyArrowArrowsNodeAggregateSelection = {
-  __typename?: 'EnemyArrowArrowsNodeAggregateSelection';
+  __typename?: "EnemyArrowArrowsNodeAggregateSelection";
   angle: FloatAggregateSelection;
   id: IdAggregateSelection;
   number: IntAggregateSelection;
@@ -3092,11 +3067,11 @@ export type EnemyArrowsAggregateInput = {
   AND?: InputMaybe<Array<EnemyArrowsAggregateInput>>;
   NOT?: InputMaybe<EnemyArrowsAggregateInput>;
   OR?: InputMaybe<Array<EnemyArrowsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   edge?: InputMaybe<GenerationPropertiesAggregationWhereInput>;
   node?: InputMaybe<EnemyArrowsNodeAggregationWhereInput>;
 };
@@ -3105,15 +3080,15 @@ export type EnemyArrowsConnectFieldInput = {
   connect?: InputMaybe<Array<ArrowConnectInput>>;
   edge: GenerationPropertiesCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<ArrowConnectWhere>;
 };
 
 export type EnemyArrowsConnection = {
-  __typename?: 'EnemyArrowsConnection';
+  __typename?: "EnemyArrowsConnection";
   edges: Array<EnemyArrowsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type EnemyArrowsConnectionSort = {
@@ -3153,91 +3128,91 @@ export type EnemyArrowsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<EnemyArrowsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<EnemyArrowsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<EnemyArrowsNodeAggregationWhereInput>>;
-  angle_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  offset_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  angle_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  offset_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type EnemyArrowsRelationship = {
-  __typename?: 'EnemyArrowsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "EnemyArrowsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Arrow;
   properties: GenerationProperties;
 };
@@ -3267,16 +3242,16 @@ export type EnemyConnectWhere = {
 };
 
 export type EnemyCreateInput = {
-  adaptive?: Scalars['Boolean']['input'];
+  adaptive?: Scalars["Boolean"]["input"];
   arrows?: InputMaybe<EnemyArrowsFieldInput>;
-  max: Scalars['Float']['input'];
-  mean: Scalars['Float']['input'];
-  min: Scalars['Float']['input'];
-  mod?: Scalars['Float']['input'];
-  name: Scalars['String']['input'];
+  max: Scalars["Float"]["input"];
+  mean: Scalars["Float"]["input"];
+  min: Scalars["Float"]["input"];
+  mod?: Scalars["Float"]["input"];
+  name: Scalars["String"]["input"];
   sessions?: InputMaybe<EnemySessionsFieldInput>;
   sets?: InputMaybe<EnemySetsFieldInput>;
-  std: Scalars['Float']['input'];
+  std: Scalars["Float"]["input"];
 };
 
 export type EnemyDeleteInput = {
@@ -3292,14 +3267,14 @@ export type EnemyDisconnectInput = {
 };
 
 export type EnemyEdge = {
-  __typename?: 'EnemyEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "EnemyEdge";
+  cursor: Scalars["String"]["output"];
   node: Enemy;
 };
 
 export type EnemyOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more EnemySort objects to sort Enemies by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<EnemySort>>;
 };
@@ -3311,13 +3286,13 @@ export type EnemyRelationInput = {
 };
 
 export type EnemySessionSessionsAggregationSelection = {
-  __typename?: 'EnemySessionSessionsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "EnemySessionSessionsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<EnemySessionSessionsNodeAggregateSelection>;
 };
 
 export type EnemySessionSessionsNodeAggregateSelection = {
-  __typename?: 'EnemySessionSessionsNodeAggregateSelection';
+  __typename?: "EnemySessionSessionsNodeAggregateSelection";
   date: IntAggregateSelection;
   id: IdAggregateSelection;
   name: StringAggregateSelection;
@@ -3327,26 +3302,26 @@ export type EnemySessionsAggregateInput = {
   AND?: InputMaybe<Array<EnemySessionsAggregateInput>>;
   NOT?: InputMaybe<EnemySessionsAggregateInput>;
   OR?: InputMaybe<Array<EnemySessionsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<EnemySessionsNodeAggregationWhereInput>;
 };
 
 export type EnemySessionsConnectFieldInput = {
   connect?: InputMaybe<Array<SessionConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SessionConnectWhere>;
 };
 
 export type EnemySessionsConnection = {
-  __typename?: 'EnemySessionsConnection';
+  __typename?: "EnemySessionsConnection";
   edges: Array<EnemySessionsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type EnemySessionsConnectionSort = {
@@ -3383,46 +3358,46 @@ export type EnemySessionsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<EnemySessionsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<EnemySessionsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<EnemySessionsNodeAggregationWhereInput>>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type EnemySessionsRelationship = {
-  __typename?: 'EnemySessionsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "EnemySessionsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Session;
 };
 
@@ -3440,13 +3415,13 @@ export type EnemySessionsUpdateFieldInput = {
 };
 
 export type EnemySetSetsAggregationSelection = {
-  __typename?: 'EnemySetSetsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "EnemySetSetsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<EnemySetSetsNodeAggregateSelection>;
 };
 
 export type EnemySetSetsNodeAggregateSelection = {
-  __typename?: 'EnemySetSetsNodeAggregateSelection';
+  __typename?: "EnemySetSetsNodeAggregateSelection";
   id: IdAggregateSelection;
   number: IntAggregateSelection;
 };
@@ -3455,26 +3430,26 @@ export type EnemySetsAggregateInput = {
   AND?: InputMaybe<Array<EnemySetsAggregateInput>>;
   NOT?: InputMaybe<EnemySetsAggregateInput>;
   OR?: InputMaybe<Array<EnemySetsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<EnemySetsNodeAggregationWhereInput>;
 };
 
 export type EnemySetsConnectFieldInput = {
   connect?: InputMaybe<Array<SetConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SetConnectWhere>;
 };
 
 export type EnemySetsConnection = {
-  __typename?: 'EnemySetsConnection';
+  __typename?: "EnemySetsConnection";
   edges: Array<EnemySetsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type EnemySetsConnectionSort = {
@@ -3511,31 +3486,31 @@ export type EnemySetsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<EnemySetsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<EnemySetsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<EnemySetsNodeAggregationWhereInput>>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type EnemySetsRelationship = {
-  __typename?: 'EnemySetsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "EnemySetsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Set;
 };
 
@@ -3565,43 +3540,43 @@ export type EnemySort = {
 };
 
 export type EnemyUpdateInput = {
-  adaptive?: InputMaybe<Scalars['Boolean']['input']>;
+  adaptive?: InputMaybe<Scalars["Boolean"]["input"]>;
   arrows?: InputMaybe<Array<EnemyArrowsUpdateFieldInput>>;
-  max?: InputMaybe<Scalars['Float']['input']>;
-  max_ADD?: InputMaybe<Scalars['Float']['input']>;
-  max_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  max_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  max_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
-  mean?: InputMaybe<Scalars['Float']['input']>;
-  mean_ADD?: InputMaybe<Scalars['Float']['input']>;
-  mean_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
-  min?: InputMaybe<Scalars['Float']['input']>;
-  min_ADD?: InputMaybe<Scalars['Float']['input']>;
-  min_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  min_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  min_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
-  mod?: InputMaybe<Scalars['Float']['input']>;
-  mod_ADD?: InputMaybe<Scalars['Float']['input']>;
-  mod_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  mod_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  mod_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
+  max?: InputMaybe<Scalars["Float"]["input"]>;
+  max_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  max_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
+  min?: InputMaybe<Scalars["Float"]["input"]>;
+  min_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  min_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   sessions?: InputMaybe<Array<EnemySessionsUpdateFieldInput>>;
   sets?: InputMaybe<Array<EnemySetsUpdateFieldInput>>;
-  std?: InputMaybe<Scalars['Float']['input']>;
-  std_ADD?: InputMaybe<Scalars['Float']['input']>;
-  std_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  std_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  std_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
+  std?: InputMaybe<Scalars["Float"]["input"]>;
+  std_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  std_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
 };
 
 export type EnemyWhere = {
   AND?: InputMaybe<Array<EnemyWhere>>;
   NOT?: InputMaybe<EnemyWhere>;
   OR?: InputMaybe<Array<EnemyWhere>>;
-  adaptive?: InputMaybe<Scalars['Boolean']['input']>;
+  adaptive?: InputMaybe<Scalars["Boolean"]["input"]>;
   arrowsAggregate?: InputMaybe<EnemyArrowsAggregateInput>;
   /** Return Enemies where all of the related EnemyArrowsConnections match this filter */
   arrowsConnection_ALL?: InputMaybe<EnemyArrowsConnectionWhere>;
@@ -3619,40 +3594,40 @@ export type EnemyWhere = {
   arrows_SINGLE?: InputMaybe<ArrowWhere>;
   /** Return Enemies where some of the related Arrows match this filter */
   arrows_SOME?: InputMaybe<ArrowWhere>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  max?: InputMaybe<Scalars['Float']['input']>;
-  max_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  max_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean?: InputMaybe<Scalars['Float']['input']>;
-  mean_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  mean_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min?: InputMaybe<Scalars['Float']['input']>;
-  min_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  min_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mod?: InputMaybe<Scalars['Float']['input']>;
-  mod_GT?: InputMaybe<Scalars['Float']['input']>;
-  mod_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mod_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  mod_LT?: InputMaybe<Scalars['Float']['input']>;
-  mod_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  name_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  name_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  name_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  name_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  max?: InputMaybe<Scalars["Float"]["input"]>;
+  max_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  max_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  mean_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min?: InputMaybe<Scalars["Float"]["input"]>;
+  min_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  min_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  mod_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  name_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  name_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  name_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  name_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
   sessionsAggregate?: InputMaybe<EnemySessionsAggregateInput>;
   /** Return Enemies where all of the related EnemySessionsConnections match this filter */
   sessionsConnection_ALL?: InputMaybe<EnemySessionsConnectionWhere>;
@@ -3687,20 +3662,20 @@ export type EnemyWhere = {
   sets_SINGLE?: InputMaybe<SetWhere>;
   /** Return Enemies where some of the related Sets match this filter */
   sets_SOME?: InputMaybe<SetWhere>;
-  std?: InputMaybe<Scalars['Float']['input']>;
-  std_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  std_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_LTE?: InputMaybe<Scalars['Float']['input']>;
+  std?: InputMaybe<Scalars["Float"]["input"]>;
+  std_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  std_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_LTE?: InputMaybe<Scalars["Float"]["input"]>;
 };
 
 export type FloatAggregateSelection = {
-  __typename?: 'FloatAggregateSelection';
-  average?: Maybe<Scalars['Float']['output']>;
-  max?: Maybe<Scalars['Float']['output']>;
-  min?: Maybe<Scalars['Float']['output']>;
-  sum?: Maybe<Scalars['Float']['output']>;
+  __typename?: "FloatAggregateSelection";
+  average?: Maybe<Scalars["Float"]["output"]>;
+  max?: Maybe<Scalars["Float"]["output"]>;
+  min?: Maybe<Scalars["Float"]["output"]>;
+  sum?: Maybe<Scalars["Float"]["output"]>;
 };
 
 /**
@@ -3708,104 +3683,104 @@ export type FloatAggregateSelection = {
  * * Enemy.arrows
  */
 export type GenerationProperties = {
-  __typename?: 'GenerationProperties';
-  max: Scalars['Float']['output'];
-  mean: Scalars['Float']['output'];
-  min: Scalars['Float']['output'];
-  std: Scalars['Float']['output'];
+  __typename?: "GenerationProperties";
+  max: Scalars["Float"]["output"];
+  mean: Scalars["Float"]["output"];
+  min: Scalars["Float"]["output"];
+  std: Scalars["Float"]["output"];
 };
 
 export type GenerationPropertiesAggregationWhereInput = {
   AND?: InputMaybe<Array<GenerationPropertiesAggregationWhereInput>>;
   NOT?: InputMaybe<GenerationPropertiesAggregationWhereInput>;
   OR?: InputMaybe<Array<GenerationPropertiesAggregationWhereInput>>;
-  max_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  max_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  max_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  max_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  max_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mean_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mean_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mean_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  min_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  min_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  std_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  std_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  std_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  std_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  std_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  std_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  std_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  std_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
+  max_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  std_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
 };
 
 export type GenerationPropertiesCreateInput = {
-  max: Scalars['Float']['input'];
-  mean: Scalars['Float']['input'];
-  min: Scalars['Float']['input'];
-  std: Scalars['Float']['input'];
+  max: Scalars["Float"]["input"];
+  mean: Scalars["Float"]["input"];
+  min: Scalars["Float"]["input"];
+  std: Scalars["Float"]["input"];
 };
 
 export type GenerationPropertiesSort = {
@@ -3816,80 +3791,80 @@ export type GenerationPropertiesSort = {
 };
 
 export type GenerationPropertiesUpdateInput = {
-  max?: InputMaybe<Scalars['Float']['input']>;
-  max_ADD?: InputMaybe<Scalars['Float']['input']>;
-  max_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  max_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  max_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
-  mean?: InputMaybe<Scalars['Float']['input']>;
-  mean_ADD?: InputMaybe<Scalars['Float']['input']>;
-  mean_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
-  min?: InputMaybe<Scalars['Float']['input']>;
-  min_ADD?: InputMaybe<Scalars['Float']['input']>;
-  min_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  min_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  min_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
-  std?: InputMaybe<Scalars['Float']['input']>;
-  std_ADD?: InputMaybe<Scalars['Float']['input']>;
-  std_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  std_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  std_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
+  max?: InputMaybe<Scalars["Float"]["input"]>;
+  max_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  max_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
+  min?: InputMaybe<Scalars["Float"]["input"]>;
+  min_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  min_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
+  std?: InputMaybe<Scalars["Float"]["input"]>;
+  std_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  std_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
 };
 
 export type GenerationPropertiesWhere = {
   AND?: InputMaybe<Array<GenerationPropertiesWhere>>;
   NOT?: InputMaybe<GenerationPropertiesWhere>;
   OR?: InputMaybe<Array<GenerationPropertiesWhere>>;
-  max?: InputMaybe<Scalars['Float']['input']>;
-  max_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  max_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean?: InputMaybe<Scalars['Float']['input']>;
-  mean_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  mean_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min?: InputMaybe<Scalars['Float']['input']>;
-  min_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  min_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_LTE?: InputMaybe<Scalars['Float']['input']>;
-  std?: InputMaybe<Scalars['Float']['input']>;
-  std_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  std_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_LTE?: InputMaybe<Scalars['Float']['input']>;
+  max?: InputMaybe<Scalars["Float"]["input"]>;
+  max_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  max_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  mean_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min?: InputMaybe<Scalars["Float"]["input"]>;
+  min_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  min_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std?: InputMaybe<Scalars["Float"]["input"]>;
+  std_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  std_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_LTE?: InputMaybe<Scalars["Float"]["input"]>;
 };
 
 export type IdAggregateSelection = {
-  __typename?: 'IDAggregateSelection';
-  longest?: Maybe<Scalars['ID']['output']>;
-  shortest?: Maybe<Scalars['ID']['output']>;
+  __typename?: "IDAggregateSelection";
+  longest?: Maybe<Scalars["ID"]["output"]>;
+  shortest?: Maybe<Scalars["ID"]["output"]>;
 };
 
 export type IntAggregateSelection = {
-  __typename?: 'IntAggregateSelection';
-  average?: Maybe<Scalars['Float']['output']>;
-  max?: Maybe<Scalars['Int']['output']>;
-  min?: Maybe<Scalars['Int']['output']>;
-  sum?: Maybe<Scalars['Int']['output']>;
+  __typename?: "IntAggregateSelection";
+  average?: Maybe<Scalars["Float"]["output"]>;
+  max?: Maybe<Scalars["Int"]["output"]>;
+  min?: Maybe<Scalars["Int"]["output"]>;
+  sum?: Maybe<Scalars["Int"]["output"]>;
 };
 
 export type Location = {
-  __typename?: 'Location';
+  __typename?: "Location";
   comments: Array<Comment>;
   commentsAggregate?: Maybe<LocationCommentCommentsAggregationSelection>;
   commentsConnection: LocationCommentsConnection;
   coordinate: Point;
-  id: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
+  id: Scalars["ID"]["output"];
+  name: Scalars["String"]["output"];
   notes: Array<Note>;
   notesAggregate?: Maybe<LocationNoteNotesAggregationSelection>;
   notesConnection: LocationNotesConnection;
@@ -3898,87 +3873,78 @@ export type Location = {
   sessionsConnection: LocationSessionsConnection;
 };
 
-
 export type LocationCommentsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<CommentOptions>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type LocationCommentsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type LocationCommentsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<LocationCommentsConnectionSort>>;
   where?: InputMaybe<LocationCommentsConnectionWhere>;
 };
 
-
 export type LocationNotesArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<NoteOptions>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type LocationNotesAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type LocationNotesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<LocationNotesConnectionSort>>;
   where?: InputMaybe<LocationNotesConnectionWhere>;
 };
 
-
 export type LocationSessionsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<SessionOptions>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type LocationSessionsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type LocationSessionsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<LocationSessionsConnectionSort>>;
   where?: InputMaybe<LocationSessionsConnectionWhere>;
 };
 
 export type LocationAggregateSelection = {
-  __typename?: 'LocationAggregateSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "LocationAggregateSelection";
+  count: Scalars["Int"]["output"];
   id: IdAggregateSelection;
   name: StringAggregateSelection;
 };
 
 export type LocationCommentCommentsAggregationSelection = {
-  __typename?: 'LocationCommentCommentsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "LocationCommentCommentsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<LocationCommentCommentsNodeAggregateSelection>;
 };
 
 export type LocationCommentCommentsNodeAggregateSelection = {
-  __typename?: 'LocationCommentCommentsNodeAggregateSelection';
+  __typename?: "LocationCommentCommentsNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -3989,26 +3955,26 @@ export type LocationCommentsAggregateInput = {
   AND?: InputMaybe<Array<LocationCommentsAggregateInput>>;
   NOT?: InputMaybe<LocationCommentsAggregateInput>;
   OR?: InputMaybe<Array<LocationCommentsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<LocationCommentsNodeAggregationWhereInput>;
 };
 
 export type LocationCommentsConnectFieldInput = {
   connect?: InputMaybe<Array<CommentConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<CommentConnectWhere>;
 };
 
 export type LocationCommentsConnection = {
-  __typename?: 'LocationCommentsConnection';
+  __typename?: "LocationCommentsConnection";
   edges: Array<LocationCommentsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type LocationCommentsConnectionSort = {
@@ -4045,61 +4011,61 @@ export type LocationCommentsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<LocationCommentsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<LocationCommentsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<LocationCommentsNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type LocationCommentsRelationship = {
-  __typename?: 'LocationCommentsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "LocationCommentsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Comment;
 };
 
@@ -4129,7 +4095,7 @@ export type LocationConnectWhere = {
 export type LocationCreateInput = {
   comments?: InputMaybe<LocationCommentsFieldInput>;
   coordinate: PointInput;
-  name: Scalars['String']['input'];
+  name: Scalars["String"]["input"];
   notes?: InputMaybe<LocationNotesFieldInput>;
   sessions?: InputMaybe<LocationSessionsFieldInput>;
 };
@@ -4147,19 +4113,19 @@ export type LocationDisconnectInput = {
 };
 
 export type LocationEdge = {
-  __typename?: 'LocationEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "LocationEdge";
+  cursor: Scalars["String"]["output"];
   node: Location;
 };
 
 export type LocationNoteNotesAggregationSelection = {
-  __typename?: 'LocationNoteNotesAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "LocationNoteNotesAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<LocationNoteNotesNodeAggregateSelection>;
 };
 
 export type LocationNoteNotesNodeAggregateSelection = {
-  __typename?: 'LocationNoteNotesNodeAggregateSelection';
+  __typename?: "LocationNoteNotesNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -4170,26 +4136,26 @@ export type LocationNotesAggregateInput = {
   AND?: InputMaybe<Array<LocationNotesAggregateInput>>;
   NOT?: InputMaybe<LocationNotesAggregateInput>;
   OR?: InputMaybe<Array<LocationNotesAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<LocationNotesNodeAggregationWhereInput>;
 };
 
 export type LocationNotesConnectFieldInput = {
   connect?: InputMaybe<Array<NoteConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<NoteConnectWhere>;
 };
 
 export type LocationNotesConnection = {
-  __typename?: 'LocationNotesConnection';
+  __typename?: "LocationNotesConnection";
   edges: Array<LocationNotesRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type LocationNotesConnectionSort = {
@@ -4226,61 +4192,61 @@ export type LocationNotesNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<LocationNotesNodeAggregationWhereInput>>;
   NOT?: InputMaybe<LocationNotesNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<LocationNotesNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type LocationNotesRelationship = {
-  __typename?: 'LocationNotesRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "LocationNotesRelationship";
+  cursor: Scalars["String"]["output"];
   node: Note;
 };
 
@@ -4298,8 +4264,8 @@ export type LocationNotesUpdateFieldInput = {
 };
 
 export type LocationOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more LocationSort objects to sort Locations by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<LocationSort>>;
 };
@@ -4311,13 +4277,13 @@ export type LocationRelationInput = {
 };
 
 export type LocationSessionSessionsAggregationSelection = {
-  __typename?: 'LocationSessionSessionsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "LocationSessionSessionsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<LocationSessionSessionsNodeAggregateSelection>;
 };
 
 export type LocationSessionSessionsNodeAggregateSelection = {
-  __typename?: 'LocationSessionSessionsNodeAggregateSelection';
+  __typename?: "LocationSessionSessionsNodeAggregateSelection";
   date: IntAggregateSelection;
   id: IdAggregateSelection;
   name: StringAggregateSelection;
@@ -4327,26 +4293,26 @@ export type LocationSessionsAggregateInput = {
   AND?: InputMaybe<Array<LocationSessionsAggregateInput>>;
   NOT?: InputMaybe<LocationSessionsAggregateInput>;
   OR?: InputMaybe<Array<LocationSessionsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<LocationSessionsNodeAggregationWhereInput>;
 };
 
 export type LocationSessionsConnectFieldInput = {
   connect?: InputMaybe<Array<SessionConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SessionConnectWhere>;
 };
 
 export type LocationSessionsConnection = {
-  __typename?: 'LocationSessionsConnection';
+  __typename?: "LocationSessionsConnection";
   edges: Array<LocationSessionsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type LocationSessionsConnectionSort = {
@@ -4383,46 +4349,46 @@ export type LocationSessionsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<LocationSessionsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<LocationSessionsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<LocationSessionsNodeAggregationWhereInput>>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type LocationSessionsRelationship = {
-  __typename?: 'LocationSessionsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "LocationSessionsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Session;
 };
 
@@ -4449,7 +4415,7 @@ export type LocationSort = {
 export type LocationUpdateInput = {
   comments?: InputMaybe<Array<LocationCommentsUpdateFieldInput>>;
   coordinate?: InputMaybe<PointInput>;
-  name?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   notes?: InputMaybe<Array<LocationNotesUpdateFieldInput>>;
   sessions?: InputMaybe<Array<LocationSessionsUpdateFieldInput>>;
 };
@@ -4482,16 +4448,16 @@ export type LocationWhere = {
   coordinate_IN?: InputMaybe<Array<PointInput>>;
   coordinate_LT?: InputMaybe<PointDistance>;
   coordinate_LTE?: InputMaybe<PointDistance>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  name_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  name_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  name_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  name_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  name_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  name_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  name_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  name_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
   notesAggregate?: InputMaybe<LocationNotesAggregateInput>;
   /** Return Locations where all of the related LocationNotesConnections match this filter */
   notesConnection_ALL?: InputMaybe<LocationNotesConnectionWhere>;
@@ -4529,14 +4495,14 @@ export type LocationWhere = {
 };
 
 export type LocationsConnection = {
-  __typename?: 'LocationsConnection';
+  __typename?: "LocationsConnection";
   edges: Array<LocationEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type Mutation = {
-  __typename?: 'Mutation';
+  __typename?: "Mutation";
   createArrows: CreateArrowsMutationResponse;
   createAuthenticators: CreateAuthenticatorsMutationResponse;
   createBows: CreateBowsMutationResponse;
@@ -4579,152 +4545,124 @@ export type Mutation = {
   updateUsers: UpdateUsersMutationResponse;
 };
 
-
 export type MutationCreateArrowsArgs = {
   input: Array<ArrowCreateInput>;
 };
-
 
 export type MutationCreateAuthenticatorsArgs = {
   input: Array<AuthenticatorCreateInput>;
 };
 
-
 export type MutationCreateBowsArgs = {
   input: Array<BowCreateInput>;
 };
-
 
 export type MutationCreateCommentsArgs = {
   input: Array<CommentCreateInput>;
 };
 
-
 export type MutationCreateEnemiesArgs = {
   input: Array<EnemyCreateInput>;
 };
-
 
 export type MutationCreateLocationsArgs = {
   input: Array<LocationCreateInput>;
 };
 
-
 export type MutationCreateNotesArgs = {
   input: Array<NoteCreateInput>;
 };
-
 
 export type MutationCreateRulesetsArgs = {
   input: Array<RulesetCreateInput>;
 };
 
-
 export type MutationCreateSessionsArgs = {
   input: Array<SessionCreateInput>;
 };
-
 
 export type MutationCreateSetsArgs = {
   input: Array<SetCreateInput>;
 };
 
-
 export type MutationCreateSyntheticSampleResponsesArgs = {
   input: Array<SyntheticSampleResponseCreateInput>;
 };
-
 
 export type MutationCreateTargetsArgs = {
   input: Array<TargetCreateInput>;
 };
 
-
 export type MutationCreateUsersArgs = {
   input: Array<UserCreateInput>;
 };
-
 
 export type MutationDeleteArrowsArgs = {
   delete?: InputMaybe<ArrowDeleteInput>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type MutationDeleteAuthenticatorsArgs = {
   delete?: InputMaybe<AuthenticatorDeleteInput>;
   where?: InputMaybe<AuthenticatorWhere>;
 };
-
 
 export type MutationDeleteBowsArgs = {
   delete?: InputMaybe<BowDeleteInput>;
   where?: InputMaybe<BowWhere>;
 };
 
-
 export type MutationDeleteCommentsArgs = {
   delete?: InputMaybe<CommentDeleteInput>;
   where?: InputMaybe<CommentWhere>;
 };
-
 
 export type MutationDeleteEnemiesArgs = {
   delete?: InputMaybe<EnemyDeleteInput>;
   where?: InputMaybe<EnemyWhere>;
 };
 
-
 export type MutationDeleteLocationsArgs = {
   delete?: InputMaybe<LocationDeleteInput>;
   where?: InputMaybe<LocationWhere>;
 };
-
 
 export type MutationDeleteNotesArgs = {
   delete?: InputMaybe<NoteDeleteInput>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type MutationDeleteRulesetsArgs = {
   where?: InputMaybe<RulesetWhere>;
 };
-
 
 export type MutationDeleteSessionsArgs = {
   delete?: InputMaybe<SessionDeleteInput>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type MutationDeleteSetsArgs = {
   delete?: InputMaybe<SetDeleteInput>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type MutationDeleteSyntheticSampleResponsesArgs = {
   where?: InputMaybe<SyntheticSampleResponseWhere>;
 };
-
 
 export type MutationDeleteTargetsArgs = {
   delete?: InputMaybe<TargetDeleteInput>;
   where?: InputMaybe<TargetWhere>;
 };
 
-
 export type MutationDeleteUsersArgs = {
   delete?: InputMaybe<UserDeleteInput>;
   where?: InputMaybe<UserWhere>;
 };
 
-
 export type MutationSynthesizeArgs = {
   payload: SyntheticSamplePropsInput;
 };
-
 
 export type MutationUpdateArrowsArgs = {
   connect?: InputMaybe<ArrowConnectInput>;
@@ -4736,7 +4674,6 @@ export type MutationUpdateArrowsArgs = {
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type MutationUpdateAuthenticatorsArgs = {
   connect?: InputMaybe<AuthenticatorConnectInput>;
   connectOrCreate?: InputMaybe<AuthenticatorConnectOrCreateInput>;
@@ -4746,7 +4683,6 @@ export type MutationUpdateAuthenticatorsArgs = {
   update?: InputMaybe<AuthenticatorUpdateInput>;
   where?: InputMaybe<AuthenticatorWhere>;
 };
-
 
 export type MutationUpdateBowsArgs = {
   connect?: InputMaybe<BowConnectInput>;
@@ -4758,7 +4694,6 @@ export type MutationUpdateBowsArgs = {
   where?: InputMaybe<BowWhere>;
 };
 
-
 export type MutationUpdateCommentsArgs = {
   connect?: InputMaybe<CommentConnectInput>;
   create?: InputMaybe<CommentRelationInput>;
@@ -4767,7 +4702,6 @@ export type MutationUpdateCommentsArgs = {
   update?: InputMaybe<CommentUpdateInput>;
   where?: InputMaybe<CommentWhere>;
 };
-
 
 export type MutationUpdateEnemiesArgs = {
   connect?: InputMaybe<EnemyConnectInput>;
@@ -4778,7 +4712,6 @@ export type MutationUpdateEnemiesArgs = {
   where?: InputMaybe<EnemyWhere>;
 };
 
-
 export type MutationUpdateLocationsArgs = {
   connect?: InputMaybe<LocationConnectInput>;
   create?: InputMaybe<LocationRelationInput>;
@@ -4787,7 +4720,6 @@ export type MutationUpdateLocationsArgs = {
   update?: InputMaybe<LocationUpdateInput>;
   where?: InputMaybe<LocationWhere>;
 };
-
 
 export type MutationUpdateNotesArgs = {
   connect?: InputMaybe<NoteConnectInput>;
@@ -4798,12 +4730,10 @@ export type MutationUpdateNotesArgs = {
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type MutationUpdateRulesetsArgs = {
   update?: InputMaybe<RulesetUpdateInput>;
   where?: InputMaybe<RulesetWhere>;
 };
-
 
 export type MutationUpdateSessionsArgs = {
   connect?: InputMaybe<SessionConnectInput>;
@@ -4815,7 +4745,6 @@ export type MutationUpdateSessionsArgs = {
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type MutationUpdateSetsArgs = {
   connect?: InputMaybe<SetConnectInput>;
   connectOrCreate?: InputMaybe<SetConnectOrCreateInput>;
@@ -4826,12 +4755,10 @@ export type MutationUpdateSetsArgs = {
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type MutationUpdateSyntheticSampleResponsesArgs = {
   update?: InputMaybe<SyntheticSampleResponseUpdateInput>;
   where?: InputMaybe<SyntheticSampleResponseWhere>;
 };
-
 
 export type MutationUpdateTargetsArgs = {
   connect?: InputMaybe<TargetConnectInput>;
@@ -4841,7 +4768,6 @@ export type MutationUpdateTargetsArgs = {
   update?: InputMaybe<TargetUpdateInput>;
   where?: InputMaybe<TargetWhere>;
 };
-
 
 export type MutationUpdateUsersArgs = {
   connect?: InputMaybe<UserConnectInput>;
@@ -4854,7 +4780,7 @@ export type MutationUpdateUsersArgs = {
 };
 
 export type Note = {
-  __typename?: 'Note';
+  __typename?: "Note";
   arrow?: Maybe<Arrow>;
   arrowAggregate?: Maybe<NoteArrowArrowAggregationSelection>;
   arrowConnection: NoteArrowConnection;
@@ -4864,104 +4790,93 @@ export type Note = {
   comments: Array<Comment>;
   commentsAggregate?: Maybe<NoteCommentCommentsAggregationSelection>;
   commentsConnection: NoteCommentsConnection;
-  content?: Maybe<Scalars['String']['output']>;
-  date: Scalars['Int']['output'];
-  id: Scalars['ID']['output'];
+  content?: Maybe<Scalars["String"]["output"]>;
+  date: Scalars["Int"]["output"];
+  id: Scalars["ID"]["output"];
   session?: Maybe<Session>;
   sessionAggregate?: Maybe<NoteSessionSessionAggregationSelection>;
   sessionConnection: NoteSessionConnection;
   set?: Maybe<Set>;
   setAggregate?: Maybe<NoteSetSetAggregationSelection>;
   setConnection: NoteSetConnection;
-  title: Scalars['String']['output'];
+  title: Scalars["String"]["output"];
 };
 
-
 export type NoteArrowAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type NoteArrowConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<NoteArrowConnectionSort>>;
   where?: InputMaybe<NoteArrowConnectionWhere>;
 };
 
-
 export type NoteBowAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<BowWhere>;
 };
 
-
 export type NoteBowConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<NoteBowConnectionSort>>;
   where?: InputMaybe<NoteBowConnectionWhere>;
 };
 
-
 export type NoteCommentsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<CommentOptions>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type NoteCommentsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type NoteCommentsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<NoteCommentsConnectionSort>>;
   where?: InputMaybe<NoteCommentsConnectionWhere>;
 };
 
-
 export type NoteSessionAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type NoteSessionConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<NoteSessionConnectionSort>>;
   where?: InputMaybe<NoteSessionConnectionWhere>;
 };
 
-
 export type NoteSetAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type NoteSetConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<NoteSetConnectionSort>>;
   where?: InputMaybe<NoteSetConnectionWhere>;
 };
 
 export type NoteAggregateSelection = {
-  __typename?: 'NoteAggregateSelection';
+  __typename?: "NoteAggregateSelection";
   content: StringAggregateSelection;
-  count: Scalars['Int']['output'];
+  count: Scalars["Int"]["output"];
   date: IntAggregateSelection;
   id: IdAggregateSelection;
   title: StringAggregateSelection;
@@ -4971,22 +4886,22 @@ export type NoteArrowAggregateInput = {
   AND?: InputMaybe<Array<NoteArrowAggregateInput>>;
   NOT?: InputMaybe<NoteArrowAggregateInput>;
   OR?: InputMaybe<Array<NoteArrowAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<NoteArrowNodeAggregationWhereInput>;
 };
 
 export type NoteArrowArrowAggregationSelection = {
-  __typename?: 'NoteArrowArrowAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "NoteArrowArrowAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<NoteArrowArrowNodeAggregateSelection>;
 };
 
 export type NoteArrowArrowNodeAggregateSelection = {
-  __typename?: 'NoteArrowArrowNodeAggregateSelection';
+  __typename?: "NoteArrowArrowNodeAggregateSelection";
   angle: FloatAggregateSelection;
   id: IdAggregateSelection;
   number: IntAggregateSelection;
@@ -4997,15 +4912,15 @@ export type NoteArrowArrowNodeAggregateSelection = {
 export type NoteArrowConnectFieldInput = {
   connect?: InputMaybe<ArrowConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<ArrowConnectWhere>;
 };
 
 export type NoteArrowConnection = {
-  __typename?: 'NoteArrowConnection';
+  __typename?: "NoteArrowConnection";
   edges: Array<NoteArrowRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type NoteArrowConnectionSort = {
@@ -5042,91 +4957,91 @@ export type NoteArrowNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<NoteArrowNodeAggregationWhereInput>>;
   NOT?: InputMaybe<NoteArrowNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<NoteArrowNodeAggregationWhereInput>>;
-  angle_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  offset_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  angle_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  offset_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type NoteArrowRelationship = {
-  __typename?: 'NoteArrowRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "NoteArrowRelationship";
+  cursor: Scalars["String"]["output"];
   node: Arrow;
 };
 
@@ -5147,22 +5062,22 @@ export type NoteBowAggregateInput = {
   AND?: InputMaybe<Array<NoteBowAggregateInput>>;
   NOT?: InputMaybe<NoteBowAggregateInput>;
   OR?: InputMaybe<Array<NoteBowAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<NoteBowNodeAggregationWhereInput>;
 };
 
 export type NoteBowBowAggregationSelection = {
-  __typename?: 'NoteBowBowAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "NoteBowBowAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<NoteBowBowNodeAggregateSelection>;
 };
 
 export type NoteBowBowNodeAggregateSelection = {
-  __typename?: 'NoteBowBowNodeAggregateSelection';
+  __typename?: "NoteBowBowNodeAggregateSelection";
   brand: StringAggregateSelection;
   id: IdAggregateSelection;
   model: StringAggregateSelection;
@@ -5171,15 +5086,15 @@ export type NoteBowBowNodeAggregateSelection = {
 export type NoteBowConnectFieldInput = {
   connect?: InputMaybe<BowConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<BowConnectWhere>;
 };
 
 export type NoteBowConnection = {
-  __typename?: 'NoteBowConnection';
+  __typename?: "NoteBowConnection";
   edges: Array<NoteBowRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type NoteBowConnectionSort = {
@@ -5216,41 +5131,41 @@ export type NoteBowNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<NoteBowNodeAggregationWhereInput>>;
   NOT?: InputMaybe<NoteBowNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<NoteBowNodeAggregationWhereInput>>;
-  brand_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  brand_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  model_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  model_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  brand_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  model_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type NoteBowRelationship = {
-  __typename?: 'NoteBowRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "NoteBowRelationship";
+  cursor: Scalars["String"]["output"];
   node: Bow;
 };
 
@@ -5268,13 +5183,13 @@ export type NoteBowUpdateFieldInput = {
 };
 
 export type NoteCommentCommentsAggregationSelection = {
-  __typename?: 'NoteCommentCommentsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "NoteCommentCommentsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<NoteCommentCommentsNodeAggregateSelection>;
 };
 
 export type NoteCommentCommentsNodeAggregateSelection = {
-  __typename?: 'NoteCommentCommentsNodeAggregateSelection';
+  __typename?: "NoteCommentCommentsNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -5285,26 +5200,26 @@ export type NoteCommentsAggregateInput = {
   AND?: InputMaybe<Array<NoteCommentsAggregateInput>>;
   NOT?: InputMaybe<NoteCommentsAggregateInput>;
   OR?: InputMaybe<Array<NoteCommentsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<NoteCommentsNodeAggregationWhereInput>;
 };
 
 export type NoteCommentsConnectFieldInput = {
   connect?: InputMaybe<Array<CommentConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<CommentConnectWhere>;
 };
 
 export type NoteCommentsConnection = {
-  __typename?: 'NoteCommentsConnection';
+  __typename?: "NoteCommentsConnection";
   edges: Array<NoteCommentsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type NoteCommentsConnectionSort = {
@@ -5341,61 +5256,61 @@ export type NoteCommentsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<NoteCommentsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<NoteCommentsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<NoteCommentsNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type NoteCommentsRelationship = {
-  __typename?: 'NoteCommentsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "NoteCommentsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Comment;
 };
 
@@ -5428,11 +5343,11 @@ export type NoteCreateInput = {
   arrow?: InputMaybe<NoteArrowFieldInput>;
   bow?: InputMaybe<NoteBowFieldInput>;
   comments?: InputMaybe<NoteCommentsFieldInput>;
-  content?: InputMaybe<Scalars['String']['input']>;
-  date: Scalars['Int']['input'];
+  content?: InputMaybe<Scalars["String"]["input"]>;
+  date: Scalars["Int"]["input"];
   session?: InputMaybe<NoteSessionFieldInput>;
   set?: InputMaybe<NoteSetFieldInput>;
-  title: Scalars['String']['input'];
+  title: Scalars["String"]["input"];
 };
 
 export type NoteDeleteInput = {
@@ -5452,14 +5367,14 @@ export type NoteDisconnectInput = {
 };
 
 export type NoteEdge = {
-  __typename?: 'NoteEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "NoteEdge";
+  cursor: Scalars["String"]["output"];
   node: Note;
 };
 
 export type NoteOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more NoteSort objects to sort Notes by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<NoteSort>>;
 };
@@ -5476,26 +5391,26 @@ export type NoteSessionAggregateInput = {
   AND?: InputMaybe<Array<NoteSessionAggregateInput>>;
   NOT?: InputMaybe<NoteSessionAggregateInput>;
   OR?: InputMaybe<Array<NoteSessionAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<NoteSessionNodeAggregationWhereInput>;
 };
 
 export type NoteSessionConnectFieldInput = {
   connect?: InputMaybe<SessionConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SessionConnectWhere>;
 };
 
 export type NoteSessionConnection = {
-  __typename?: 'NoteSessionConnection';
+  __typename?: "NoteSessionConnection";
   edges: Array<NoteSessionRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type NoteSessionConnectionSort = {
@@ -5532,57 +5447,57 @@ export type NoteSessionNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<NoteSessionNodeAggregationWhereInput>>;
   NOT?: InputMaybe<NoteSessionNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<NoteSessionNodeAggregationWhereInput>>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type NoteSessionRelationship = {
-  __typename?: 'NoteSessionRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "NoteSessionRelationship";
+  cursor: Scalars["String"]["output"];
   node: Session;
 };
 
 export type NoteSessionSessionAggregationSelection = {
-  __typename?: 'NoteSessionSessionAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "NoteSessionSessionAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<NoteSessionSessionNodeAggregateSelection>;
 };
 
 export type NoteSessionSessionNodeAggregateSelection = {
-  __typename?: 'NoteSessionSessionNodeAggregateSelection';
+  __typename?: "NoteSessionSessionNodeAggregateSelection";
   date: IntAggregateSelection;
   id: IdAggregateSelection;
   name: StringAggregateSelection;
@@ -5605,26 +5520,26 @@ export type NoteSetAggregateInput = {
   AND?: InputMaybe<Array<NoteSetAggregateInput>>;
   NOT?: InputMaybe<NoteSetAggregateInput>;
   OR?: InputMaybe<Array<NoteSetAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<NoteSetNodeAggregationWhereInput>;
 };
 
 export type NoteSetConnectFieldInput = {
   connect?: InputMaybe<SetConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SetConnectWhere>;
 };
 
 export type NoteSetConnection = {
-  __typename?: 'NoteSetConnection';
+  __typename?: "NoteSetConnection";
   edges: Array<NoteSetRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type NoteSetConnectionSort = {
@@ -5661,42 +5576,42 @@ export type NoteSetNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<NoteSetNodeAggregationWhereInput>>;
   NOT?: InputMaybe<NoteSetNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<NoteSetNodeAggregationWhereInput>>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type NoteSetRelationship = {
-  __typename?: 'NoteSetRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "NoteSetRelationship";
+  cursor: Scalars["String"]["output"];
   node: Set;
 };
 
 export type NoteSetSetAggregationSelection = {
-  __typename?: 'NoteSetSetAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "NoteSetSetAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<NoteSetSetNodeAggregateSelection>;
 };
 
 export type NoteSetSetNodeAggregateSelection = {
-  __typename?: 'NoteSetSetNodeAggregateSelection';
+  __typename?: "NoteSetSetNodeAggregateSelection";
   id: IdAggregateSelection;
   number: IntAggregateSelection;
 };
@@ -5726,13 +5641,13 @@ export type NoteUpdateInput = {
   arrow?: InputMaybe<NoteArrowUpdateFieldInput>;
   bow?: InputMaybe<NoteBowUpdateFieldInput>;
   comments?: InputMaybe<Array<NoteCommentsUpdateFieldInput>>;
-  content?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['Int']['input']>;
-  date_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  date_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
+  date?: InputMaybe<Scalars["Int"]["input"]>;
+  date_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
   session?: InputMaybe<NoteSessionUpdateFieldInput>;
   set?: InputMaybe<NoteSetUpdateFieldInput>;
-  title?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type NoteWhere = {
@@ -5766,22 +5681,22 @@ export type NoteWhere = {
   comments_SINGLE?: InputMaybe<CommentWhere>;
   /** Return Notes where some of the related Comments match this filter */
   comments_SOME?: InputMaybe<CommentWhere>;
-  content?: InputMaybe<Scalars['String']['input']>;
-  content_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  content_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  content_IN?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  content_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
-  date?: InputMaybe<Scalars['Int']['input']>;
-  date_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  date_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_LTE?: InputMaybe<Scalars['Int']['input']>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
+  content?: InputMaybe<Scalars["String"]["input"]>;
+  content_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  content_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  content_IN?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+  content_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  date?: InputMaybe<Scalars["Int"]["input"]>;
+  date_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  date_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
   session?: InputMaybe<SessionWhere>;
   sessionAggregate?: InputMaybe<NoteSessionAggregateInput>;
   sessionConnection?: InputMaybe<NoteSessionConnectionWhere>;
@@ -5792,55 +5707,55 @@ export type NoteWhere = {
   setConnection?: InputMaybe<NoteSetConnectionWhere>;
   setConnection_NOT?: InputMaybe<NoteSetConnectionWhere>;
   set_NOT?: InputMaybe<SetWhere>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  title_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  title_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  title_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  title_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars["String"]["input"]>;
+  title_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  title_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  title_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  title_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type NotesConnection = {
-  __typename?: 'NotesConnection';
+  __typename?: "NotesConnection";
   edges: Array<NoteEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** Pagination information (Relay) */
 export type PageInfo = {
-  __typename?: 'PageInfo';
-  endCursor?: Maybe<Scalars['String']['output']>;
-  hasNextPage: Scalars['Boolean']['output'];
-  hasPreviousPage: Scalars['Boolean']['output'];
-  startCursor?: Maybe<Scalars['String']['output']>;
+  __typename?: "PageInfo";
+  endCursor?: Maybe<Scalars["String"]["output"]>;
+  hasNextPage: Scalars["Boolean"]["output"];
+  hasPreviousPage: Scalars["Boolean"]["output"];
+  startCursor?: Maybe<Scalars["String"]["output"]>;
 };
 
 /** A point in a coordinate system. For more information, see https://neo4j.com/docs/graphql/4/type-definitions/types/spatial/#point */
 export type Point = {
-  __typename?: 'Point';
-  crs: Scalars['String']['output'];
-  height?: Maybe<Scalars['Float']['output']>;
-  latitude: Scalars['Float']['output'];
-  longitude: Scalars['Float']['output'];
-  srid: Scalars['Int']['output'];
+  __typename?: "Point";
+  crs: Scalars["String"]["output"];
+  height?: Maybe<Scalars["Float"]["output"]>;
+  latitude: Scalars["Float"]["output"];
+  longitude: Scalars["Float"]["output"];
+  srid: Scalars["Int"]["output"];
 };
 
 /** Input type for a point with a distance */
 export type PointDistance = {
   /** The distance in metres to be used when comparing two points */
-  distance: Scalars['Float']['input'];
+  distance: Scalars["Float"]["input"];
   point: PointInput;
 };
 
 /** Input type for a point */
 export type PointInput = {
-  height?: InputMaybe<Scalars['Float']['input']>;
-  latitude: Scalars['Float']['input'];
-  longitude: Scalars['Float']['input'];
+  height?: InputMaybe<Scalars["Float"]["input"]>;
+  latitude: Scalars["Float"]["input"];
+  longitude: Scalars["Float"]["input"];
 };
 
 export type Query = {
-  __typename?: 'Query';
+  __typename?: "Query";
   _service: _Service;
   archers: Array<Archer>;
   arrows: Array<Arrow>;
@@ -5884,279 +5799,239 @@ export type Query = {
   usersConnection: UsersConnection;
 };
 
-
 export type QueryArchersArgs = {
   options?: InputMaybe<QueryOptions>;
   where?: InputMaybe<ArcherWhere>;
 };
-
 
 export type QueryArrowsArgs = {
   options?: InputMaybe<ArrowOptions>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type QueryArrowsAggregateArgs = {
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type QueryArrowsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<ArrowSort>>>;
   where?: InputMaybe<ArrowWhere>;
 };
-
 
 export type QueryAuthenticatorsArgs = {
   options?: InputMaybe<AuthenticatorOptions>;
   where?: InputMaybe<AuthenticatorWhere>;
 };
 
-
 export type QueryAuthenticatorsAggregateArgs = {
   where?: InputMaybe<AuthenticatorWhere>;
 };
 
-
 export type QueryAuthenticatorsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<AuthenticatorSort>>>;
   where?: InputMaybe<AuthenticatorWhere>;
 };
-
 
 export type QueryBowsArgs = {
   options?: InputMaybe<BowOptions>;
   where?: InputMaybe<BowWhere>;
 };
 
-
 export type QueryBowsAggregateArgs = {
   where?: InputMaybe<BowWhere>;
 };
 
-
 export type QueryBowsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<BowSort>>>;
   where?: InputMaybe<BowWhere>;
 };
-
 
 export type QueryCommentsArgs = {
   options?: InputMaybe<CommentOptions>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type QueryCommentsAggregateArgs = {
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type QueryCommentsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<CommentSort>>>;
   where?: InputMaybe<CommentWhere>;
 };
-
 
 export type QueryEnemiesArgs = {
   options?: InputMaybe<EnemyOptions>;
   where?: InputMaybe<EnemyWhere>;
 };
 
-
 export type QueryEnemiesAggregateArgs = {
   where?: InputMaybe<EnemyWhere>;
 };
 
-
 export type QueryEnemiesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<EnemySort>>>;
   where?: InputMaybe<EnemyWhere>;
 };
-
 
 export type QueryLocationsArgs = {
   options?: InputMaybe<LocationOptions>;
   where?: InputMaybe<LocationWhere>;
 };
 
-
 export type QueryLocationsAggregateArgs = {
   where?: InputMaybe<LocationWhere>;
 };
 
-
 export type QueryLocationsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<LocationSort>>>;
   where?: InputMaybe<LocationWhere>;
 };
-
 
 export type QueryNotesArgs = {
   options?: InputMaybe<NoteOptions>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type QueryNotesAggregateArgs = {
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type QueryNotesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<NoteSort>>>;
   where?: InputMaybe<NoteWhere>;
 };
-
 
 export type QueryRulesetsArgs = {
   options?: InputMaybe<RulesetOptions>;
   where?: InputMaybe<RulesetWhere>;
 };
 
-
 export type QueryRulesetsAggregateArgs = {
   where?: InputMaybe<RulesetWhere>;
 };
 
-
 export type QueryRulesetsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<RulesetSort>>>;
   where?: InputMaybe<RulesetWhere>;
 };
-
 
 export type QuerySessionsArgs = {
   options?: InputMaybe<SessionOptions>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type QuerySessionsAggregateArgs = {
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type QuerySessionsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<SessionSort>>>;
   where?: InputMaybe<SessionWhere>;
 };
-
 
 export type QuerySetsArgs = {
   options?: InputMaybe<SetOptions>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type QuerySetsAggregateArgs = {
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type QuerySetsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<SetSort>>>;
   where?: InputMaybe<SetWhere>;
 };
-
 
 export type QuerySyntheticSampleResponsesArgs = {
   options?: InputMaybe<SyntheticSampleResponseOptions>;
   where?: InputMaybe<SyntheticSampleResponseWhere>;
 };
 
-
 export type QuerySyntheticSampleResponsesAggregateArgs = {
   where?: InputMaybe<SyntheticSampleResponseWhere>;
 };
 
-
 export type QuerySyntheticSampleResponsesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<SyntheticSampleResponseSort>>>;
   where?: InputMaybe<SyntheticSampleResponseWhere>;
 };
-
 
 export type QueryTargetsArgs = {
   options?: InputMaybe<TargetOptions>;
   where?: InputMaybe<TargetWhere>;
 };
 
-
 export type QueryTargetsAggregateArgs = {
   where?: InputMaybe<TargetWhere>;
 };
 
-
 export type QueryTargetsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<TargetSort>>>;
   where?: InputMaybe<TargetWhere>;
 };
-
 
 export type QueryUsersArgs = {
   options?: InputMaybe<UserOptions>;
   where?: InputMaybe<UserWhere>;
 };
 
-
 export type QueryUsersAggregateArgs = {
   where?: InputMaybe<UserWhere>;
 };
 
-
 export type QueryUsersConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<InputMaybe<UserSort>>>;
   where?: InputMaybe<UserWhere>;
 };
 
 /** Input type for options that can be specified on a query operation. */
 export type QueryOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type Ruleset = {
-  __typename?: 'Ruleset';
-  arrowsPerSet: Scalars['Int']['output'];
+  __typename?: "Ruleset";
+  arrowsPerSet: Scalars["Int"]["output"];
   discipline: BowType;
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   mode: SessionMode;
-  timePerArrow: Scalars['Int']['output'];
+  timePerArrow: Scalars["Int"]["output"];
   timer: TimerMode;
 };
 
 export type RulesetAggregateSelection = {
-  __typename?: 'RulesetAggregateSelection';
+  __typename?: "RulesetAggregateSelection";
   arrowsPerSet: IntAggregateSelection;
-  count: Scalars['Int']['output'];
+  count: Scalars["Int"]["output"];
   id: IdAggregateSelection;
   timePerArrow: IntAggregateSelection;
 };
@@ -6166,22 +6041,22 @@ export type RulesetConnectWhere = {
 };
 
 export type RulesetCreateInput = {
-  arrowsPerSet: Scalars['Int']['input'];
+  arrowsPerSet: Scalars["Int"]["input"];
   discipline?: BowType;
   mode?: SessionMode;
-  timePerArrow: Scalars['Int']['input'];
+  timePerArrow: Scalars["Int"]["input"];
   timer?: TimerMode;
 };
 
 export type RulesetEdge = {
-  __typename?: 'RulesetEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "RulesetEdge";
+  cursor: Scalars["String"]["output"];
   node: Ruleset;
 };
 
 export type RulesetOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more RulesetSort objects to sort Rulesets by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<RulesetSort>>;
 };
@@ -6197,14 +6072,14 @@ export type RulesetSort = {
 };
 
 export type RulesetUpdateInput = {
-  arrowsPerSet?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
+  arrowsPerSet?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
   discipline?: InputMaybe<BowType>;
   mode?: InputMaybe<SessionMode>;
-  timePerArrow?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
+  timePerArrow?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
   timer?: InputMaybe<TimerMode>;
 };
 
@@ -6212,53 +6087,53 @@ export type RulesetWhere = {
   AND?: InputMaybe<Array<RulesetWhere>>;
   NOT?: InputMaybe<RulesetWhere>;
   OR?: InputMaybe<Array<RulesetWhere>>;
-  arrowsPerSet?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_GT?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_GTE?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  arrowsPerSet_LT?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_LTE?: InputMaybe<Scalars['Int']['input']>;
+  arrowsPerSet?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  arrowsPerSet_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   discipline?: InputMaybe<BowType>;
   discipline_IN?: InputMaybe<Array<BowType>>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
   mode?: InputMaybe<SessionMode>;
   mode_IN?: InputMaybe<Array<SessionMode>>;
-  timePerArrow?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_GT?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_GTE?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  timePerArrow_LT?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_LTE?: InputMaybe<Scalars['Int']['input']>;
+  timePerArrow?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  timePerArrow_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   timer?: InputMaybe<TimerMode>;
   timer_IN?: InputMaybe<Array<TimerMode>>;
 };
 
 export type RulesetsConnection = {
-  __typename?: 'RulesetsConnection';
+  __typename?: "RulesetsConnection";
   edges: Array<RulesetEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type Session = {
-  __typename?: 'Session';
-  active: Scalars['Boolean']['output'];
+  __typename?: "Session";
+  active: Scalars["Boolean"]["output"];
   comments: Array<Comment>;
   commentsAggregate?: Maybe<SessionCommentCommentsAggregationSelection>;
   commentsConnection: SessionCommentsConnection;
-  date: Scalars['Int']['output'];
+  date: Scalars["Int"]["output"];
   enemies: Array<Enemy>;
   enemiesAggregate?: Maybe<SessionEnemyEnemiesAggregationSelection>;
   enemiesConnection: SessionEnemiesConnection;
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   location?: Maybe<Location>;
   locationAggregate?: Maybe<SessionLocationLocationAggregationSelection>;
   locationConnection: SessionLocationConnection;
-  name: Scalars['String']['output'];
+  name: Scalars["String"]["output"];
   notes: Array<Note>;
   notesAggregate?: Maybe<SessionNoteNotesAggregationSelection>;
   notesConnection: SessionNotesConnection;
@@ -6273,162 +6148,143 @@ export type Session = {
   usersConnection: SessionUsersConnection;
 };
 
-
 export type SessionCommentsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<CommentOptions>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type SessionCommentsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type SessionCommentsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SessionCommentsConnectionSort>>;
   where?: InputMaybe<SessionCommentsConnectionWhere>;
 };
 
-
 export type SessionEnemiesArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<EnemyOptions>;
   where?: InputMaybe<EnemyWhere>;
 };
 
-
 export type SessionEnemiesAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<EnemyWhere>;
 };
 
-
 export type SessionEnemiesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SessionEnemiesConnectionSort>>;
   where?: InputMaybe<SessionEnemiesConnectionWhere>;
 };
 
-
 export type SessionLocationAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<LocationWhere>;
 };
 
-
 export type SessionLocationConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SessionLocationConnectionSort>>;
   where?: InputMaybe<SessionLocationConnectionWhere>;
 };
 
-
 export type SessionNotesArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<NoteOptions>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type SessionNotesAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type SessionNotesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SessionNotesConnectionSort>>;
   where?: InputMaybe<SessionNotesConnectionWhere>;
 };
 
-
 export type SessionRulesetAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<RulesetWhere>;
 };
 
-
 export type SessionRulesetConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SessionRulesetConnectionSort>>;
   where?: InputMaybe<SessionRulesetConnectionWhere>;
 };
 
-
 export type SessionSetsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<SetOptions>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type SessionSetsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type SessionSetsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SessionSetsConnectionSort>>;
   where?: InputMaybe<SessionSetsConnectionWhere>;
 };
 
-
 export type SessionUsersArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<UserOptions>;
   where?: InputMaybe<UserWhere>;
 };
 
-
 export type SessionUsersAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<UserWhere>;
 };
 
-
 export type SessionUsersConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SessionUsersConnectionSort>>;
   where?: InputMaybe<SessionUsersConnectionWhere>;
 };
 
 export type SessionAggregateSelection = {
-  __typename?: 'SessionAggregateSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SessionAggregateSelection";
+  count: Scalars["Int"]["output"];
   date: IntAggregateSelection;
   id: IdAggregateSelection;
   name: StringAggregateSelection;
 };
 
 export type SessionCommentCommentsAggregationSelection = {
-  __typename?: 'SessionCommentCommentsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SessionCommentCommentsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SessionCommentCommentsNodeAggregateSelection>;
 };
 
 export type SessionCommentCommentsNodeAggregateSelection = {
-  __typename?: 'SessionCommentCommentsNodeAggregateSelection';
+  __typename?: "SessionCommentCommentsNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -6439,26 +6295,26 @@ export type SessionCommentsAggregateInput = {
   AND?: InputMaybe<Array<SessionCommentsAggregateInput>>;
   NOT?: InputMaybe<SessionCommentsAggregateInput>;
   OR?: InputMaybe<Array<SessionCommentsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SessionCommentsNodeAggregationWhereInput>;
 };
 
 export type SessionCommentsConnectFieldInput = {
   connect?: InputMaybe<Array<CommentConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<CommentConnectWhere>;
 };
 
 export type SessionCommentsConnection = {
-  __typename?: 'SessionCommentsConnection';
+  __typename?: "SessionCommentsConnection";
   edges: Array<SessionCommentsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SessionCommentsConnectionSort = {
@@ -6495,61 +6351,61 @@ export type SessionCommentsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SessionCommentsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SessionCommentsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SessionCommentsNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SessionCommentsRelationship = {
-  __typename?: 'SessionCommentsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SessionCommentsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Comment;
 };
 
@@ -6585,12 +6441,12 @@ export type SessionConnectWhere = {
 };
 
 export type SessionCreateInput = {
-  active?: Scalars['Boolean']['input'];
+  active?: Scalars["Boolean"]["input"];
   comments?: InputMaybe<SessionCommentsFieldInput>;
-  date: Scalars['Int']['input'];
+  date: Scalars["Int"]["input"];
   enemies?: InputMaybe<SessionEnemiesFieldInput>;
   location?: InputMaybe<SessionLocationFieldInput>;
-  name: Scalars['String']['input'];
+  name: Scalars["String"]["input"];
   notes?: InputMaybe<SessionNotesFieldInput>;
   ruleset?: InputMaybe<SessionRulesetFieldInput>;
   sets?: InputMaybe<SessionSetsFieldInput>;
@@ -6618,8 +6474,8 @@ export type SessionDisconnectInput = {
 };
 
 export type SessionEdge = {
-  __typename?: 'SessionEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "SessionEdge";
+  cursor: Scalars["String"]["output"];
   node: Session;
 };
 
@@ -6627,26 +6483,26 @@ export type SessionEnemiesAggregateInput = {
   AND?: InputMaybe<Array<SessionEnemiesAggregateInput>>;
   NOT?: InputMaybe<SessionEnemiesAggregateInput>;
   OR?: InputMaybe<Array<SessionEnemiesAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SessionEnemiesNodeAggregationWhereInput>;
 };
 
 export type SessionEnemiesConnectFieldInput = {
   connect?: InputMaybe<Array<EnemyConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<EnemyConnectWhere>;
 };
 
 export type SessionEnemiesConnection = {
-  __typename?: 'SessionEnemiesConnection';
+  __typename?: "SessionEnemiesConnection";
   edges: Array<SessionEnemiesRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SessionEnemiesConnectionSort = {
@@ -6683,126 +6539,126 @@ export type SessionEnemiesNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SessionEnemiesNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SessionEnemiesNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SessionEnemiesNodeAggregationWhereInput>>;
-  max_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  max_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  max_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  max_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  max_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mean_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mean_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mean_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  min_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  min_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mod_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mod_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  mod_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mod_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  mod_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mod_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mod_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  mod_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mod_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  mod_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mod_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mod_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  mod_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mod_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  mod_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mod_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  mod_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  mod_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mod_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  mod_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  std_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  std_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  std_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  std_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  std_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  std_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  std_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  std_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
+  max_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mod_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  std_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  std_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
 };
 
 export type SessionEnemiesRelationship = {
-  __typename?: 'SessionEnemiesRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SessionEnemiesRelationship";
+  cursor: Scalars["String"]["output"];
   node: Enemy;
 };
 
@@ -6820,13 +6676,13 @@ export type SessionEnemiesUpdateFieldInput = {
 };
 
 export type SessionEnemyEnemiesAggregationSelection = {
-  __typename?: 'SessionEnemyEnemiesAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SessionEnemyEnemiesAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SessionEnemyEnemiesNodeAggregateSelection>;
 };
 
 export type SessionEnemyEnemiesNodeAggregateSelection = {
-  __typename?: 'SessionEnemyEnemiesNodeAggregateSelection';
+  __typename?: "SessionEnemyEnemiesNodeAggregateSelection";
   id: IdAggregateSelection;
   max: FloatAggregateSelection;
   mean: FloatAggregateSelection;
@@ -6840,26 +6696,26 @@ export type SessionLocationAggregateInput = {
   AND?: InputMaybe<Array<SessionLocationAggregateInput>>;
   NOT?: InputMaybe<SessionLocationAggregateInput>;
   OR?: InputMaybe<Array<SessionLocationAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SessionLocationNodeAggregationWhereInput>;
 };
 
 export type SessionLocationConnectFieldInput = {
   connect?: InputMaybe<LocationConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<LocationConnectWhere>;
 };
 
 export type SessionLocationConnection = {
-  __typename?: 'SessionLocationConnection';
+  __typename?: "SessionLocationConnection";
   edges: Array<SessionLocationRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SessionLocationConnectionSort = {
@@ -6893,13 +6749,13 @@ export type SessionLocationFieldInput = {
 };
 
 export type SessionLocationLocationAggregationSelection = {
-  __typename?: 'SessionLocationLocationAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SessionLocationLocationAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SessionLocationLocationNodeAggregateSelection>;
 };
 
 export type SessionLocationLocationNodeAggregateSelection = {
-  __typename?: 'SessionLocationLocationNodeAggregateSelection';
+  __typename?: "SessionLocationLocationNodeAggregateSelection";
   id: IdAggregateSelection;
   name: StringAggregateSelection;
 };
@@ -6908,26 +6764,26 @@ export type SessionLocationNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SessionLocationNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SessionLocationNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SessionLocationNodeAggregationWhereInput>>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SessionLocationRelationship = {
-  __typename?: 'SessionLocationRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SessionLocationRelationship";
+  cursor: Scalars["String"]["output"];
   node: Location;
 };
 
@@ -6945,18 +6801,18 @@ export type SessionLocationUpdateFieldInput = {
 };
 
 export enum SessionMode {
-  Set = 'SET',
-  Sum = 'SUM'
+  Set = "SET",
+  Sum = "SUM",
 }
 
 export type SessionNoteNotesAggregationSelection = {
-  __typename?: 'SessionNoteNotesAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SessionNoteNotesAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SessionNoteNotesNodeAggregateSelection>;
 };
 
 export type SessionNoteNotesNodeAggregateSelection = {
-  __typename?: 'SessionNoteNotesNodeAggregateSelection';
+  __typename?: "SessionNoteNotesNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -6967,26 +6823,26 @@ export type SessionNotesAggregateInput = {
   AND?: InputMaybe<Array<SessionNotesAggregateInput>>;
   NOT?: InputMaybe<SessionNotesAggregateInput>;
   OR?: InputMaybe<Array<SessionNotesAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SessionNotesNodeAggregationWhereInput>;
 };
 
 export type SessionNotesConnectFieldInput = {
   connect?: InputMaybe<Array<NoteConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<NoteConnectWhere>;
 };
 
 export type SessionNotesConnection = {
-  __typename?: 'SessionNotesConnection';
+  __typename?: "SessionNotesConnection";
   edges: Array<SessionNotesRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SessionNotesConnectionSort = {
@@ -7023,61 +6879,61 @@ export type SessionNotesNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SessionNotesNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SessionNotesNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SessionNotesNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SessionNotesRelationship = {
-  __typename?: 'SessionNotesRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SessionNotesRelationship";
+  cursor: Scalars["String"]["output"];
   node: Note;
 };
 
@@ -7095,8 +6951,8 @@ export type SessionNotesUpdateFieldInput = {
 };
 
 export type SessionOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more SessionSort objects to sort Sessions by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<SessionSort>>;
 };
@@ -7115,25 +6971,25 @@ export type SessionRulesetAggregateInput = {
   AND?: InputMaybe<Array<SessionRulesetAggregateInput>>;
   NOT?: InputMaybe<SessionRulesetAggregateInput>;
   OR?: InputMaybe<Array<SessionRulesetAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SessionRulesetNodeAggregationWhereInput>;
 };
 
 export type SessionRulesetConnectFieldInput = {
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<RulesetConnectWhere>;
 };
 
 export type SessionRulesetConnection = {
-  __typename?: 'SessionRulesetConnection';
+  __typename?: "SessionRulesetConnection";
   edges: Array<SessionRulesetRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SessionRulesetConnectionSort = {
@@ -7168,62 +7024,62 @@ export type SessionRulesetNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SessionRulesetNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SessionRulesetNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SessionRulesetNodeAggregationWhereInput>>;
-  arrowsPerSet_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  arrowsPerSet_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  arrowsPerSet_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  arrowsPerSet_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  arrowsPerSet_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  arrowsPerSet_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  arrowsPerSet_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  timePerArrow_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  timePerArrow_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  timePerArrow_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  timePerArrow_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  timePerArrow_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  timePerArrow_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  arrowsPerSet_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  arrowsPerSet_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  arrowsPerSet_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  arrowsPerSet_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  arrowsPerSet_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  arrowsPerSet_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  arrowsPerSet_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  timePerArrow_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  timePerArrow_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  timePerArrow_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  timePerArrow_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  timePerArrow_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  timePerArrow_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SessionRulesetRelationship = {
-  __typename?: 'SessionRulesetRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SessionRulesetRelationship";
+  cursor: Scalars["String"]["output"];
   node: Ruleset;
 };
 
 export type SessionRulesetRulesetAggregationSelection = {
-  __typename?: 'SessionRulesetRulesetAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SessionRulesetRulesetAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SessionRulesetRulesetNodeAggregateSelection>;
 };
 
 export type SessionRulesetRulesetNodeAggregateSelection = {
-  __typename?: 'SessionRulesetRulesetNodeAggregateSelection';
+  __typename?: "SessionRulesetRulesetNodeAggregateSelection";
   arrowsPerSet: IntAggregateSelection;
   id: IdAggregateSelection;
   timePerArrow: IntAggregateSelection;
@@ -7243,13 +7099,13 @@ export type SessionRulesetUpdateFieldInput = {
 };
 
 export type SessionSetSetsAggregationSelection = {
-  __typename?: 'SessionSetSetsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SessionSetSetsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SessionSetSetsNodeAggregateSelection>;
 };
 
 export type SessionSetSetsNodeAggregateSelection = {
-  __typename?: 'SessionSetSetsNodeAggregateSelection';
+  __typename?: "SessionSetSetsNodeAggregateSelection";
   id: IdAggregateSelection;
   number: IntAggregateSelection;
 };
@@ -7258,26 +7114,26 @@ export type SessionSetsAggregateInput = {
   AND?: InputMaybe<Array<SessionSetsAggregateInput>>;
   NOT?: InputMaybe<SessionSetsAggregateInput>;
   OR?: InputMaybe<Array<SessionSetsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SessionSetsNodeAggregationWhereInput>;
 };
 
 export type SessionSetsConnectFieldInput = {
   connect?: InputMaybe<Array<SetConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SetConnectWhere>;
 };
 
 export type SessionSetsConnection = {
-  __typename?: 'SessionSetsConnection';
+  __typename?: "SessionSetsConnection";
   edges: Array<SessionSetsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SessionSetsConnectionSort = {
@@ -7314,31 +7170,31 @@ export type SessionSetsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SessionSetsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SessionSetsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SessionSetsNodeAggregationWhereInput>>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SessionSetsRelationship = {
-  __typename?: 'SessionSetsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SessionSetsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Set;
 };
 
@@ -7364,14 +7220,14 @@ export type SessionSort = {
 };
 
 export type SessionUpdateInput = {
-  active?: InputMaybe<Scalars['Boolean']['input']>;
+  active?: InputMaybe<Scalars["Boolean"]["input"]>;
   comments?: InputMaybe<Array<SessionCommentsUpdateFieldInput>>;
-  date?: InputMaybe<Scalars['Int']['input']>;
-  date_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  date_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
+  date?: InputMaybe<Scalars["Int"]["input"]>;
+  date_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
   enemies?: InputMaybe<Array<SessionEnemiesUpdateFieldInput>>;
   location?: InputMaybe<SessionLocationUpdateFieldInput>;
-  name?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
   notes?: InputMaybe<Array<SessionNotesUpdateFieldInput>>;
   ruleset?: InputMaybe<SessionRulesetUpdateFieldInput>;
   sets?: InputMaybe<Array<SessionSetsUpdateFieldInput>>;
@@ -7379,13 +7235,13 @@ export type SessionUpdateInput = {
 };
 
 export type SessionUserUsersAggregationSelection = {
-  __typename?: 'SessionUserUsersAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SessionUserUsersAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SessionUserUsersNodeAggregateSelection>;
 };
 
 export type SessionUserUsersNodeAggregateSelection = {
-  __typename?: 'SessionUserUsersNodeAggregateSelection';
+  __typename?: "SessionUserUsersNodeAggregateSelection";
   authId: StringAggregateSelection;
   id: IdAggregateSelection;
 };
@@ -7394,18 +7250,18 @@ export type SessionUsersAggregateInput = {
   AND?: InputMaybe<Array<SessionUsersAggregateInput>>;
   NOT?: InputMaybe<SessionUsersAggregateInput>;
   OR?: InputMaybe<Array<SessionUsersAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SessionUsersNodeAggregationWhereInput>;
 };
 
 export type SessionUsersConnectFieldInput = {
   connect?: InputMaybe<Array<UserConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<UserConnectWhere>;
 };
 
@@ -7419,10 +7275,10 @@ export type SessionUsersConnectOrCreateFieldInputOnCreate = {
 };
 
 export type SessionUsersConnection = {
-  __typename?: 'SessionUsersConnection';
+  __typename?: "SessionUsersConnection";
   edges: Array<SessionUsersRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SessionUsersConnectionSort = {
@@ -7460,26 +7316,26 @@ export type SessionUsersNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SessionUsersNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SessionUsersNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SessionUsersNodeAggregationWhereInput>>;
-  authId_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  authId_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  authId_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  authId_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  authId_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  authId_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  authId_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  authId_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SessionUsersRelationship = {
-  __typename?: 'SessionUsersRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SessionUsersRelationship";
+  cursor: Scalars["String"]["output"];
   node: User;
 };
 
@@ -7501,7 +7357,7 @@ export type SessionWhere = {
   AND?: InputMaybe<Array<SessionWhere>>;
   NOT?: InputMaybe<SessionWhere>;
   OR?: InputMaybe<Array<SessionWhere>>;
-  active?: InputMaybe<Scalars['Boolean']['input']>;
+  active?: InputMaybe<Scalars["Boolean"]["input"]>;
   commentsAggregate?: InputMaybe<SessionCommentsAggregateInput>;
   /** Return Sessions where all of the related SessionCommentsConnections match this filter */
   commentsConnection_ALL?: InputMaybe<SessionCommentsConnectionWhere>;
@@ -7519,12 +7375,12 @@ export type SessionWhere = {
   comments_SINGLE?: InputMaybe<CommentWhere>;
   /** Return Sessions where some of the related Comments match this filter */
   comments_SOME?: InputMaybe<CommentWhere>;
-  date?: InputMaybe<Scalars['Int']['input']>;
-  date_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  date_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_LTE?: InputMaybe<Scalars['Int']['input']>;
+  date?: InputMaybe<Scalars["Int"]["input"]>;
+  date_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  date_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   enemiesAggregate?: InputMaybe<SessionEnemiesAggregateInput>;
   /** Return Sessions where all of the related SessionEnemiesConnections match this filter */
   enemiesConnection_ALL?: InputMaybe<SessionEnemiesConnectionWhere>;
@@ -7542,21 +7398,21 @@ export type SessionWhere = {
   enemies_SINGLE?: InputMaybe<EnemyWhere>;
   /** Return Sessions where some of the related Enemies match this filter */
   enemies_SOME?: InputMaybe<EnemyWhere>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
   location?: InputMaybe<LocationWhere>;
   locationAggregate?: InputMaybe<SessionLocationAggregateInput>;
   locationConnection?: InputMaybe<SessionLocationConnectionWhere>;
   locationConnection_NOT?: InputMaybe<SessionLocationConnectionWhere>;
   location_NOT?: InputMaybe<LocationWhere>;
-  name?: InputMaybe<Scalars['String']['input']>;
-  name_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  name_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  name_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  name_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  name?: InputMaybe<Scalars["String"]["input"]>;
+  name_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  name_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  name_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  name_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
   notesAggregate?: InputMaybe<SessionNotesAggregateInput>;
   /** Return Sessions where all of the related SessionNotesConnections match this filter */
   notesConnection_ALL?: InputMaybe<SessionNotesConnectionWhere>;
@@ -7616,151 +7472,136 @@ export type SessionWhere = {
 };
 
 export type SessionsConnection = {
-  __typename?: 'SessionsConnection';
+  __typename?: "SessionsConnection";
   edges: Array<SessionEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type Set = {
-  __typename?: 'Set';
+  __typename?: "Set";
   archer: Archer;
   archerConnection: SetArcherConnection;
   arrows: Array<Arrow>;
   arrowsAggregate?: Maybe<SetArrowArrowsAggregationSelection>;
   arrowsConnection: SetArrowsConnection;
-  arrowsInOrder: Scalars['Boolean']['output'];
+  arrowsInOrder: Scalars["Boolean"]["output"];
   comments: Array<Comment>;
   commentsAggregate?: Maybe<SetCommentCommentsAggregationSelection>;
   commentsConnection: SetCommentsConnection;
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   notes: Array<Note>;
   notesAggregate?: Maybe<SetNoteNotesAggregationSelection>;
   notesConnection: SetNotesConnection;
-  number: Scalars['Int']['output'];
+  number: Scalars["Int"]["output"];
   session: Session;
   sessionAggregate?: Maybe<SetSessionSessionAggregationSelection>;
   sessionConnection: SetSessionConnection;
-  shootoff: Scalars['Boolean']['output'];
+  shootoff: Scalars["Boolean"]["output"];
   target: Target;
   targetAggregate?: Maybe<SetTargetTargetAggregationSelection>;
   targetConnection: SetTargetConnection;
 };
 
-
 export type SetArcherArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<QueryOptions>;
   where?: InputMaybe<ArcherWhere>;
 };
 
-
 export type SetArcherConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   where?: InputMaybe<SetArcherConnectionWhere>;
 };
 
-
 export type SetArrowsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<ArrowOptions>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type SetArrowsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type SetArrowsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SetArrowsConnectionSort>>;
   where?: InputMaybe<SetArrowsConnectionWhere>;
 };
 
-
 export type SetCommentsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<CommentOptions>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type SetCommentsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<CommentWhere>;
 };
 
-
 export type SetCommentsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SetCommentsConnectionSort>>;
   where?: InputMaybe<SetCommentsConnectionWhere>;
 };
 
-
 export type SetNotesArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<NoteOptions>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type SetNotesAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<NoteWhere>;
 };
 
-
 export type SetNotesConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SetNotesConnectionSort>>;
   where?: InputMaybe<SetNotesConnectionWhere>;
 };
 
-
 export type SetSessionAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type SetSessionConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SetSessionConnectionSort>>;
   where?: InputMaybe<SetSessionConnectionWhere>;
 };
 
-
 export type SetTargetAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<TargetWhere>;
 };
 
-
 export type SetTargetConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<SetTargetConnectionSort>>;
   where?: InputMaybe<SetTargetConnectionWhere>;
 };
 
 export type SetAggregateSelection = {
-  __typename?: 'SetAggregateSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SetAggregateSelection";
+  count: Scalars["Int"]["output"];
   id: IdAggregateSelection;
   number: IntAggregateSelection;
 };
@@ -7775,10 +7616,10 @@ export type SetArcherConnectOrCreateInput = {
 };
 
 export type SetArcherConnection = {
-  __typename?: 'SetArcherConnection';
+  __typename?: "SetArcherConnection";
   edges: Array<SetArcherRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SetArcherConnectionWhere = {
@@ -7851,8 +7692,8 @@ export type SetArcherEnemyUpdateFieldInput = {
 };
 
 export type SetArcherRelationship = {
-  __typename?: 'SetArcherRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SetArcherRelationship";
+  cursor: Scalars["String"]["output"];
   node: Archer;
 };
 
@@ -7917,13 +7758,13 @@ export type SetArcherUserUpdateFieldInput = {
 };
 
 export type SetArrowArrowsAggregationSelection = {
-  __typename?: 'SetArrowArrowsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SetArrowArrowsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SetArrowArrowsNodeAggregateSelection>;
 };
 
 export type SetArrowArrowsNodeAggregateSelection = {
-  __typename?: 'SetArrowArrowsNodeAggregateSelection';
+  __typename?: "SetArrowArrowsNodeAggregateSelection";
   angle: FloatAggregateSelection;
   id: IdAggregateSelection;
   number: IntAggregateSelection;
@@ -7935,26 +7776,26 @@ export type SetArrowsAggregateInput = {
   AND?: InputMaybe<Array<SetArrowsAggregateInput>>;
   NOT?: InputMaybe<SetArrowsAggregateInput>;
   OR?: InputMaybe<Array<SetArrowsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SetArrowsNodeAggregationWhereInput>;
 };
 
 export type SetArrowsConnectFieldInput = {
   connect?: InputMaybe<Array<ArrowConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<ArrowConnectWhere>;
 };
 
 export type SetArrowsConnection = {
-  __typename?: 'SetArrowsConnection';
+  __typename?: "SetArrowsConnection";
   edges: Array<SetArrowsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SetArrowsConnectionSort = {
@@ -7991,91 +7832,91 @@ export type SetArrowsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SetArrowsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SetArrowsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SetArrowsNodeAggregationWhereInput>>;
-  angle_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  offset_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  angle_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  offset_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SetArrowsRelationship = {
-  __typename?: 'SetArrowsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SetArrowsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Arrow;
 };
 
@@ -8093,13 +7934,13 @@ export type SetArrowsUpdateFieldInput = {
 };
 
 export type SetCommentCommentsAggregationSelection = {
-  __typename?: 'SetCommentCommentsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SetCommentCommentsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SetCommentCommentsNodeAggregateSelection>;
 };
 
 export type SetCommentCommentsNodeAggregateSelection = {
-  __typename?: 'SetCommentCommentsNodeAggregateSelection';
+  __typename?: "SetCommentCommentsNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -8110,26 +7951,26 @@ export type SetCommentsAggregateInput = {
   AND?: InputMaybe<Array<SetCommentsAggregateInput>>;
   NOT?: InputMaybe<SetCommentsAggregateInput>;
   OR?: InputMaybe<Array<SetCommentsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SetCommentsNodeAggregationWhereInput>;
 };
 
 export type SetCommentsConnectFieldInput = {
   connect?: InputMaybe<Array<CommentConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<CommentConnectWhere>;
 };
 
 export type SetCommentsConnection = {
-  __typename?: 'SetCommentsConnection';
+  __typename?: "SetCommentsConnection";
   edges: Array<SetCommentsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SetCommentsConnectionSort = {
@@ -8166,61 +8007,61 @@ export type SetCommentsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SetCommentsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SetCommentsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SetCommentsNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SetCommentsRelationship = {
-  __typename?: 'SetCommentsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SetCommentsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Comment;
 };
 
@@ -8257,12 +8098,12 @@ export type SetConnectWhere = {
 export type SetCreateInput = {
   archer?: InputMaybe<SetArcherCreateInput>;
   arrows?: InputMaybe<SetArrowsFieldInput>;
-  arrowsInOrder?: Scalars['Boolean']['input'];
+  arrowsInOrder?: Scalars["Boolean"]["input"];
   comments?: InputMaybe<SetCommentsFieldInput>;
   notes?: InputMaybe<SetNotesFieldInput>;
-  number: Scalars['Int']['input'];
+  number: Scalars["Int"]["input"];
   session?: InputMaybe<SetSessionFieldInput>;
-  shootoff?: Scalars['Boolean']['input'];
+  shootoff?: Scalars["Boolean"]["input"];
   target?: InputMaybe<SetTargetFieldInput>;
 };
 
@@ -8285,19 +8126,19 @@ export type SetDisconnectInput = {
 };
 
 export type SetEdge = {
-  __typename?: 'SetEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "SetEdge";
+  cursor: Scalars["String"]["output"];
   node: Set;
 };
 
 export type SetNoteNotesAggregationSelection = {
-  __typename?: 'SetNoteNotesAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SetNoteNotesAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SetNoteNotesNodeAggregateSelection>;
 };
 
 export type SetNoteNotesNodeAggregateSelection = {
-  __typename?: 'SetNoteNotesNodeAggregateSelection';
+  __typename?: "SetNoteNotesNodeAggregateSelection";
   content: StringAggregateSelection;
   date: IntAggregateSelection;
   id: IdAggregateSelection;
@@ -8308,26 +8149,26 @@ export type SetNotesAggregateInput = {
   AND?: InputMaybe<Array<SetNotesAggregateInput>>;
   NOT?: InputMaybe<SetNotesAggregateInput>;
   OR?: InputMaybe<Array<SetNotesAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SetNotesNodeAggregationWhereInput>;
 };
 
 export type SetNotesConnectFieldInput = {
   connect?: InputMaybe<Array<NoteConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<NoteConnectWhere>;
 };
 
 export type SetNotesConnection = {
-  __typename?: 'SetNotesConnection';
+  __typename?: "SetNotesConnection";
   edges: Array<SetNotesRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SetNotesConnectionSort = {
@@ -8364,61 +8205,61 @@ export type SetNotesNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SetNotesNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SetNotesNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SetNotesNodeAggregationWhereInput>>;
-  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  content_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  content_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  content_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  content_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  title_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  title_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  title_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SetNotesRelationship = {
-  __typename?: 'SetNotesRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SetNotesRelationship";
+  cursor: Scalars["String"]["output"];
   node: Note;
 };
 
@@ -8436,8 +8277,8 @@ export type SetNotesUpdateFieldInput = {
 };
 
 export type SetOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more SetSort objects to sort Sets by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<SetSort>>;
 };
@@ -8455,26 +8296,26 @@ export type SetSessionAggregateInput = {
   AND?: InputMaybe<Array<SetSessionAggregateInput>>;
   NOT?: InputMaybe<SetSessionAggregateInput>;
   OR?: InputMaybe<Array<SetSessionAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<SetSessionNodeAggregationWhereInput>;
 };
 
 export type SetSessionConnectFieldInput = {
   connect?: InputMaybe<SessionConnectInput>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SessionConnectWhere>;
 };
 
 export type SetSessionConnection = {
-  __typename?: 'SetSessionConnection';
+  __typename?: "SetSessionConnection";
   edges: Array<SetSessionRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SetSessionConnectionSort = {
@@ -8511,57 +8352,57 @@ export type SetSessionNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SetSessionNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SetSessionNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SetSessionNodeAggregationWhereInput>>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SetSessionRelationship = {
-  __typename?: 'SetSessionRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SetSessionRelationship";
+  cursor: Scalars["String"]["output"];
   node: Session;
 };
 
 export type SetSessionSessionAggregationSelection = {
-  __typename?: 'SetSessionSessionAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SetSessionSessionAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<SetSessionSessionNodeAggregateSelection>;
 };
 
 export type SetSessionSessionNodeAggregateSelection = {
-  __typename?: 'SetSessionSessionNodeAggregateSelection';
+  __typename?: "SetSessionSessionNodeAggregateSelection";
   date: IntAggregateSelection;
   id: IdAggregateSelection;
   name: StringAggregateSelection;
@@ -8592,11 +8433,11 @@ export type SetTargetAggregateInput = {
   AND?: InputMaybe<Array<SetTargetAggregateInput>>;
   NOT?: InputMaybe<SetTargetAggregateInput>;
   OR?: InputMaybe<Array<SetTargetAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   edge?: InputMaybe<AtTargetAggregationWhereInput>;
   node?: InputMaybe<SetTargetNodeAggregationWhereInput>;
 };
@@ -8605,15 +8446,15 @@ export type SetTargetConnectFieldInput = {
   connect?: InputMaybe<TargetConnectInput>;
   edge: AtTargetCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<TargetConnectWhere>;
 };
 
 export type SetTargetConnection = {
-  __typename?: 'SetTargetConnection';
+  __typename?: "SetTargetConnection";
   edges: Array<SetTargetRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type SetTargetConnectionSort = {
@@ -8653,124 +8494,124 @@ export type SetTargetNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<SetTargetNodeAggregationWhereInput>>;
   NOT?: InputMaybe<SetTargetNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<SetTargetNodeAggregationWhereInput>>;
-  max_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  max_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  max_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  max_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  max_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  max_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  max_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  max_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  max_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  max_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  max_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  max_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  max_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  max_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  max_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  max_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  min_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  min_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  min_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  min_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  min_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  min_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  min_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  min_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  min_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  min_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  min_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  min_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  min_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  min_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  min_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  min_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  radius_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  radius_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  radius_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  radius_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  radius_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  radius_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  radius_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  radius_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  radius_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  radius_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  radius_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  radius_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  radius_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  radius_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  radius_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  radius_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  radius_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  radius_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  radius_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  radius_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  rings_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  rings_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  rings_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  rings_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  rings_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  rings_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  rings_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  rings_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  rings_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  rings_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  rings_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  rings_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  rings_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  rings_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  rings_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  rings_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  rings_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  rings_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  rings_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  rings_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  type_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  type_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  type_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  type_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  type_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  type_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  type_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  type_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  type_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  type_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  type_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  type_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  type_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  type_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  type_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  max_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  max_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  max_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  max_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  max_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  max_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  max_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  max_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  max_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  max_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  max_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  max_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  max_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  max_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  max_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  min_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  min_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  min_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  min_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  min_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  min_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  min_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  min_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  min_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  min_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  min_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  min_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  min_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  min_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  min_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  radius_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  radius_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  radius_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  radius_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  radius_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  rings_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  rings_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  rings_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  rings_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  rings_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  type_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  type_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  type_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  type_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  type_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  type_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  type_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  type_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  type_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  type_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  type_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  type_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  type_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  type_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  type_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type SetTargetRelationship = {
-  __typename?: 'SetTargetRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "SetTargetRelationship";
+  cursor: Scalars["String"]["output"];
   node: Target;
   properties: AtTarget;
 };
 
 export type SetTargetTargetAggregationSelection = {
-  __typename?: 'SetTargetTargetAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SetTargetTargetAggregationSelection";
+  count: Scalars["Int"]["output"];
   edge?: Maybe<SetTargetTargetEdgeAggregateSelection>;
   node?: Maybe<SetTargetTargetNodeAggregateSelection>;
 };
 
 export type SetTargetTargetEdgeAggregateSelection = {
-  __typename?: 'SetTargetTargetEdgeAggregateSelection';
+  __typename?: "SetTargetTargetEdgeAggregateSelection";
   distance: IntAggregateSelection;
 };
 
 export type SetTargetTargetNodeAggregateSelection = {
-  __typename?: 'SetTargetTargetNodeAggregateSelection';
+  __typename?: "SetTargetTargetNodeAggregateSelection";
   id: IdAggregateSelection;
   max: IntAggregateSelection;
   min: IntAggregateSelection;
@@ -8796,14 +8637,14 @@ export type SetTargetUpdateFieldInput = {
 export type SetUpdateInput = {
   archer?: InputMaybe<SetArcherUpdateInput>;
   arrows?: InputMaybe<Array<SetArrowsUpdateFieldInput>>;
-  arrowsInOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  arrowsInOrder?: InputMaybe<Scalars["Boolean"]["input"]>;
   comments?: InputMaybe<Array<SetCommentsUpdateFieldInput>>;
   notes?: InputMaybe<Array<SetNotesUpdateFieldInput>>;
-  number?: InputMaybe<Scalars['Int']['input']>;
-  number_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  number_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
+  number?: InputMaybe<Scalars["Int"]["input"]>;
+  number_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
   session?: InputMaybe<SetSessionUpdateFieldInput>;
-  shootoff?: InputMaybe<Scalars['Boolean']['input']>;
+  shootoff?: InputMaybe<Scalars["Boolean"]["input"]>;
   target?: InputMaybe<SetTargetUpdateFieldInput>;
 };
 
@@ -8824,7 +8665,7 @@ export type SetWhere = {
   arrowsConnection_SINGLE?: InputMaybe<SetArrowsConnectionWhere>;
   /** Return Sets where some of the related SetArrowsConnections match this filter */
   arrowsConnection_SOME?: InputMaybe<SetArrowsConnectionWhere>;
-  arrowsInOrder?: InputMaybe<Scalars['Boolean']['input']>;
+  arrowsInOrder?: InputMaybe<Scalars["Boolean"]["input"]>;
   /** Return Sets where all of the related Arrows match this filter */
   arrows_ALL?: InputMaybe<ArrowWhere>;
   /** Return Sets where none of the related Arrows match this filter */
@@ -8850,11 +8691,11 @@ export type SetWhere = {
   comments_SINGLE?: InputMaybe<CommentWhere>;
   /** Return Sets where some of the related Comments match this filter */
   comments_SOME?: InputMaybe<CommentWhere>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
   notesAggregate?: InputMaybe<SetNotesAggregateInput>;
   /** Return Sets where all of the related SetNotesConnections match this filter */
   notesConnection_ALL?: InputMaybe<SetNotesConnectionWhere>;
@@ -8872,18 +8713,18 @@ export type SetWhere = {
   notes_SINGLE?: InputMaybe<NoteWhere>;
   /** Return Sets where some of the related Notes match this filter */
   notes_SOME?: InputMaybe<NoteWhere>;
-  number?: InputMaybe<Scalars['Int']['input']>;
-  number_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  number_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number?: InputMaybe<Scalars["Int"]["input"]>;
+  number_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  number_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   session?: InputMaybe<SessionWhere>;
   sessionAggregate?: InputMaybe<SetSessionAggregateInput>;
   sessionConnection?: InputMaybe<SetSessionConnectionWhere>;
   sessionConnection_NOT?: InputMaybe<SetSessionConnectionWhere>;
   session_NOT?: InputMaybe<SessionWhere>;
-  shootoff?: InputMaybe<Scalars['Boolean']['input']>;
+  shootoff?: InputMaybe<Scalars["Boolean"]["input"]>;
   target?: InputMaybe<TargetWhere>;
   targetAggregate?: InputMaybe<SetTargetAggregateInput>;
   targetConnection?: InputMaybe<SetTargetConnectionWhere>;
@@ -8892,48 +8733,48 @@ export type SetWhere = {
 };
 
 export type SetsConnection = {
-  __typename?: 'SetsConnection';
+  __typename?: "SetsConnection";
   edges: Array<SetEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 /** An enum for sorting in either ascending or descending order. */
 export enum SortDirection {
   /** Sort by field values in ascending order. */
-  Asc = 'ASC',
+  Asc = "ASC",
   /** Sort by field values in descending order. */
-  Desc = 'DESC'
+  Desc = "DESC",
 }
 
 export type StringAggregateSelection = {
-  __typename?: 'StringAggregateSelection';
-  longest?: Maybe<Scalars['String']['output']>;
-  shortest?: Maybe<Scalars['String']['output']>;
+  __typename?: "StringAggregateSelection";
+  longest?: Maybe<Scalars["String"]["output"]>;
+  shortest?: Maybe<Scalars["String"]["output"]>;
 };
 
 export type SyntheticSamplePropsInput = {
   config: TargetConfigInput;
-  max: Scalars['Float']['input'];
-  mean: Scalars['Float']['input'];
-  min: Scalars['Float']['input'];
-  size: Scalars['Int']['input'];
-  std: Scalars['Float']['input'];
+  max: Scalars["Float"]["input"];
+  mean: Scalars["Float"]["input"];
+  min: Scalars["Float"]["input"];
+  size: Scalars["Int"]["input"];
+  std: Scalars["Float"]["input"];
 };
 
 export type SyntheticSampleResponse = {
-  __typename?: 'SyntheticSampleResponse';
-  max: Scalars['Float']['output'];
-  mean: Scalars['Float']['output'];
-  message: Scalars['String']['output'];
-  min: Scalars['Float']['output'];
-  sample: Array<Scalars['Float']['output']>;
-  std: Scalars['Float']['output'];
+  __typename?: "SyntheticSampleResponse";
+  max: Scalars["Float"]["output"];
+  mean: Scalars["Float"]["output"];
+  message: Scalars["String"]["output"];
+  min: Scalars["Float"]["output"];
+  sample: Array<Scalars["Float"]["output"]>;
+  std: Scalars["Float"]["output"];
 };
 
 export type SyntheticSampleResponseAggregateSelection = {
-  __typename?: 'SyntheticSampleResponseAggregateSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "SyntheticSampleResponseAggregateSelection";
+  count: Scalars["Int"]["output"];
   max: FloatAggregateSelection;
   mean: FloatAggregateSelection;
   message: StringAggregateSelection;
@@ -8942,23 +8783,23 @@ export type SyntheticSampleResponseAggregateSelection = {
 };
 
 export type SyntheticSampleResponseCreateInput = {
-  max: Scalars['Float']['input'];
-  mean: Scalars['Float']['input'];
-  message: Scalars['String']['input'];
-  min: Scalars['Float']['input'];
-  sample: Array<Scalars['Float']['input']>;
-  std: Scalars['Float']['input'];
+  max: Scalars["Float"]["input"];
+  mean: Scalars["Float"]["input"];
+  message: Scalars["String"]["input"];
+  min: Scalars["Float"]["input"];
+  sample: Array<Scalars["Float"]["input"]>;
+  std: Scalars["Float"]["input"];
 };
 
 export type SyntheticSampleResponseEdge = {
-  __typename?: 'SyntheticSampleResponseEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "SyntheticSampleResponseEdge";
+  cursor: Scalars["String"]["output"];
   node: SyntheticSampleResponse;
 };
 
 export type SyntheticSampleResponseOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more SyntheticSampleResponseSort objects to sort SyntheticSampleResponses by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<SyntheticSampleResponseSort>>;
 };
@@ -8973,140 +8814,134 @@ export type SyntheticSampleResponseSort = {
 };
 
 export type SyntheticSampleResponseUpdateInput = {
-  max?: InputMaybe<Scalars['Float']['input']>;
-  max_ADD?: InputMaybe<Scalars['Float']['input']>;
-  max_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  max_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  max_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
-  mean?: InputMaybe<Scalars['Float']['input']>;
-  mean_ADD?: InputMaybe<Scalars['Float']['input']>;
-  mean_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  mean_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  mean_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
-  message?: InputMaybe<Scalars['String']['input']>;
-  min?: InputMaybe<Scalars['Float']['input']>;
-  min_ADD?: InputMaybe<Scalars['Float']['input']>;
-  min_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  min_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  min_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
-  sample?: InputMaybe<Array<Scalars['Float']['input']>>;
-  sample_POP?: InputMaybe<Scalars['Int']['input']>;
-  sample_PUSH?: InputMaybe<Array<Scalars['Float']['input']>>;
-  std?: InputMaybe<Scalars['Float']['input']>;
-  std_ADD?: InputMaybe<Scalars['Float']['input']>;
-  std_DIVIDE?: InputMaybe<Scalars['Float']['input']>;
-  std_MULTIPLY?: InputMaybe<Scalars['Float']['input']>;
-  std_SUBTRACT?: InputMaybe<Scalars['Float']['input']>;
+  max?: InputMaybe<Scalars["Float"]["input"]>;
+  max_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  max_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  max_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
+  message?: InputMaybe<Scalars["String"]["input"]>;
+  min?: InputMaybe<Scalars["Float"]["input"]>;
+  min_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  min_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  min_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
+  sample?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  sample_POP?: InputMaybe<Scalars["Int"]["input"]>;
+  sample_PUSH?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  std?: InputMaybe<Scalars["Float"]["input"]>;
+  std_ADD?: InputMaybe<Scalars["Float"]["input"]>;
+  std_DIVIDE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_MULTIPLY?: InputMaybe<Scalars["Float"]["input"]>;
+  std_SUBTRACT?: InputMaybe<Scalars["Float"]["input"]>;
 };
 
 export type SyntheticSampleResponseWhere = {
   AND?: InputMaybe<Array<SyntheticSampleResponseWhere>>;
   NOT?: InputMaybe<SyntheticSampleResponseWhere>;
   OR?: InputMaybe<Array<SyntheticSampleResponseWhere>>;
-  max?: InputMaybe<Scalars['Float']['input']>;
-  max_GT?: InputMaybe<Scalars['Float']['input']>;
-  max_GTE?: InputMaybe<Scalars['Float']['input']>;
-  max_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  max_LT?: InputMaybe<Scalars['Float']['input']>;
-  max_LTE?: InputMaybe<Scalars['Float']['input']>;
-  mean?: InputMaybe<Scalars['Float']['input']>;
-  mean_GT?: InputMaybe<Scalars['Float']['input']>;
-  mean_GTE?: InputMaybe<Scalars['Float']['input']>;
-  mean_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  mean_LT?: InputMaybe<Scalars['Float']['input']>;
-  mean_LTE?: InputMaybe<Scalars['Float']['input']>;
-  message?: InputMaybe<Scalars['String']['input']>;
-  message_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  message_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  message_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  message_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
-  min?: InputMaybe<Scalars['Float']['input']>;
-  min_GT?: InputMaybe<Scalars['Float']['input']>;
-  min_GTE?: InputMaybe<Scalars['Float']['input']>;
-  min_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  min_LT?: InputMaybe<Scalars['Float']['input']>;
-  min_LTE?: InputMaybe<Scalars['Float']['input']>;
-  sample?: InputMaybe<Array<Scalars['Float']['input']>>;
-  sample_INCLUDES?: InputMaybe<Scalars['Float']['input']>;
-  std?: InputMaybe<Scalars['Float']['input']>;
-  std_GT?: InputMaybe<Scalars['Float']['input']>;
-  std_GTE?: InputMaybe<Scalars['Float']['input']>;
-  std_IN?: InputMaybe<Array<Scalars['Float']['input']>>;
-  std_LT?: InputMaybe<Scalars['Float']['input']>;
-  std_LTE?: InputMaybe<Scalars['Float']['input']>;
+  max?: InputMaybe<Scalars["Float"]["input"]>;
+  max_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  max_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  max_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  max_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  mean_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  mean_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  message?: InputMaybe<Scalars["String"]["input"]>;
+  message_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  message_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  message_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  message_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  min?: InputMaybe<Scalars["Float"]["input"]>;
+  min_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  min_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  min_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  min_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  sample?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  sample_INCLUDES?: InputMaybe<Scalars["Float"]["input"]>;
+  std?: InputMaybe<Scalars["Float"]["input"]>;
+  std_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  std_IN?: InputMaybe<Array<Scalars["Float"]["input"]>>;
+  std_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  std_LTE?: InputMaybe<Scalars["Float"]["input"]>;
 };
 
 export type SyntheticSampleResponsesConnection = {
-  __typename?: 'SyntheticSampleResponsesConnection';
+  __typename?: "SyntheticSampleResponsesConnection";
   edges: Array<SyntheticSampleResponseEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type Target = {
-  __typename?: 'Target';
+  __typename?: "Target";
   arrows: Array<Arrow>;
   arrowsAggregate?: Maybe<TargetArrowArrowsAggregationSelection>;
   arrowsConnection: TargetArrowsConnection;
-  id: Scalars['ID']['output'];
-  max: Scalars['Int']['output'];
-  min: Scalars['Int']['output'];
-  radius: Scalars['Int']['output'];
-  rings: Scalars['Int']['output'];
+  id: Scalars["ID"]["output"];
+  max: Scalars["Int"]["output"];
+  min: Scalars["Int"]["output"];
+  radius: Scalars["Int"]["output"];
+  rings: Scalars["Int"]["output"];
   sets: Array<Set>;
   setsAggregate?: Maybe<TargetSetSetsAggregationSelection>;
   setsConnection: TargetSetsConnection;
-  type: Scalars['String']['output'];
-  xRing: Scalars['Boolean']['output'];
+  type: Scalars["String"]["output"];
+  xRing: Scalars["Boolean"]["output"];
 };
 
-
 export type TargetArrowsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<ArrowOptions>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type TargetArrowsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type TargetArrowsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<TargetArrowsConnectionSort>>;
   where?: InputMaybe<TargetArrowsConnectionWhere>;
 };
 
-
 export type TargetSetsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<SetOptions>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type TargetSetsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type TargetSetsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<TargetSetsConnectionSort>>;
   where?: InputMaybe<TargetSetsConnectionWhere>;
 };
 
 export type TargetAggregateSelection = {
-  __typename?: 'TargetAggregateSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "TargetAggregateSelection";
+  count: Scalars["Int"]["output"];
   id: IdAggregateSelection;
   max: IntAggregateSelection;
   min: IntAggregateSelection;
@@ -9116,19 +8951,19 @@ export type TargetAggregateSelection = {
 };
 
 export type TargetArrowArrowsAggregationSelection = {
-  __typename?: 'TargetArrowArrowsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "TargetArrowArrowsAggregationSelection";
+  count: Scalars["Int"]["output"];
   edge?: Maybe<TargetArrowArrowsEdgeAggregateSelection>;
   node?: Maybe<TargetArrowArrowsNodeAggregateSelection>;
 };
 
 export type TargetArrowArrowsEdgeAggregateSelection = {
-  __typename?: 'TargetArrowArrowsEdgeAggregateSelection';
+  __typename?: "TargetArrowArrowsEdgeAggregateSelection";
   distance: IntAggregateSelection;
 };
 
 export type TargetArrowArrowsNodeAggregateSelection = {
-  __typename?: 'TargetArrowArrowsNodeAggregateSelection';
+  __typename?: "TargetArrowArrowsNodeAggregateSelection";
   angle: FloatAggregateSelection;
   id: IdAggregateSelection;
   number: IntAggregateSelection;
@@ -9140,11 +8975,11 @@ export type TargetArrowsAggregateInput = {
   AND?: InputMaybe<Array<TargetArrowsAggregateInput>>;
   NOT?: InputMaybe<TargetArrowsAggregateInput>;
   OR?: InputMaybe<Array<TargetArrowsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   edge?: InputMaybe<AtTargetAggregationWhereInput>;
   node?: InputMaybe<TargetArrowsNodeAggregationWhereInput>;
 };
@@ -9153,15 +8988,15 @@ export type TargetArrowsConnectFieldInput = {
   connect?: InputMaybe<Array<ArrowConnectInput>>;
   edge: AtTargetCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<ArrowConnectWhere>;
 };
 
 export type TargetArrowsConnection = {
-  __typename?: 'TargetArrowsConnection';
+  __typename?: "TargetArrowsConnection";
   edges: Array<TargetArrowsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type TargetArrowsConnectionSort = {
@@ -9201,91 +9036,91 @@ export type TargetArrowsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<TargetArrowsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<TargetArrowsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<TargetArrowsNodeAggregationWhereInput>>;
-  angle_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  offset_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  angle_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  offset_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type TargetArrowsRelationship = {
-  __typename?: 'TargetArrowsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "TargetArrowsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Arrow;
   properties: AtTarget;
 };
@@ -9305,8 +9140,8 @@ export type TargetArrowsUpdateFieldInput = {
 };
 
 export type TargetConfigInput = {
-  max: Scalars['Float']['input'];
-  min: Scalars['Float']['input'];
+  max: Scalars["Float"]["input"];
+  min: Scalars["Float"]["input"];
 };
 
 export type TargetConnectInput = {
@@ -9320,13 +9155,13 @@ export type TargetConnectWhere = {
 
 export type TargetCreateInput = {
   arrows?: InputMaybe<TargetArrowsFieldInput>;
-  max: Scalars['Int']['input'];
-  min: Scalars['Int']['input'];
-  radius: Scalars['Int']['input'];
-  rings: Scalars['Int']['input'];
+  max: Scalars["Int"]["input"];
+  min: Scalars["Int"]["input"];
+  radius: Scalars["Int"]["input"];
+  rings: Scalars["Int"]["input"];
   sets?: InputMaybe<TargetSetsFieldInput>;
-  type: Scalars['String']['input'];
-  xRing?: Scalars['Boolean']['input'];
+  type: Scalars["String"]["input"];
+  xRing?: Scalars["Boolean"]["input"];
 };
 
 export type TargetDeleteInput = {
@@ -9340,14 +9175,14 @@ export type TargetDisconnectInput = {
 };
 
 export type TargetEdge = {
-  __typename?: 'TargetEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "TargetEdge";
+  cursor: Scalars["String"]["output"];
   node: Target;
 };
 
 export type TargetOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more TargetSort objects to sort Targets by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<TargetSort>>;
 };
@@ -9358,19 +9193,19 @@ export type TargetRelationInput = {
 };
 
 export type TargetSetSetsAggregationSelection = {
-  __typename?: 'TargetSetSetsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "TargetSetSetsAggregationSelection";
+  count: Scalars["Int"]["output"];
   edge?: Maybe<TargetSetSetsEdgeAggregateSelection>;
   node?: Maybe<TargetSetSetsNodeAggregateSelection>;
 };
 
 export type TargetSetSetsEdgeAggregateSelection = {
-  __typename?: 'TargetSetSetsEdgeAggregateSelection';
+  __typename?: "TargetSetSetsEdgeAggregateSelection";
   distance: IntAggregateSelection;
 };
 
 export type TargetSetSetsNodeAggregateSelection = {
-  __typename?: 'TargetSetSetsNodeAggregateSelection';
+  __typename?: "TargetSetSetsNodeAggregateSelection";
   id: IdAggregateSelection;
   number: IntAggregateSelection;
 };
@@ -9379,11 +9214,11 @@ export type TargetSetsAggregateInput = {
   AND?: InputMaybe<Array<TargetSetsAggregateInput>>;
   NOT?: InputMaybe<TargetSetsAggregateInput>;
   OR?: InputMaybe<Array<TargetSetsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   edge?: InputMaybe<AtTargetAggregationWhereInput>;
   node?: InputMaybe<TargetSetsNodeAggregationWhereInput>;
 };
@@ -9392,15 +9227,15 @@ export type TargetSetsConnectFieldInput = {
   connect?: InputMaybe<Array<SetConnectInput>>;
   edge: AtTargetCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SetConnectWhere>;
 };
 
 export type TargetSetsConnection = {
-  __typename?: 'TargetSetsConnection';
+  __typename?: "TargetSetsConnection";
   edges: Array<TargetSetsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type TargetSetsConnectionSort = {
@@ -9440,31 +9275,31 @@ export type TargetSetsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<TargetSetsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<TargetSetsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<TargetSetsNodeAggregationWhereInput>>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type TargetSetsRelationship = {
-  __typename?: 'TargetSetsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "TargetSetsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Set;
   properties: AtTarget;
 };
@@ -9496,21 +9331,21 @@ export type TargetSort = {
 
 export type TargetUpdateInput = {
   arrows?: InputMaybe<Array<TargetArrowsUpdateFieldInput>>;
-  max?: InputMaybe<Scalars['Int']['input']>;
-  max_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  max_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
-  min?: InputMaybe<Scalars['Int']['input']>;
-  min_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  min_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
-  radius?: InputMaybe<Scalars['Int']['input']>;
-  radius_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  radius_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
-  rings?: InputMaybe<Scalars['Int']['input']>;
-  rings_DECREMENT?: InputMaybe<Scalars['Int']['input']>;
-  rings_INCREMENT?: InputMaybe<Scalars['Int']['input']>;
+  max?: InputMaybe<Scalars["Int"]["input"]>;
+  max_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  max_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  min?: InputMaybe<Scalars["Int"]["input"]>;
+  min_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  min_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  radius?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  rings?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_DECREMENT?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_INCREMENT?: InputMaybe<Scalars["Int"]["input"]>;
   sets?: InputMaybe<Array<TargetSetsUpdateFieldInput>>;
-  type?: InputMaybe<Scalars['String']['input']>;
-  xRing?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars["String"]["input"]>;
+  xRing?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type TargetWhere = {
@@ -9534,35 +9369,35 @@ export type TargetWhere = {
   arrows_SINGLE?: InputMaybe<ArrowWhere>;
   /** Return Targets where some of the related Arrows match this filter */
   arrows_SOME?: InputMaybe<ArrowWhere>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  max?: InputMaybe<Scalars['Int']['input']>;
-  max_GT?: InputMaybe<Scalars['Int']['input']>;
-  max_GTE?: InputMaybe<Scalars['Int']['input']>;
-  max_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  max_LT?: InputMaybe<Scalars['Int']['input']>;
-  max_LTE?: InputMaybe<Scalars['Int']['input']>;
-  min?: InputMaybe<Scalars['Int']['input']>;
-  min_GT?: InputMaybe<Scalars['Int']['input']>;
-  min_GTE?: InputMaybe<Scalars['Int']['input']>;
-  min_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  min_LT?: InputMaybe<Scalars['Int']['input']>;
-  min_LTE?: InputMaybe<Scalars['Int']['input']>;
-  radius?: InputMaybe<Scalars['Int']['input']>;
-  radius_GT?: InputMaybe<Scalars['Int']['input']>;
-  radius_GTE?: InputMaybe<Scalars['Int']['input']>;
-  radius_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  radius_LT?: InputMaybe<Scalars['Int']['input']>;
-  radius_LTE?: InputMaybe<Scalars['Int']['input']>;
-  rings?: InputMaybe<Scalars['Int']['input']>;
-  rings_GT?: InputMaybe<Scalars['Int']['input']>;
-  rings_GTE?: InputMaybe<Scalars['Int']['input']>;
-  rings_IN?: InputMaybe<Array<Scalars['Int']['input']>>;
-  rings_LT?: InputMaybe<Scalars['Int']['input']>;
-  rings_LTE?: InputMaybe<Scalars['Int']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  max?: InputMaybe<Scalars["Int"]["input"]>;
+  max_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  max_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  max_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  max_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  max_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  min?: InputMaybe<Scalars["Int"]["input"]>;
+  min_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  min_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  min_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  min_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  min_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  radius?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  radius_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  radius_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  rings?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_IN?: InputMaybe<Array<Scalars["Int"]["input"]>>;
+  rings_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  rings_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   setsAggregate?: InputMaybe<TargetSetsAggregateInput>;
   /** Return Targets where all of the related TargetSetsConnections match this filter */
   setsConnection_ALL?: InputMaybe<TargetSetsConnectionWhere>;
@@ -9580,128 +9415,128 @@ export type TargetWhere = {
   sets_SINGLE?: InputMaybe<SetWhere>;
   /** Return Targets where some of the related Sets match this filter */
   sets_SOME?: InputMaybe<SetWhere>;
-  type?: InputMaybe<Scalars['String']['input']>;
-  type_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  type_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  type_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  type_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
-  xRing?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars["String"]["input"]>;
+  type_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  type_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  type_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  type_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  xRing?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
 export type TargetsConnection = {
-  __typename?: 'TargetsConnection';
+  __typename?: "TargetsConnection";
   edges: Array<TargetEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export enum TimerMode {
-  Loop = 'LOOP',
-  Total = 'TOTAL'
+  Loop = "LOOP",
+  Total = "TOTAL",
 }
 
 export type UpdateArrowsMutationResponse = {
-  __typename?: 'UpdateArrowsMutationResponse';
+  __typename?: "UpdateArrowsMutationResponse";
   arrows: Array<Arrow>;
   info: UpdateInfo;
 };
 
 export type UpdateAuthenticatorsMutationResponse = {
-  __typename?: 'UpdateAuthenticatorsMutationResponse';
+  __typename?: "UpdateAuthenticatorsMutationResponse";
   authenticators: Array<Authenticator>;
   info: UpdateInfo;
 };
 
 export type UpdateBowsMutationResponse = {
-  __typename?: 'UpdateBowsMutationResponse';
+  __typename?: "UpdateBowsMutationResponse";
   bows: Array<Bow>;
   info: UpdateInfo;
 };
 
 export type UpdateCommentsMutationResponse = {
-  __typename?: 'UpdateCommentsMutationResponse';
+  __typename?: "UpdateCommentsMutationResponse";
   comments: Array<Comment>;
   info: UpdateInfo;
 };
 
 export type UpdateEnemiesMutationResponse = {
-  __typename?: 'UpdateEnemiesMutationResponse';
+  __typename?: "UpdateEnemiesMutationResponse";
   enemies: Array<Enemy>;
   info: UpdateInfo;
 };
 
 /** Information about the number of nodes and relationships created and deleted during an update mutation */
 export type UpdateInfo = {
-  __typename?: 'UpdateInfo';
+  __typename?: "UpdateInfo";
   /** @deprecated This field has been deprecated because bookmarks are now handled by the driver. */
-  bookmark?: Maybe<Scalars['String']['output']>;
-  nodesCreated: Scalars['Int']['output'];
-  nodesDeleted: Scalars['Int']['output'];
-  relationshipsCreated: Scalars['Int']['output'];
-  relationshipsDeleted: Scalars['Int']['output'];
+  bookmark?: Maybe<Scalars["String"]["output"]>;
+  nodesCreated: Scalars["Int"]["output"];
+  nodesDeleted: Scalars["Int"]["output"];
+  relationshipsCreated: Scalars["Int"]["output"];
+  relationshipsDeleted: Scalars["Int"]["output"];
 };
 
 export type UpdateLocationsMutationResponse = {
-  __typename?: 'UpdateLocationsMutationResponse';
+  __typename?: "UpdateLocationsMutationResponse";
   info: UpdateInfo;
   locations: Array<Location>;
 };
 
 export type UpdateNotesMutationResponse = {
-  __typename?: 'UpdateNotesMutationResponse';
+  __typename?: "UpdateNotesMutationResponse";
   info: UpdateInfo;
   notes: Array<Note>;
 };
 
 export type UpdateRulesetsMutationResponse = {
-  __typename?: 'UpdateRulesetsMutationResponse';
+  __typename?: "UpdateRulesetsMutationResponse";
   info: UpdateInfo;
   rulesets: Array<Ruleset>;
 };
 
 export type UpdateSessionsMutationResponse = {
-  __typename?: 'UpdateSessionsMutationResponse';
+  __typename?: "UpdateSessionsMutationResponse";
   info: UpdateInfo;
   sessions: Array<Session>;
 };
 
 export type UpdateSetsMutationResponse = {
-  __typename?: 'UpdateSetsMutationResponse';
+  __typename?: "UpdateSetsMutationResponse";
   info: UpdateInfo;
   sets: Array<Set>;
 };
 
 export type UpdateSyntheticSampleResponsesMutationResponse = {
-  __typename?: 'UpdateSyntheticSampleResponsesMutationResponse';
+  __typename?: "UpdateSyntheticSampleResponsesMutationResponse";
   info: UpdateInfo;
   syntheticSampleResponses: Array<SyntheticSampleResponse>;
 };
 
 export type UpdateTargetsMutationResponse = {
-  __typename?: 'UpdateTargetsMutationResponse';
+  __typename?: "UpdateTargetsMutationResponse";
   info: UpdateInfo;
   targets: Array<Target>;
 };
 
 export type UpdateUsersMutationResponse = {
-  __typename?: 'UpdateUsersMutationResponse';
+  __typename?: "UpdateUsersMutationResponse";
   info: UpdateInfo;
   users: Array<User>;
 };
 
 export type User = {
-  __typename?: 'User';
+  __typename?: "User";
   arrows: Array<Arrow>;
   arrowsAggregate?: Maybe<UserArrowArrowsAggregationSelection>;
   arrowsConnection: UserArrowsConnection;
-  authId: Scalars['String']['output'];
+  authId: Scalars["String"]["output"];
   authenticator: Authenticator;
   authenticatorAggregate?: Maybe<UserAuthenticatorAuthenticatorAggregationSelection>;
   authenticatorConnection: UserAuthenticatorConnection;
   bows: Array<Bow>;
   bowsAggregate?: Maybe<UserBowBowsAggregationSelection>;
   bowsConnection: UserBowsConnection;
-  id: Scalars['ID']['output'];
+  id: Scalars["ID"]["output"];
   sessions: Array<Session>;
   sessionsAggregate?: Maybe<UserSessionSessionsAggregationSelection>;
   sessionsConnection: UserSessionsConnection;
@@ -9710,124 +9545,110 @@ export type User = {
   setsConnection: UserSetsConnection;
 };
 
-
 export type UserArrowsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<ArrowOptions>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type UserArrowsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<ArrowWhere>;
 };
 
-
 export type UserArrowsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<UserArrowsConnectionSort>>;
   where?: InputMaybe<UserArrowsConnectionWhere>;
 };
 
-
 export type UserAuthenticatorAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<AuthenticatorWhere>;
 };
 
-
 export type UserAuthenticatorConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<UserAuthenticatorConnectionSort>>;
   where?: InputMaybe<UserAuthenticatorConnectionWhere>;
 };
 
-
 export type UserBowsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<BowOptions>;
   where?: InputMaybe<BowWhere>;
 };
 
-
 export type UserBowsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<BowWhere>;
 };
 
-
 export type UserBowsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<UserBowsConnectionSort>>;
   where?: InputMaybe<UserBowsConnectionWhere>;
 };
 
-
 export type UserSessionsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<SessionOptions>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type UserSessionsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SessionWhere>;
 };
 
-
 export type UserSessionsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<UserSessionsConnectionSort>>;
   where?: InputMaybe<UserSessionsConnectionWhere>;
 };
 
-
 export type UserSetsArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   options?: InputMaybe<SetOptions>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type UserSetsAggregateArgs = {
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
   where?: InputMaybe<SetWhere>;
 };
 
-
 export type UserSetsConnectionArgs = {
-  after?: InputMaybe<Scalars['String']['input']>;
-  directed?: InputMaybe<Scalars['Boolean']['input']>;
-  first?: InputMaybe<Scalars['Int']['input']>;
+  after?: InputMaybe<Scalars["String"]["input"]>;
+  directed?: InputMaybe<Scalars["Boolean"]["input"]>;
+  first?: InputMaybe<Scalars["Int"]["input"]>;
   sort?: InputMaybe<Array<UserSetsConnectionSort>>;
   where?: InputMaybe<UserSetsConnectionWhere>;
 };
 
 export type UserAggregateSelection = {
-  __typename?: 'UserAggregateSelection';
+  __typename?: "UserAggregateSelection";
   authId: StringAggregateSelection;
-  count: Scalars['Int']['output'];
+  count: Scalars["Int"]["output"];
   id: IdAggregateSelection;
 };
 
 export type UserArrowArrowsAggregationSelection = {
-  __typename?: 'UserArrowArrowsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "UserArrowArrowsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<UserArrowArrowsNodeAggregateSelection>;
 };
 
 export type UserArrowArrowsNodeAggregateSelection = {
-  __typename?: 'UserArrowArrowsNodeAggregateSelection';
+  __typename?: "UserArrowArrowsNodeAggregateSelection";
   angle: FloatAggregateSelection;
   id: IdAggregateSelection;
   number: IntAggregateSelection;
@@ -9839,26 +9660,26 @@ export type UserArrowsAggregateInput = {
   AND?: InputMaybe<Array<UserArrowsAggregateInput>>;
   NOT?: InputMaybe<UserArrowsAggregateInput>;
   OR?: InputMaybe<Array<UserArrowsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<UserArrowsNodeAggregationWhereInput>;
 };
 
 export type UserArrowsConnectFieldInput = {
   connect?: InputMaybe<Array<ArrowConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<ArrowConnectWhere>;
 };
 
 export type UserArrowsConnection = {
-  __typename?: 'UserArrowsConnection';
+  __typename?: "UserArrowsConnection";
   edges: Array<UserArrowsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type UserArrowsConnectionSort = {
@@ -9895,91 +9716,91 @@ export type UserArrowsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<UserArrowsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<UserArrowsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<UserArrowsNodeAggregationWhereInput>>;
-  angle_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  angle_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  offset_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MAX_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_MIN_LTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_GTE?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LT?: InputMaybe<Scalars['Float']['input']>;
-  offset_SUM_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  value_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  value_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  value_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  angle_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  angle_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  offset_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MAX_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_MIN_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  offset_SUM_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  value_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  value_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  value_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type UserArrowsRelationship = {
-  __typename?: 'UserArrowsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "UserArrowsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Arrow;
 };
 
@@ -10000,29 +9821,29 @@ export type UserAuthenticatorAggregateInput = {
   AND?: InputMaybe<Array<UserAuthenticatorAggregateInput>>;
   NOT?: InputMaybe<UserAuthenticatorAggregateInput>;
   OR?: InputMaybe<Array<UserAuthenticatorAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   edge?: InputMaybe<AuthenticatesAggregationWhereInput>;
   node?: InputMaybe<UserAuthenticatorNodeAggregationWhereInput>;
 };
 
 export type UserAuthenticatorAuthenticatorAggregationSelection = {
-  __typename?: 'UserAuthenticatorAuthenticatorAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "UserAuthenticatorAuthenticatorAggregationSelection";
+  count: Scalars["Int"]["output"];
   edge?: Maybe<UserAuthenticatorAuthenticatorEdgeAggregateSelection>;
   node?: Maybe<UserAuthenticatorAuthenticatorNodeAggregateSelection>;
 };
 
 export type UserAuthenticatorAuthenticatorEdgeAggregateSelection = {
-  __typename?: 'UserAuthenticatorAuthenticatorEdgeAggregateSelection';
+  __typename?: "UserAuthenticatorAuthenticatorEdgeAggregateSelection";
   id: StringAggregateSelection;
 };
 
 export type UserAuthenticatorAuthenticatorNodeAggregateSelection = {
-  __typename?: 'UserAuthenticatorAuthenticatorNodeAggregateSelection';
+  __typename?: "UserAuthenticatorAuthenticatorNodeAggregateSelection";
   id: IdAggregateSelection;
   name: StringAggregateSelection;
 };
@@ -10031,7 +9852,7 @@ export type UserAuthenticatorConnectFieldInput = {
   connect?: InputMaybe<AuthenticatorConnectInput>;
   edge: AuthenticatesCreateInput;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<AuthenticatorConnectWhere>;
 };
 
@@ -10046,10 +9867,10 @@ export type UserAuthenticatorConnectOrCreateFieldInputOnCreate = {
 };
 
 export type UserAuthenticatorConnection = {
-  __typename?: 'UserAuthenticatorConnection';
+  __typename?: "UserAuthenticatorConnection";
   edges: Array<UserAuthenticatorRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type UserAuthenticatorConnectionSort = {
@@ -10090,26 +9911,26 @@ export type UserAuthenticatorNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<UserAuthenticatorNodeAggregationWhereInput>>;
   NOT?: InputMaybe<UserAuthenticatorNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<UserAuthenticatorNodeAggregationWhereInput>>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type UserAuthenticatorRelationship = {
-  __typename?: 'UserAuthenticatorRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "UserAuthenticatorRelationship";
+  cursor: Scalars["String"]["output"];
   node: Authenticator;
   properties: Authenticates;
 };
@@ -10130,13 +9951,13 @@ export type UserAuthenticatorUpdateFieldInput = {
 };
 
 export type UserBowBowsAggregationSelection = {
-  __typename?: 'UserBowBowsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "UserBowBowsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<UserBowBowsNodeAggregateSelection>;
 };
 
 export type UserBowBowsNodeAggregateSelection = {
-  __typename?: 'UserBowBowsNodeAggregateSelection';
+  __typename?: "UserBowBowsNodeAggregateSelection";
   brand: StringAggregateSelection;
   id: IdAggregateSelection;
   model: StringAggregateSelection;
@@ -10146,26 +9967,26 @@ export type UserBowsAggregateInput = {
   AND?: InputMaybe<Array<UserBowsAggregateInput>>;
   NOT?: InputMaybe<UserBowsAggregateInput>;
   OR?: InputMaybe<Array<UserBowsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<UserBowsNodeAggregationWhereInput>;
 };
 
 export type UserBowsConnectFieldInput = {
   connect?: InputMaybe<Array<BowConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<BowConnectWhere>;
 };
 
 export type UserBowsConnection = {
-  __typename?: 'UserBowsConnection';
+  __typename?: "UserBowsConnection";
   edges: Array<UserBowsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type UserBowsConnectionSort = {
@@ -10202,41 +10023,41 @@ export type UserBowsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<UserBowsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<UserBowsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<UserBowsNodeAggregationWhereInput>>;
-  brand_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  brand_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  brand_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  brand_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  brand_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  model_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  model_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  model_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  model_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  model_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  brand_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  brand_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  brand_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  model_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  model_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  model_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type UserBowsRelationship = {
-  __typename?: 'UserBowsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "UserBowsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Bow;
 };
 
@@ -10275,7 +10096,7 @@ export type UserConnectWhere = {
 
 export type UserCreateInput = {
   arrows?: InputMaybe<UserArrowsFieldInput>;
-  authId: Scalars['String']['input'];
+  authId: Scalars["String"]["input"];
   authenticator?: InputMaybe<UserAuthenticatorFieldInput>;
   bows?: InputMaybe<UserBowsFieldInput>;
   sessions?: InputMaybe<UserSessionsFieldInput>;
@@ -10299,18 +10120,18 @@ export type UserDisconnectInput = {
 };
 
 export type UserEdge = {
-  __typename?: 'UserEdge';
-  cursor: Scalars['String']['output'];
+  __typename?: "UserEdge";
+  cursor: Scalars["String"]["output"];
   node: User;
 };
 
 export type UserOnCreateInput = {
-  authId: Scalars['String']['input'];
+  authId: Scalars["String"]["input"];
 };
 
 export type UserOptions = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
+  limit?: InputMaybe<Scalars["Int"]["input"]>;
+  offset?: InputMaybe<Scalars["Int"]["input"]>;
   /** Specify one or more UserSort objects to sort Users by. The sorts will be applied in the order in which they are arranged in the array. */
   sort?: InputMaybe<Array<UserSort>>;
 };
@@ -10324,13 +10145,13 @@ export type UserRelationInput = {
 };
 
 export type UserSessionSessionsAggregationSelection = {
-  __typename?: 'UserSessionSessionsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "UserSessionSessionsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<UserSessionSessionsNodeAggregateSelection>;
 };
 
 export type UserSessionSessionsNodeAggregateSelection = {
-  __typename?: 'UserSessionSessionsNodeAggregateSelection';
+  __typename?: "UserSessionSessionsNodeAggregateSelection";
   date: IntAggregateSelection;
   id: IdAggregateSelection;
   name: StringAggregateSelection;
@@ -10340,26 +10161,26 @@ export type UserSessionsAggregateInput = {
   AND?: InputMaybe<Array<UserSessionsAggregateInput>>;
   NOT?: InputMaybe<UserSessionsAggregateInput>;
   OR?: InputMaybe<Array<UserSessionsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<UserSessionsNodeAggregationWhereInput>;
 };
 
 export type UserSessionsConnectFieldInput = {
   connect?: InputMaybe<Array<SessionConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SessionConnectWhere>;
 };
 
 export type UserSessionsConnection = {
-  __typename?: 'UserSessionsConnection';
+  __typename?: "UserSessionsConnection";
   edges: Array<UserSessionsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type UserSessionsConnectionSort = {
@@ -10396,46 +10217,46 @@ export type UserSessionsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<UserSessionsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<UserSessionsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<UserSessionsNodeAggregationWhereInput>>;
-  date_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  date_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  date_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  date_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars['Float']['input']>;
-  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars['Float']['input']>;
-  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars['Int']['input']>;
-  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars['Int']['input']>;
+  date_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  date_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  date_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  date_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_AVERAGE_LENGTH_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  name_AVERAGE_LENGTH_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  name_LONGEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_LONGEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  name_SHORTEST_LENGTH_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type UserSessionsRelationship = {
-  __typename?: 'UserSessionsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "UserSessionsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Session;
 };
 
@@ -10453,13 +10274,13 @@ export type UserSessionsUpdateFieldInput = {
 };
 
 export type UserSetSetsAggregationSelection = {
-  __typename?: 'UserSetSetsAggregationSelection';
-  count: Scalars['Int']['output'];
+  __typename?: "UserSetSetsAggregationSelection";
+  count: Scalars["Int"]["output"];
   node?: Maybe<UserSetSetsNodeAggregateSelection>;
 };
 
 export type UserSetSetsNodeAggregateSelection = {
-  __typename?: 'UserSetSetsNodeAggregateSelection';
+  __typename?: "UserSetSetsNodeAggregateSelection";
   id: IdAggregateSelection;
   number: IntAggregateSelection;
 };
@@ -10468,26 +10289,26 @@ export type UserSetsAggregateInput = {
   AND?: InputMaybe<Array<UserSetsAggregateInput>>;
   NOT?: InputMaybe<UserSetsAggregateInput>;
   OR?: InputMaybe<Array<UserSetsAggregateInput>>;
-  count?: InputMaybe<Scalars['Int']['input']>;
-  count_GT?: InputMaybe<Scalars['Int']['input']>;
-  count_GTE?: InputMaybe<Scalars['Int']['input']>;
-  count_LT?: InputMaybe<Scalars['Int']['input']>;
-  count_LTE?: InputMaybe<Scalars['Int']['input']>;
+  count?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  count_LTE?: InputMaybe<Scalars["Int"]["input"]>;
   node?: InputMaybe<UserSetsNodeAggregationWhereInput>;
 };
 
 export type UserSetsConnectFieldInput = {
   connect?: InputMaybe<Array<SetConnectInput>>;
   /** Whether or not to overwrite any matching relationship with the new properties. */
-  overwrite?: Scalars['Boolean']['input'];
+  overwrite?: Scalars["Boolean"]["input"];
   where?: InputMaybe<SetConnectWhere>;
 };
 
 export type UserSetsConnection = {
-  __typename?: 'UserSetsConnection';
+  __typename?: "UserSetsConnection";
   edges: Array<UserSetsRelationship>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type UserSetsConnectionSort = {
@@ -10524,31 +10345,31 @@ export type UserSetsNodeAggregationWhereInput = {
   AND?: InputMaybe<Array<UserSetsNodeAggregationWhereInput>>;
   NOT?: InputMaybe<UserSetsNodeAggregationWhereInput>;
   OR?: InputMaybe<Array<UserSetsNodeAggregationWhereInput>>;
-  number_AVERAGE_EQUAL?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_GTE?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LT?: InputMaybe<Scalars['Float']['input']>;
-  number_AVERAGE_LTE?: InputMaybe<Scalars['Float']['input']>;
-  number_MAX_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MAX_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_MIN_LTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_EQUAL?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_GTE?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LT?: InputMaybe<Scalars['Int']['input']>;
-  number_SUM_LTE?: InputMaybe<Scalars['Int']['input']>;
+  number_AVERAGE_EQUAL?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_GTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LT?: InputMaybe<Scalars["Float"]["input"]>;
+  number_AVERAGE_LTE?: InputMaybe<Scalars["Float"]["input"]>;
+  number_MAX_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MAX_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_MIN_LTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_EQUAL?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_GTE?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LT?: InputMaybe<Scalars["Int"]["input"]>;
+  number_SUM_LTE?: InputMaybe<Scalars["Int"]["input"]>;
 };
 
 export type UserSetsRelationship = {
-  __typename?: 'UserSetsRelationship';
-  cursor: Scalars['String']['output'];
+  __typename?: "UserSetsRelationship";
+  cursor: Scalars["String"]["output"];
   node: Set;
 };
 
@@ -10572,12 +10393,12 @@ export type UserSort = {
 };
 
 export type UserUniqueWhere = {
-  authId?: InputMaybe<Scalars['String']['input']>;
+  authId?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type UserUpdateInput = {
   arrows?: InputMaybe<Array<UserArrowsUpdateFieldInput>>;
-  authId?: InputMaybe<Scalars['String']['input']>;
+  authId?: InputMaybe<Scalars["String"]["input"]>;
   authenticator?: InputMaybe<UserAuthenticatorUpdateFieldInput>;
   bows?: InputMaybe<Array<UserBowsUpdateFieldInput>>;
   sessions?: InputMaybe<Array<UserSessionsUpdateFieldInput>>;
@@ -10605,11 +10426,11 @@ export type UserWhere = {
   arrows_SINGLE?: InputMaybe<ArrowWhere>;
   /** Return Users where some of the related Arrows match this filter */
   arrows_SOME?: InputMaybe<ArrowWhere>;
-  authId?: InputMaybe<Scalars['String']['input']>;
-  authId_CONTAINS?: InputMaybe<Scalars['String']['input']>;
-  authId_ENDS_WITH?: InputMaybe<Scalars['String']['input']>;
-  authId_IN?: InputMaybe<Array<Scalars['String']['input']>>;
-  authId_STARTS_WITH?: InputMaybe<Scalars['String']['input']>;
+  authId?: InputMaybe<Scalars["String"]["input"]>;
+  authId_CONTAINS?: InputMaybe<Scalars["String"]["input"]>;
+  authId_ENDS_WITH?: InputMaybe<Scalars["String"]["input"]>;
+  authId_IN?: InputMaybe<Array<Scalars["String"]["input"]>>;
+  authId_STARTS_WITH?: InputMaybe<Scalars["String"]["input"]>;
   authenticator?: InputMaybe<AuthenticatorWhere>;
   authenticatorAggregate?: InputMaybe<UserAuthenticatorAggregateInput>;
   authenticatorConnection?: InputMaybe<UserAuthenticatorConnectionWhere>;
@@ -10632,11 +10453,11 @@ export type UserWhere = {
   bows_SINGLE?: InputMaybe<BowWhere>;
   /** Return Users where some of the related Bows match this filter */
   bows_SOME?: InputMaybe<BowWhere>;
-  id?: InputMaybe<Scalars['ID']['input']>;
-  id_CONTAINS?: InputMaybe<Scalars['ID']['input']>;
-  id_ENDS_WITH?: InputMaybe<Scalars['ID']['input']>;
-  id_IN?: InputMaybe<Array<Scalars['ID']['input']>>;
-  id_STARTS_WITH?: InputMaybe<Scalars['ID']['input']>;
+  id?: InputMaybe<Scalars["ID"]["input"]>;
+  id_CONTAINS?: InputMaybe<Scalars["ID"]["input"]>;
+  id_ENDS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
+  id_IN?: InputMaybe<Array<Scalars["ID"]["input"]>>;
+  id_STARTS_WITH?: InputMaybe<Scalars["ID"]["input"]>;
   sessionsAggregate?: InputMaybe<UserSessionsAggregateInput>;
   /** Return Users where all of the related UserSessionsConnections match this filter */
   sessionsConnection_ALL?: InputMaybe<UserSessionsConnectionWhere>;
@@ -10674,69 +10495,20 @@ export type UserWhere = {
 };
 
 export type UsersConnection = {
-  __typename?: 'UsersConnection';
+  __typename?: "UsersConnection";
   edges: Array<UserEdge>;
   pageInfo: PageInfo;
-  totalCount: Scalars['Int']['output'];
+  totalCount: Scalars["Int"]["output"];
 };
 
 export type _Service = {
-  __typename?: '_Service';
-  sdl?: Maybe<Scalars['String']['output']>;
+  __typename?: "_Service";
+  sdl?: Maybe<Scalars["String"]["output"]>;
 };
 
 export enum Link__Purpose {
   /** `EXECUTION` features provide metadata necessary for operation execution. */
-  Execution = 'EXECUTION',
+  Execution = "EXECUTION",
   /** `SECURITY` features provide metadata necessary to securely resolve fields. */
-  Security = 'SECURITY'
+  Security = "SECURITY",
 }
-
-export type CountUsersQueryVariables = Exact<{
-  where?: InputMaybe<UserWhere>;
-}>;
-
-
-export type CountUsersQuery = { __typename?: 'Query', usersAggregate: { __typename?: 'UserAggregateSelection', count: number } };
-
-
-export const CountUsersDocument = gql`
-    query CountUsers($where: UserWhere) {
-  usersAggregate(where: $where) {
-    count
-  }
-}
-    `;
-
-/**
- * __useCountUsersQuery__
- *
- * To run a query within a React component, call `useCountUsersQuery` and pass it any options that fit your needs.
- * When your component renders, `useCountUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useCountUsersQuery({
- *   variables: {
- *      where: // value for 'where'
- *   },
- * });
- */
-export function useCountUsersQuery(baseOptions?: Apollo.QueryHookOptions<CountUsersQuery, CountUsersQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<CountUsersQuery, CountUsersQueryVariables>(CountUsersDocument, options);
-      }
-export function useCountUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<CountUsersQuery, CountUsersQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<CountUsersQuery, CountUsersQueryVariables>(CountUsersDocument, options);
-        }
-export function useCountUsersSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<CountUsersQuery, CountUsersQueryVariables>) {
-          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<CountUsersQuery, CountUsersQueryVariables>(CountUsersDocument, options);
-        }
-export type CountUsersQueryHookResult = ReturnType<typeof useCountUsersQuery>;
-export type CountUsersLazyQueryHookResult = ReturnType<typeof useCountUsersLazyQuery>;
-export type CountUsersSuspenseQueryHookResult = ReturnType<typeof useCountUsersSuspenseQuery>;
-export type CountUsersQueryResult = Apollo.QueryResult<CountUsersQuery, CountUsersQueryVariables>;
